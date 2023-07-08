@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'Panda3D Egg Syntax Documentation'
+project = 'Panda3D egg syntax'
 copyright = '2023, Loonatic'
 author = 'Loonatic'
 
-release = '0.1'
-version = '0.1.0'
+# release = '0.1'
+# version = '0.1.0'
 
 # -- General configuration
 
@@ -29,7 +29,7 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'pydata_sphinx_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
