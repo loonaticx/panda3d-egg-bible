@@ -94,6 +94,8 @@ The following attributes are presently implemented for textures:
 
     `<Scalar> wrapw { repeat-definition }`_
 
+    `<Scalar> uv-name { name }`_
+
     <Scalar> borderr { red-value }
 
     <Scalar> borderg { green-value }
@@ -131,6 +133,7 @@ The following attributes are presently implemented for textures:
 .. _<Scalar> wrapu { repeat-definition }: scalar_syn.html#uv-wrap-mode
 .. _<Scalar> wrapv { repeat-definition }: scalar_syn.html#uv-wrap-mode
 .. _<Scalar> wrapw { repeat-definition }: scalar_syn.html#uv-wrap-mode
+.. _<Scalar> uv-name { name }: scalar_syn.html#uv-name
 .. _<Scalar> minfilter { filter-type }: scalar_syn.html#image-min-mag-filtering
 .. _<Scalar> magfilter { filter-type }: scalar_syn.html#image-min-mag-filtering
 .. _<Scalar> magfilteralpha { filter-type }: scalar_syn.html#image-min-mag-filtering
@@ -139,11 +142,169 @@ The following attributes are presently implemented for textures:
 .. _<Scalar> envtype { environment-type }: scalar_syn.html#environment-type
 
 
+
+
 Geometry 
 ---------
 
+Vertices
+`````````````
+
+.. code-block:: console
+
+  <Vertex> number { x [y [z [w]]] [attributes] }
+
+A ``<Vertex>`` entry is only valid within a vertex pool definition.
+The number is the index by which this vertex will be referenced.
+It is optional; if it is omitted, the vertices are implicitly
+numbered consecutively beginning at one.  If the number is
+supplied, the vertices need not be consecutive.
+
+Normally, vertices are three-dimensional (with coordinates x, y,
+and z); however, in certain cases vertices may have fewer or more
+dimensions, up to four.  This is particularly true of vertices
+used as control vertices of NURBS curves and surfaces.  If more
+coordinates are supplied than needed, the extra coordinates are
+ignored; if fewer are supplied than needed, the missing
+coordinates are assumed to be 0.
+
+The vertex's coordinates are always given in world space,
+regardless of any transforms before the vertex pool or before the
+referencing geometry.  If the vertex is referenced by geometry
+under a transform, the egg loader will do an inverse transform to
+move the vertex into the proper coordinate space without changing
+its position in world space.  One exception is geometry under an
+``<Instance>`` node; in this case the vertex coordinates are given in
+the space of the ``<Instance>`` node.  (Another exception is a
+``<DynamicVertexPool>``; see below.)
+
+While each vertex must at least have a position, it may also have
+a color, normal, pair of UV coordinates, and/or a set of morph
+offsets.  Furthermore, the color, normal, and UV coordinates may
+themselves have morph offsets.  Thus, the [attributes] in the
+syntax line above may be replaced with zero or more of the
+following entries:
+
+.. code-block:: console
+
+    <Dxyz> target { x y z }
+
+This specifies the offset of this vertex for the named morph
+target.  See the "MORPH DESCRIPTION ENTRIES" header, below.
+
+.. code-block:: console
+
+    <Normal> { x y z [morph-list] }
+
+This specifies the surface normal of the vertex.  If omitted, the
+vertex will have no normal.  Normals may also be morphed;
+``morph-list`` here is thus an optional list of ``<DNormal>`` entries,
+similar to the above.
+
+.. code-block:: console
+
+    <RGBA> { r g b a [morph-list] }
+
+This specifies the four-valued color of the vertex.  Each
+component is in the range 0.0 to 1.0.  A vertex color, if
+specified for all vertices of the polygon, overrides the polygon's
+color.  If neither color is given, the default is white
+(1 1 1 1).  The ``morph-list`` is an optional list of ``<DRGBA>`` entries.
+
+
+Vertex Pools
+^^^^^^^^^^^^^^^
+
+.. code-block:: console
+    
+    <VertexPool> name { vertices }
+
+A vertex pool is a set of vertices.  All geometry is created by
+referring to vertices by number in a particular vertex pool.  There
+may be one or several vertex pools in an egg file, but all vertices
+that make up a single polygon must come from the same vertex pool.
+The body of a ``<VertexPool>`` entry is simply a list of one or more 
+``<Vertex>`` entries.
+
+In neither case does it make a difference whether the vertex pool
+is itself declared under a transform or an ``<Instance>`` node.  The
+only deciding factor is whether the geometry that *uses* the
+vertex pool appears under an ``<Instance>`` node.  It is possible for
+a single vertex to be interpreted in different coordinate spaces
+by different polygons.
+
+
+.. code-block:: console
+
+    <DynamicVertexPool> name { vertices }
+
+A dynamic vertex pool is similar to a vertex pool in most respects,
+except that each vertex might be animated by substituting in values
+from a ``<VertexAnim>`` table.  Also, the vertices defined within a
+dynamic vertex pool are always given in local coordinates, instead
+of world coordinates.
+
+The presence of a dynamic vertex pool makes sense only within a
+character model, and a single dynamic vertex pool may not span
+multiple characters.  Each dynamic vertex pool creates a DynVerts
+object within the character by the same name; this name is used
+later when matching up the corresponding ``<VertexAnim>``.
+
+.. note::
+
+    At the present time, the DynamicVertexPool is not implemented in Panda3D.
+
+
+
+
+UVs (Vertexes)
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+    <UV> [name] { u v [w] [tangent] [binormal] [morph-list] }
+
+This gives the texture coordinates of a vertex.  This must be
+specified if a texture is to be mapped onto this geometry.
+
+The texture coordinates are usually two-dimensional, with two
+component values (u v), but they may also be three-dimensional,
+with three component values (u v w).  (Arguably, it should be
+called ``<UVW>`` instead of ``<UV>`` in the three-dimensional case, but
+it's not.)
+
+As before, morph-list is an optional list of ``<DUV>`` entries.
+
+Unlike the other kinds of attributes, there may be multiple sets
+of UV's on each vertex, each with a unique name; this provides
+support for multitexturing.  The name may be omitted to specify
+the default UV's.
+
+The UV's also support an optional tangent and binormal.  These
+values are based on the vertex normal and the UV coordinates of
+connected vertices, and are used to render normal maps and similar
+lighting effects.  They are defined within the ``<UV>`` entry because
+there may be a different set of tangents and binormals for each
+different UV coordinate set.  If present, they have the expected
+syntax:
+
+.. code-block:: console
+
+    <UV> [name] { u v [w] <Tangent> { x y z } <Binormal> { x y z } }
+
+
+    <AUX> name { x y z w }
+
+This specifies some named per-vertex auxiliary data which is
+imported from the egg file without further interpretation by
+Panda.  The auxiliary data is copied to the vertex data under a
+column with the specified name.  Presumably the data will have
+meaning to custom code or a custom shader.  Like named UV's, there
+may be multiple Aux entries for a given vertex, each with a
+different name.
+
 Polygons
-^^^^^^^^^
+`````````````
 
 .. code-block:: console
 
@@ -169,9 +330,96 @@ specify a set of attributes that applies to a group of polygons--the
 attributes list must be repeated for each polygon.  This is why egg
 files tend to be very large.
 
+The following attributes may be specified for polygons:
+
+.. code-block:: console
+
+  <TRef> { texture-name }
+
+This refers to a named ``<Texture>`` entry given earlier.  It applies
+the given texture to the polygon.  This requires that all the
+polygon's vertices have been assigned texture coordinates.
+
+This attribute may be repeated multiple times to specify
+multitexture.  In this case, each named texture is applied to the
+polygon, in the order specified.
+
+
+.. code-block:: console
+
+  <Texture> { filename }
+
+This is another way to apply a texture to a polygon.  The
+``<Texture>`` entry is defined "inline" to the polygon, instead of
+referring to a ``<Texture>`` entry given earlier.  There is no way to
+specify texture attributes given this form.
+
+There's no advantage to this syntax for texture mapping.  It's
+supported only because it's required by some older egg files.
+
+
+.. code-block:: console
+
+
+  <MRef> { material-name }
+
+This applies the material properties defined in the earlier
+<Material> entry to the polygon.
+
+
+.. code-block:: console
+
+  <Normal> { x y z [morph-list] }
+
+This defines a polygon surface normal.  The polygon normal will be
+used unless all vertices also have a normal.  If no normal is
+defined, none will be supplied.  The polygon normal, like the
+vertex normal, may be morphed by specifying a series of <DNormal>
+entries.
+
+The polygon normal is used only for lighting and environment
+mapping calculations, and is not related to the implicit normal
+calculated for CollisionPolygons.
+
+
+.. code-block:: console
+
+
+  <RGBA> { r g b a [morph-list] }
+
+This defines the polygon's color, which will be used unless all
+vertices also have a color.  If no color is defined, the default
+is white (1 1 1 1).  The color may be morphed with a series of
+<DRGBA> entries.
+
+
+.. code-block:: console
+
+
+  <BFace> { boolean-value }
+
+This defines whether the polygon will be rendered double-sided
+(i.e. its back face will be visible).  By default, this option is
+disabled, and polygons are one-sided; specifying a nonzero value
+disables backface culling for this particular polygon and allows
+it to be viewed from either side.
+
+
+    <Scalar> bin { bin-name }
+    
+    <Scalar> draw-order { number }
+    
+    <Scalar> depth-offset { number }
+    
+    <Scalar> depth-write { mode }
+    
+    <Scalar> depth-test { mode }
+    
+    <Scalar> visibility { hidden | normal }
+
 
 Patches
-^^^^^^^^^
+`````````````
 
 .. code-block:: console
 
@@ -196,7 +444,7 @@ specified for Patch.
 
 
 PointLight
-^^^^^^^^^^^^
+`````````````
 
 .. code-block:: console
 
@@ -214,12 +462,13 @@ be specified for ``PointLights``, as well as draw-order, plus one
 additional attribute valid only for ``PointLights`` and ``Lines``:
 
 <Scalar> thick { number }
+
 <Scalar> perspective { boolean-value }
 
 
 
 Lines
-^^^^^^^^^
+`````````````
 
 .. code-block:: console
 
@@ -246,7 +495,7 @@ line segment, as in TriangleStrip, below.
 
 
 Triangle Strips
-^^^^^^^^^^^^^^^^^^
+```````````````````
 
 .. code-block:: console
 
@@ -355,19 +604,19 @@ NURBS Surface
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
-    
-<NURBSSurface> name {
-    [attributes]
 
-    <Order> { u-order v-order }
-    <U-knots> { u-knot-list }
-    <V-knots> { v-knot-list }
+    <NURBSSurface> name {
+        [attributes]
 
-    <VertexRef> {
-        indices
-        <Ref> { pool-name }
+        <Order> { u-order v-order }
+        <U-knots> { u-knot-list }
+        <V-knots> { v-knot-list }
+
+        <VertexRef> {
+            indices
+            <Ref> { pool-name }
+        }
     }
-}
 
 A NURBS surface is an extension of a NURBS curve into two parametric
 dimensions, u and v.  NURBS surfaces may be given the same set of
@@ -442,6 +691,48 @@ The trim curve syntax is as follows:
 Although the egg syntax supports trim curves, there are at present
 no egg processing tools that respect them.  For instance, ``egg-qtess``
 ignores trim curves and always tessellates the entire NURBS surface.
+
+Transformations
+------------------
+
+.. code-block:: console
+
+  <Transform> { transform-definition }
+
+This specifies a matrix transform at this group level.  This
+defines a local coordinate space for this group and its
+descendents.  Vertices are still specified in world coordinates
+(in a vertex pool), but any geometry assigned to this group will
+be inverse transformed to move its vertices to the local space.
+
+The transform definition may be any sequence of zero or more of
+the following.  Transformations are post multiplied in the order
+they are encountered to produce a net transformation matrix.
+Rotations are defined as a counterclockwise angle in degrees about
+a particular axis, either implicit (about the x, y, or z axis), or
+arbitrary.  Matrices, when specified explicitly, are row-major.
+
+.. code-block:: console
+
+      <Translate> { x y z }
+      <RotX> { degrees }
+      <RotY> { degrees }
+      <RotZ> { degrees }
+      <Rotate> { degrees x y z }
+      <Scale> { x y z }
+      <Scale> { s }
+
+      <Matrix4> {
+        00 01 02 03
+        10 11 12 13
+        20 21 22 23
+        30 31 32 33
+      }
+
+Note that the ``<Transform>`` block should always define a 3-d
+transform when it appears within the body of a <Group>, while it
+may define either a 2-d or a 3-d transform when it appears within
+the body of a ``<Texture>``.  See <Texture>, above.
 
 
 Morphs
@@ -522,7 +813,7 @@ entries can be given specifically within a ``<Group>`` node to specify
 attributes of the group:
 
 Group Binary Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+````````````````````````````````````
 
 These attributes may be either on or off; they are off by default.
 They are turned on by specifying a non-zero "boolean-value".
@@ -588,7 +879,7 @@ children.
 
 
 Group Scalars
-^^^^^^^^^^^^^^^
+````````````````````````
 
   `<Scalar> fps { frame-rate }`_
 
@@ -639,7 +930,10 @@ Group Scalars
 
 
 Other Group Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^
+``````````````````````````
+
+Billboards
+^^^^^^^^^^^
 
 .. code-block:: console
     
@@ -647,7 +941,7 @@ Other Group Attributes
 
 This entry indicates that all geometry defined at or below this
 group level is part of a billboard that will rotate to face the
-camera.  Type is either "``axis``" or "``point``", describing the type of
+camera.  Type is either ``axis`` or ``point``, describing the type of
 rotation.
 
 Billboards rotate about their local axis.  In the case of a Y-up
@@ -655,11 +949,14 @@ file, the billboards rotate about the Y axis; in a Z-up file, they
 rotate about the Z axis.  Point-rotation billboards rotate about
 the origin.
 
-There is an implicit <Instance> around billboard geometry.  This
+There is an implicit ``<Instance>`` around billboard geometry.  This
 means that the geometry within a billboard is not specified in
 world coordinates, but in the local billboard space.  Thus, a
 vertex drawn at point 0,0,0 will appear to be at the pivot point
 of the billboard, not at the origin of the scene.
+
+Level of Detail (LOD)
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
     
@@ -676,6 +973,480 @@ be visible when the point (x, y, z) is closer than "in" units, but
 further than "out" units, from the camera.  "fade" is presently
 ignored.
 
+Vertex References
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+    <VertexRef> { indices <Ref> { pool-name } }
+
+This moves geometry created from the named vertices into the
+current group, regardless of the group in which the geometry is
+actually defined. 
+
+Instances
+------------
+
+.. code-block:: console
+
+    <Instance> name { group-body }
+
+An ``<Instance>`` node is exactly like a <Group> node, except that
+vertices referenced by geometry created under the ``<Instance>`` node
+are not assumed to be given in world coordinates, but are instead
+given in the local space of the ``<Instance>`` node itself (including
+any transforms given to the node).
+
+In other words, geometry under an ``<Instance>`` node is defined in
+local coordinates.  In principle, similar geometry can be created
+under several different ``<Instance>`` nodes, and thus can be positioned
+in a different place in the scene each instance.  This doesn't
+necessarily imply the use of shared geometry in the Panda3D scene
+graph, but see the ``<Ref>`` syntax, below.
+
+This is particularly useful in conjunction with a ``<File>`` entry, to
+load external file references at places other than the origin.
+
+
+A special syntax of <Instance> entries does actually create shared
+geometry in the scene graph.  The syntax is:
+
+.. code-block:: console
+
+    <Instance> name {
+    <Ref> { group-name }
+    [ <Ref> { group-name } ... ]
+    }
+
+In this case, the referenced group name will appear as a duplicate
+instance in this part of the tree.  Local transforms can be applied
+and are relative to the referencing group's transform.  The
+referenced group must appear preceding this point in the egg file,
+and it will also be a part of the scene in the point at which it
+first appears.  The referenced group may be either a ``<Group>`` or an
+``<Instance>`` of its own; usually, it is a <Group> nested within an
+earlier ``<Instance>`` entry.
+
+Joints
+---------
+
+.. code-block:: console
+
+    <Joint> name { [transform] [ref-list] [joint-list] }
+
+A joint is a highly specialized kind of grouping node.  A tree of
+joints is used to specify the skeletal structure of an animated
+character.
+
+A joint may only contain one of three things.  It may contain a
+``<Transform>`` entry, as above, which defines the joint's unanimated
+(rest) position; it may contain lists of assigned vertices or CV's;
+and it may contain other joints.
+
+A tree of ``<Joint>`` nodes only makes sense within a character
+definition, which is created by applying the <Dart> flag to a group.
+See ``<Dart>``, above.
+
+The vertex assignment is crucial.  This is how the geometry of a
+character is made to move with the joints.  The character's geometry
+is actually defined outside the joint tree, and each vertex must be
+assigned to one or more joints within the tree.
+
+This is done with zero or more ``<VertexRef>`` entries per joint, as the
+following:
+
+.. code-block:: console
+
+  <VertexRef> { indices [<Scalar> membership { m }] <Ref> { pool-name } }
+
+This is syntactically similar to the way vertices are assigned to
+polygons.  Each ``<VertexRef>`` entry can assign vertices from only one
+vertex pool (but there may be many ``<VertexRef>`` entries per joint).
+Indices is a list of vertex numbers from the specied vertex pool, in
+an arbitrary order.
+
+The membership scalar is optional.  If specified, it is a value
+between 0.0 and 1.0 that indicates the fraction of dominance this
+joint has over the vertices.  This is used to implement
+soft-skinning, so that each vertex may have partial ownership in
+several joints.
+
+The ``<VertexRef>`` entry may also be given to ordinary <Group> nodes.
+In this case, it treats the geometry as if it was parented under the
+group in the first place.  Non-total membership assignments are
+meaningless.
+
+Tables and Bundles
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+    <Bundle> name { table-list }
+    <Table> name { table-body }
+
+A table is a set of animated values for joints.  A tree of tables
+with the same structure as the corresponding tree of joints must be
+defined for each character to be animated.  Such a tree is placed
+under a ``<Bundle>`` node, which provides a handle within Panda to the
+tree as a whole.
+
+Bundles may only contain tables; tables may contain more tables,
+bundles, or any one of the following (``<Scalar>`` entries are optional,
+and default as shown):
+
+.. code-block:: console
+
+    <S$Anim> name {
+        <Scalar> fps { 24 }
+        <V> { values }
+    }
+
+This is a table of scalar values, one per frame.  This may be
+applied to a morph slider, for instance.
+
+.. code-block:: console
+
+    <Xfm$Anim> name {
+        <Scalar> fps { 24 }
+        <Scalar> order { srpht }
+        <Scalar> contents { ijkabcrphxyz }
+        <V> { values }
+    }
+
+This is a table of matrix transforms, one per frame, such as may
+be applied to a joint.  The "contents" string consists of a subset
+of the letters "``ijkabcrphxyz``", where each letter corresponds to a
+column of the table; ``<V>`` is a list of numbers of length(contents)
+* num_frames.  Each letter of the contents string corresponds to a
+type of transformation:
+
+.. code-block:: console
+
+      i, j, k - scale in x, y, z directions, respectively
+      a, b, c - shear in xy, xz, and yz planes, respectively
+      r, p, h - rotate by roll, pitch, heading
+      x, y, z - translate in x, y, z directions
+
+The net transformation matrix specified by each row of the table
+is defined as the net effect of each of the individual columns'
+transform, according to the corresponding letter in the contents
+string.  The order the transforms are applied is defined by the
+order string:
+
+.. code-block:: console
+
+      s       - all scale and shear transforms
+      r, p, h - individual rotate transforms
+      t       - all translation transforms
+
+
+.. code-block:: console
+
+    <Xfm$Anim_S$> name {
+        <Scalar> fps { 24 }
+        <Scalar> order { srpht }
+        <S$Anim> i { ... }
+        <S$Anim> j { ... }
+        ...
+    }
+
+This is a variant on the ``<Xfm$Anim>`` entry, where each column of
+the table is entered as a separate ``<S$Anim>`` table.  This syntax
+reflects an attempt to simplify the description by not requiring
+repetition of values for columns that did not change value during
+an animation sequence.
+
+.. code-block:: console
+
+  <VertexAnim> name {
+      <Scalar> width { table-width }
+      <Scalar> fps { 24 }
+      <V> { values }
+  }
+
+This is a table of vertex positions, normals, texture coordinates,
+or colors.  These values will be subsituted at runtime for the
+corresponding values in a ``<DynamicVertexPool>``.  The name of the
+table should be "``coords``", "``norms``", "``texCoords``", or "``colors``",
+according to the type of values defined.  The number table-width
+is the number of floats in each row of the table.  In the case of
+a coords or norms table, this must be 3 times the number of
+vertices in the corresponding dynamic vertex pool.  (For texCoords
+and colors, this number must be 2 times and 4 times, respectively.)
+
+
+Animation Structure
+-----------------------
+
+Unanimated models may be defined in egg files without much regard to
+any particular structure, so long as named entries like VertexPools
+and Textures appear before they are referenced.
+
+However, a certain rigid structural convention must be followed in
+order to properly define an animated skeleton-morph model and its
+associated animation data.
+
+The structure for an animated model should resemble the following:
+
+.. code-block:: console
+    
+    <Group> CHARACTER_NAME {
+    <Dart> { 1 }
+    <Joint> JOINT_A {
+        <Transform> { ... }
+        <VertexRef> { ... }
+        <Group> { <Polygon> ... }
+        <Joint> JOINT_B {
+        <Transform> { ... }
+        <VertexRef> { ... }
+        <Group> { <Polygon> ... }
+        }
+        <Joint> JOINT_C {
+        <Transform> { ... }
+        <VertexRef> { ... }
+        <Group> { <Polygon> ... }
+        }
+        ...
+    }
+    }
+
+The ``<Dart>`` flag is necessary to indicate that this group begins an
+animated model description.  Without the <Dart> flag, joints will be
+treated as ordinary groups, and morphs will be ignored.
+
+It is important to note that utilizing ``<Dart> { 1 }`` will collapse all of the
+model's geometry into a single node. To omit this, use ``<Dart> { structured }`` instead.
+(See <Dart> above.)
+
+In the above, UPPERCASE NAMES represent an arbitrary name that you
+may choose.  The name of the enclosing group, CHARACTER_NAME, is
+taken as the name of the animated model.  It should generally match
+the bundle name in the associated animation tables.
+
+Within the ``<Dart>`` group, you may define an arbitrary hierarchy of
+``<Joint>`` entries.  There may be as many ``<Joint>`` entries as you like,
+and they may have any nesting complexity you like.  There may be
+either one root ``<Joint>``, or multiple roots.  However, you must
+always include at least one ``<Joint>``, even if your animation consists
+entirely of morphs.
+
+Polygons may be directly attached to joints by enclosing them within
+the ``<Joint>`` group, perhaps with additional nesting ``<Group>`` entries,
+as illustrated above.  This will result in the polygon's vertices
+being hard-assigned to the joint it appears within.  Alternatively,
+you declare the polygons elsewhere in the egg file, and use
+``<VertexRef>`` entries within the ``<Joint>`` group to associate the
+vertices with the joints.  This is the more common approach, since
+it allows for soft-assignment of vertices to multiple joints.
+
+It is not necessary for every joint to have vertices at all.  Every
+joint should include a transform entry, however, which defines the
+initial, resting transform of the joint (but see also <DefaultPose>,
+above).  If a transform is omitted, the identity transform is
+assumed.
+
+Some of the vertex definitions may include morph entries, as
+described in MORPH DESCRIPTION ENTRIES, above.  These are meaningful
+only for vertices that are assigned, either implicitly or
+explicitly, to at least one joint.
+
+You may have multiple versions of a particular animated model--for
+instance, multiple different LOD's, or multiple different clothing
+options.  Normally each different version is stored in a different
+egg file, but it is also possible to include multiple versions
+within the same egg file.  If the different versions are intended to
+play the same animations, they should all have the same
+CHARACTER_NAME, and their joint hierarchies should exactly match in
+structure and names.
+
+The structure for an animation table should resemble the following:
+
+.. code-block:: console
+
+    <Table> {
+    <Bundle> CHARACTER_NAME {
+        <Table> "<skeleton>" {
+        <Table> JOINT_A {
+            <Xfm$Anim_S$> xform {
+            <Char*> order { sphrt }
+            <Scalar> fps { 24 }
+            <S$Anim> x { 0 0 10 10 20 ... }
+            <S$Anim> y { 0 0 0 0 0 ... }
+            <S$Anim> z { 20 20 20 20 20 ... }
+            }
+            <Table> JOINT_B {
+            <Xfm$Anim_S$> xform {
+                <Char*> order { sphrt }
+                <Scalar> fps { 24 }
+                <S$Anim> x { ... }
+                <S$Anim> y { ... }
+                <S$Anim> z { ... }
+            }
+            }
+            <Table> JOINT_C {
+            <Xfm$Anim_S$> xform {
+                <Char*> order { sphrt }
+                <Scalar> fps { 24 }
+                <S$Anim> x { ... }
+                <S$Anim> y { ... }
+                <S$Anim> z { ... }
+            }
+            }
+        }
+        }
+        <Table> morph {
+        <S$Anim> MORPH_A {
+            <Scalar> fps { 24 }
+            <V> { 0 0 0 0.1 0.2 0.3 1 ... }
+        }
+        <S$Anim> MORPH_B {
+            <Scalar> fps { 24 }
+            <V> { ... }
+        }
+        <S$Anim> MORPH_C {
+            <Scalar> fps { 24 }
+            <V> { ... }
+        }
+        }
+    }
+    }
+
+The ``<Bundle>`` entry begins an animation table description.  This
+entry must have at least one child: a ``<Table>`` named ``<skeleton>``
+(this name is a literal keyword and must be present).  The children
+of this ``<Table>`` entry should be a hierarchy of additional ``<Table>``
+entries, one for each joint in the model.  The joint structure and
+names defined by the ``<Table>`` hierarchy should exactly match the
+joint structure and names defined by the <Joint> hierarchy in the
+corresponding model.
+
+Each ``<Table>`` that corresponds to a joint should have one child, an
+``<Xfm$Anim_S$>`` entry named ``xform`` (this name is a literal keyword
+and must be present).  Within this entry, there is a series of up to
+twelve ``<S$Anim>`` entries, each with a one-letter name like "x", "y",
+or "z", which define the per-frame x, y, z position of the
+corresponding joint.  There is one numeric entry for each frame, and
+all frames represent the same length of time.  You can also define
+rotation, scale, and shear.  See the full description of
+``<Xfm$Anim_S$>``, above.
+
+Within a particular animation bundle, all of the various components
+throughout the various ``<Tables>`` should define the same number of
+frames, with the exception that if any of them define exactly one
+frame value, that value is understood to be replicated the
+appropriate number of times to match the number of frames defined by
+other components.
+
+(Note that you may alternatively define an animation table with an
+``<Xfm$Anim>`` entry, which defines all of the individual components in
+one big matrix instead of individually.  See the full description
+above.)
+
+Each joint defines its frame rate independently, with an "fps"
+scalar.  This determines the number of frames per second for the
+frame data within this table.  Typically, all joints have the same
+frame rate, but it is possible for different joints to animate at
+different speeds.
+
+Each joint also defines the order in which its components should be
+composed to determine the complete transform matrix, with an "order"
+scalar.  This is described in more detail above.
+
+
+If any of the vertices in the model have morphs, the top-level
+``<Table>`` should also include a ``<Table>`` named ``morph`` (this name is
+also a literal keyword).  This table in turn contains a list of
+``<S$Anim>`` entries, one for each named morph description.  Each table
+contains a list of numeric values, one per frame; as with the joint
+data, there should be the same number of numeric values in all
+tables, with the exception that just one value is understood to mean
+hold that value through the entire animation.
+
+The "morph" table may be omitted if there are no morphs defined in
+the model.
+
+There should be a separate ``<Bundle>`` definition for each different
+animation.  The ``<Bundle>`` name should match the CHARACTER_NAME used
+for the model, above.  Typically each bundle is stored in a separate
+egg file, but it is also possible to store multiple different
+animation bundles within the same egg file.  If you do this, you may
+violate the CHARACTER_NAME rule, and give each bundle a different
+name; this will become the name of the animation in the Actor
+interface.
+
+Although animations and models are typically stored in separate egg
+files, it is possible to store them together in one large egg file.
+The Actor interface will then make available all of the animations
+it finds within the egg file, by bundle name.
+
+
+Default Pose
+^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <DefaultPose> { transform-definition }
+
+This defines an optional default pose transform, which might be a
+different transform from that defined by the ``<Transform>`` entry,
+above.  This makes sense only for a ``<Joint>``.  See the ``<Joint>``
+description, below.
+
+The default pose transform defines the transform the joint will
+maintain in the absence of any animation being applied.  This is
+different from the ``<Transform>`` entry, which defines the coordinate
+space the joint must have in order to keep its vertices in their
+(global space) position as given in the egg file.  If this is
+different from the ``<Transform>`` entry, the joint's vertices will
+*not* be in their egg file position at initial load.  If there is
+no ``<DefaultPose>`` entry for a particular joint, the implicit
+default-pose transform is the same as the ``<Transform>`` entry.
+
+Normally, the ``<DefaultPose>`` entry, if any, is created by the
+``egg-optchar -defpose`` option.  Most other software has little
+reason to specify an explicit ``<DefaultPose>``.
+
+AnimPreload
+^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <AnimPreload> {
+    <Scalar> fps { float-value }
+    <Scalar> num-frames { integer-value }
+  }
+
+One or more AnimPreload entries may appear within the ``<Group>`` that
+contains a ``<Dart>`` entry, indicating an animated character (see
+above).  These AnimPreload entries record the minimal preloaded
+animation data required in order to support asynchronous animation
+binding.  These entries are typically generated by the egg-optchar
+program with the ``-preload`` option, and are used by the Actor code
+when allow-async-bind is True (the default).
+
+
+Miscellaneous
+---------------
+
+File
+^^^^^^^^^^^
+
+.. code-block:: console
+
+    <File> { filename }
+
+This includes a copy of the referenced egg file at the current
+point.  This is usually placed under an ``<Instance>`` node, so that the
+current transform will apply to the geometry in the external file.
+The extension ``.egg`` is implied if it is omitted.
+
+As with texture filenames, the filename may be a relative path, in
+which case the current egg file's directory is searched first, and
+then the model-path is searched.
+
+Node Tags
+^^^^^^^^^^^
+
 .. code-block:: console
 
     <Tag> key { value }
@@ -683,6 +1454,3 @@ ignored.
 This attribute defines the indicated tag (as a key/value pair),
 retrievable via ``NodePath::get_tag()`` and related interfaces, on
 this node.
-
-Instances
-------------

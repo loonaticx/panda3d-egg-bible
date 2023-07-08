@@ -1,7 +1,7 @@
 .. _syntax_scalar_entry:
 
-Scalars
-========
+Scalar Definitions
+====================
 
 Scalars can appear in various contexts. They are always optional, and specify some attribute value relevant to the current context.
 
@@ -223,6 +223,86 @@ of multitexture.  In particular, the types prefixed by an asterisk
 (``*``) require enabling Panda's automatic ShaderGenerator.
 
 
+Image Combine Modes
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+    
+  <Scalar> combine-rgb { combine-mode }
+  <Scalar> combine-alpha { combine-mode }
+  <Scalar> combine-rgb-source0 { combine-source }
+  <Scalar> combine-rgb-operand0 { combine-operand }
+  <Scalar> combine-rgb-source1 { combine-source }
+  <Scalar> combine-rgb-operand1 { combine-operand }
+  <Scalar> combine-rgb-source2 { combine-source }
+  <Scalar> combine-rgb-operand2 { combine-operand }
+  <Scalar> combine-alpha-source0 { combine-source }
+  <Scalar> combine-alpha-operand0 { combine-operand }
+  <Scalar> combine-alpha-source1 { combine-source }
+  <Scalar> combine-alpha-operand1 { combine-operand }
+  <Scalar> combine-alpha-source2 { combine-source }
+  <Scalar> combine-alpha-operand2 { combine-operand }
+
+These options replace the envtype and specify the texture combiner
+mode, which is usually used for multitexturing.  This specifies
+how the texture combines with the base color and/or the other
+textures applied previously.  You must specify both an rgb and an
+alpha combine mode.  Some combine-modes use one source/operand
+pair, and some use all three; most use just two.
+
+``combine-mode`` may be one of:
+
+.. code-block:: console
+
+      REPLACE
+      MODULATE
+      ADD
+      ADD-SIGNED
+      INTERPOLATE
+      SUBTRACT
+      DOT3-RGB
+      DOT3-RGBA
+
+``combine-source`` may be one of:
+
+.. code-block:: console
+
+      TEXTURE
+      CONSTANT
+      PRIMARY-COLOR
+      PREVIOUS
+      CONSTANT_COLOR_SCALE
+      LAST_SAVED_RESULT
+
+``combine-operand`` may be one of:
+
+.. code-block:: console
+    
+      SRC-COLOR
+      ONE-MINUS-SRC-COLOR
+      SRC-ALPHA
+      ONE-MINUS-SRC-ALPHA
+
+The default values if any of these are omitted are:
+
+.. code-block:: console
+    
+  <Scalar> combine-rgb { modulate }
+  <Scalar> combine-alpha { modulate }
+  <Scalar> combine-rgb-source0 { previous }
+  <Scalar> combine-rgb-operand0 { src-color }
+  <Scalar> combine-rgb-source1 { texture }
+  <Scalar> combine-rgb-operand1 { src-color }
+  <Scalar> combine-rgb-source2 { constant }
+  <Scalar> combine-rgb-operand2 { src-alpha }
+  <Scalar> combine-alpha-source0 { previous }
+  <Scalar> combine-alpha-operand0 { src-alpha }
+  <Scalar> combine-alpha-source1 { texture }
+  <Scalar> combine-alpha-operand1 { src-alpha }
+  <Scalar> combine-alpha-source2 { constant }
+  <Scalar> combine-alpha-operand2 { src-alpha }
+
+
 Image Min/Mag Filtering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -254,6 +334,9 @@ types.
 
 Image Mipmaps
 ^^^^^^^^^^^^^^
+
+.. code-block:: console
+
   <Scalar> read-mipmaps { flag }
 
 If this flag is nonzero, then pre-generated mipmap levels will be
@@ -272,6 +355,7 @@ filled in with the 3D sequence or cube map face.
 
 Image Anisotropic Degree
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
   <Scalar> anisotropic-degree { degree }
@@ -298,9 +382,13 @@ particularly important when one of the UV wrap modes is
 Image Type
 ^^^^^^^^^^^^^^^
 
+.. code-block:: console
+
   <Scalar> type { texture-type }
 
 This may be one of the following attributes:
+
+.. code-block:: console
 
   1D
   2D
@@ -324,23 +412,27 @@ channel(s).
 Multiview Textures
 ^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: console
+
   <Scalar> multiview { flag }
 
 If this flag is nonzero, the texture is loaded as a multiview
 texture.  In this case, the filename must contain a hash mark
-("#") as in the 3D or CUBE_MAP case, above, and the different
+(``#``) as in the 3D or CUBE_MAP case, above, and the different
 images are loaded into the different views of the multiview
 textures.  If the texture is already a cube map texture, the
 same hash sequence is used for both purposes: the first six images
 define the first view, the next six images define the second view,
 and so on.  If the texture is a 3-D texture, you must also specify
-num-views, below, to tell the loader how many images are loaded
+``num-views``, below, to tell the loader how many images are loaded
 for views, and how many are loaded for levels.
 
 A multiview texture is most often used to load stereo textures,
 where a different image is presented to each eye viewing the
 texture, but other uses are possible, such as for texture
 animation.
+
+.. code-block:: console
 
   <Scalar> num-views { count }
 
@@ -349,8 +441,157 @@ specifies how many different views the texture holds; the z height
 of the texture is then implicitly determined as (number of images)
 / (number of views).
 
+Texture Generation Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <Scalar> tex-gen { mode }
+
+This specifies that texture coordinates for the primitives that
+reference this texture should be dynamically computed at runtime,
+for instance to apply a reflection map or some other effect.  The
+valid values for mode are:
+
+.. code-block:: console
+
+  EYE_SPHERE_MAP (or SPHERE_MAP)
+  WORLD_CUBE_MAP
+  EYE_CUBE_MAP (or CUBE_MAP)
+  WORLD_NORMAL
+  EYE_NORMAL
+  WORLD_POSITION
+  EYE_POSITION
+  POINT_SPRITE
+
+Texture Priority
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <Scalar> priority { priority-value }
+
+Specifies an integer sort value to rank this texture in priority
+among other textures that are applied to the same geometry.  This
+is only used to eliminate low-priority textures in case more
+textures are requested for a particular piece of geometry than the
+graphics hardware can render.
+
+
+Texture Quality level
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <Scalar> quality-level { quality }
+
+Sets a hint to the renderer about the desired performance /
+quality tradeoff for this particular texture.  This is most useful
+for the tinydisplay software renderer; for normal,
+hardware-accelerated renderers, this may have little or no effect.
+
+This may be one of:
+
+.. code-block:: console
+
+  DEFAULT
+  FASTEST
+  NORMAL
+  BEST
+
+"Default" means to use whatever quality level is specified by the
+global texture-quality-level config variable.
+
+
+Texture Stage Scalars
+------------------------
+
+Stage Name
+^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <Scalar> stage-name { name }
+
+Specifies the name of the ``TextureStage`` object that is created to
+render this texture.  If this is omitted, a custom ``TextureStage`` is
+created for this texture if it is required (e.g. because some
+other multitexturing parameter has been specified), or the system
+default ``TextureStage`` is used if multitexturing is not required.
+
+
+Saved Result
+^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <Scalar> saved-result { flag }
+
+If flag is nonzero, then it indicates that this particular texture
+stage will be supplied as the "last_saved_result" source for any
+future texture stages.
+
+
+Material Scalars
+--------------------
+
+Material Components
+^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <Scalar> diffr { number }
+  <Scalar> diffg { number }
+  <Scalar> diffb { number }
+  <Scalar> diffa { number }
+
+  <Scalar> ambr { number }
+  <Scalar> ambg { number }
+  <Scalar> ambb { number }
+  <Scalar> amba { number }
+
+  <Scalar> emitr { number }
+  <Scalar> emitg { number }
+  <Scalar> emitb { number }
+  <Scalar> emita { number }
+
+  <Scalar> specr { number }
+  <Scalar> specg { number }
+  <Scalar> specb { number }
+  <Scalar> speca { number }
+
+
+The four color groups, ``diff*``, ``amb*``, ``emit*``, and ``spec*`` specify the
+diffuse, ambient, emission, and specular components of the lighting
+equation, respectively.  Any of them may be omitted; the omitted
+component(s) take their color from the native color of the
+primitive, otherwise the primitive color is replaced with the
+material color.
+
+These properties collectively define a "material" that controls the
+lighting effects that are applied to a surface; a material is only
+in effect in the presence of lighting.
+
+
+Material Shininess
+^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+  <Scalar> shininess { number }
+  <Scalar> local { flag }
+
+The ``shininess`` property controls the size of the specular highlight,
+and the value ranges from 0 to 128.  A larger value creates a
+smaller highlight (creating the appearance of a shinier surface).
+
+
+
+Render Order Scalars
+----------------------
+
 Bin Order
-----------
+^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -363,7 +604,7 @@ texture applied, in the absence of a bin name specified on the polygon itself.
 For *polygons*, this specifies the bin name for all polygons at or below this node that do not explicitly set their own bin. 
 
 Draw Order
-------------
+^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -377,7 +618,7 @@ For Groups: This specifies the drawing order for all polygons at or below this n
 
 
 Visibility
----------------
+^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -391,7 +632,7 @@ are converted as a "stashed" node.
 
 
 Occluder
------------
+^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -492,9 +733,9 @@ UV Wrap Mode
 This defines the behavior of the texture image outside of the
 normal (u,v) range 0.0 - 1.0.  
 
-It is "``REPEAT``" to repeat the texture to infinity, "``CLAMP``" not to.  
+It is ``REPEAT`` to repeat the texture to infinity, ``CLAMP`` not to.  
 
-The wrapping behavior may be specified independently for each axis via "``wrapu``" and "``wrapv``", or it may be specified for both simultaneously via "wrap".
+The wrapping behavior may be specified independently for each axis via ``wrapu`` and ``wrapv``, or it may be specified for both simultaneously via "wrap".
 
 Although less often used, for 3-d textures wrapw may also be specified, and it behaves similarly to ``wrapu`` and ``wrapv``.
 
@@ -510,8 +751,11 @@ The full list is:
   BORDER_COLOR
 
 
+Animation Scalars
+-------------------
+
 FPS  
-----
+^^^^^^^^
 
 .. code-block:: console
 
