@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Panda3D egg syntax'
+project = 'Panda3D egg bible'
 copyright = '2023, Loonatic'
 author = 'Loonatic'
 
@@ -17,6 +17,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    # 'sphinx_gallery.gen_gallery'
 ]
 
 intersphinx_mapping = {
