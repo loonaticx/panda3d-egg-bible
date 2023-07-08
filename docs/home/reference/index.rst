@@ -6,4 +6,5 @@ Reference
 .. toctree::
     ./collide
     ./objecttypes
+    ./glossary
 
