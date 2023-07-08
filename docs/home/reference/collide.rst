@@ -13,9 +13,10 @@ child is searched for with the same collision type specified, and
 its geometry is used to define the extent of the collision
 surface (unless the "descend" flag is given; see below).
 
-It is now deprecated to use <Collide> without "descend"; it will
-become the default soon.  You should always specify it for best
-compatibility.
+.. note::
+
+    It is now deprecated to use <Collide> without "descend"; it will become the default soon. 
+    You should always specify it for best compatibility.
 
 Valid types so far are:
 

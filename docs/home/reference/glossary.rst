@@ -4,8 +4,7 @@ Glossary
 ==================
 
 .. glossary::
-    DCS
-    Dynamic Coordinate System
+    Dynamic Coordinate System (DCS)
         Indicates that show code will expect to be able to read the transform set on this
         node at run time, and may need to modify the transformation of this node further.
 

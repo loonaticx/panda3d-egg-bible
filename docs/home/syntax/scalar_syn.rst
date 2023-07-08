@@ -28,7 +28,7 @@ alpha channels along with image file formats like JPEG that don't
 
 
 Image Alpha File Channel
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -528,7 +528,7 @@ Saved Result
   <Scalar> saved-result { flag }
 
 If flag is nonzero, then it indicates that this particular texture
-stage will be supplied as the "last_saved_result" source for any
+stage will be supplied as the "*last_saved_result*" source for any
 future texture stages.
 
 
@@ -581,10 +581,9 @@ Material Shininess
   <Scalar> shininess { number }
   <Scalar> local { flag }
 
-The ``shininess`` property controls the size of the specular highlight,
-and the value ranges from 0 to 128.  A larger value creates a
-smaller highlight (creating the appearance of a shinier surface).
+The ``shininess`` property controls the size of the specular highlight, and the value ranges from 0 to 128. 
 
+A larger value creates a smaller highlight (creating the appearance of a shinier surface).
 
 
 Render Order Scalars
@@ -626,9 +625,9 @@ Visibility
 
 If the visibility of a group is set to ``hidden``, the primitives
 nested within that group are not generated as a normally visible
-primitive.  If the Config.prc variable ``egg-suppress-hidden`` is set
-to true, the primitives are not converted at all; otherwise, they
-are converted as a "stashed" node.
+primitive. 
+
+If the Config.prc variable ``egg-suppress-hidden`` is set to true, the primitives are not converted at all; otherwise, they are converted as a "stashed" node.
 
 
 Occluder
@@ -716,9 +715,9 @@ UV Name
 
   <Scalar> uv-name { name }
 
-Specifies the name of the texture coordinates that are to be
-associated with this texture.  If this is omitted, the default
-texture coordinates are used.
+Specifies the name of the texture coordinates that are to be associated with this texture. 
+
+If this is omitted, the default texture coordinates are used.
 
 UV Wrap Mode
 ^^^^^^^^^^^^^^^
