@@ -1,9 +1,11 @@
-Template for the Read the Docs tutorial
-=======================================
+Panda3D Egg Bible
+=====================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This is an unofficial documentation site for utilizing Panda3D EGG files. It serves to be an updated, modern guidebook with anticipations of providing visual and hands-on examples in the future.
 
-Read the tutorial here:
+URLs
+---------
 
-https://docs.readthedocs.io/en/stable/tutorial/
+https://panda3d-egg-bible.readthedocs.io/en/latest/
+
+https://loonaticx.github.io/panda3d-egg-bible
