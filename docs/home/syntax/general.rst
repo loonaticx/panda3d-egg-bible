@@ -96,21 +96,21 @@ The following attributes are presently implemented for textures:
 
     `<Scalar> uv-name { name }`_
 
-    <Scalar> borderr { red-value }
+    `<Scalar> borderr { red-value }`_
 
-    <Scalar> borderg { green-value }
+    `<Scalar> borderg { green-value }`_
 
-    <Scalar> borderb { blue-value }
+    `<Scalar> borderb { blue-value }`_
 
-    <Scalar> bordera { alpha-value }
+    `<Scalar> bordera { alpha-value }`_
 
-    <Scalar> type { texture-type }
+    `<Scalar> type { texture-type }`_
 
-    <Scalar> multiview { flag }
+    `<Scalar> multiview { flag }`_
 
-    <Scalar> num-views { count }
+    `<Scalar> num-views { count }`_
 
-    <Scalar> read-mipmaps { flag }
+    `<Scalar> read-mipmaps { flag }`_
 
     `<Scalar> minfilter { filter-type }`_
 
@@ -134,6 +134,14 @@ The following attributes are presently implemented for textures:
 .. _<Scalar> wrapv { repeat-definition }: scalar_syn.html#uv-wrap-mode
 .. _<Scalar> wrapw { repeat-definition }: scalar_syn.html#uv-wrap-mode
 .. _<Scalar> uv-name { name }: scalar_syn.html#uv-name
+.. _<Scalar> borderr { red-value }: scalar_syn.html#image-border-color
+.. _<Scalar> borderg { green-value }: scalar_syn.html#image-border-color
+.. _<Scalar> borderb { blue-value }: scalar_syn.html#image-border-color
+.. _<Scalar> bordera { alpha-value }: scalar_syn.html#image-border-color
+.. _<Scalar> type { texture-type }: scalar_syn.html#image-type
+.. _<Scalar> multiview { flag }: scalar_syn.html#multiview-textures
+.. _<Scalar> num-views { count }: scalar_syn.html#multiview-textures
+.. _<Scalar> read-mipmaps { flag }: scalar_syn.html#image-mipmaps
 .. _<Scalar> minfilter { filter-type }: scalar_syn.html#image-min-mag-filtering
 .. _<Scalar> magfilter { filter-type }: scalar_syn.html#image-min-mag-filtering
 .. _<Scalar> magfilteralpha { filter-type }: scalar_syn.html#image-min-mag-filtering
@@ -253,8 +261,6 @@ later when matching up the corresponding ``<VertexAnim>``.
 .. note::
 
     At the present time, the DynamicVertexPool is not implemented in Panda3D.
-
-
 
 
 UVs (Vertexes)

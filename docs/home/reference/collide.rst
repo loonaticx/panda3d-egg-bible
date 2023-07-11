@@ -3,6 +3,8 @@
 Collide Reference
 ==================
 
+.. code-block:: console
+
   <Collide> name { type [flags] }
 
 This entry indicates that geometry defined at this group level is

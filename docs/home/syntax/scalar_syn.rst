@@ -418,7 +418,7 @@ Multiview Textures
 
 If this flag is nonzero, the texture is loaded as a multiview
 texture.  In this case, the filename must contain a hash mark
-(``#``) as in the 3D or CUBE_MAP case, above, and the different
+(``#``) as in the ``3D`` or ``CUBE_MAP`` case, above, and the different
 images are loaded into the different views of the multiview
 textures.  If the texture is already a cube map texture, the
 same hash sequence is used for both purposes: the first six images
@@ -590,7 +590,7 @@ Render Order Scalars
 ----------------------
 
 Bin Order
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -603,7 +603,7 @@ texture applied, in the absence of a bin name specified on the polygon itself.
 For *polygons*, this specifies the bin name for all polygons at or below this node that do not explicitly set their own bin. 
 
 Draw Order
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -617,7 +617,7 @@ For Groups: This specifies the drawing order for all polygons at or below this n
 
 
 Visibility
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -629,9 +629,30 @@ primitive.
 
 If the Config.prc variable ``egg-suppress-hidden`` is set to true, the primitives are not converted at all; otherwise, they are converted as a "stashed" node.
 
+Render Node Types
+^^^^^^^^^^^^^^^^^^^^^^
+
+Portal
+`````````````````````
+
+.. code-block:: console
+
+  <Scalar> portal { boolean-value }
+
+Create a portal instead of a regular polyset.
+
+
+Polylight
+`````````````````````
+
+.. code-block:: console
+
+  <Scalar> polylight { boolean-value }
+
+Create a polylight instead of a regular polyset.
 
 Occluder
-^^^^^^^^^^^
+`````````````````````
 
 .. code-block:: console
 
@@ -718,6 +739,22 @@ UV Name
 Specifies the name of the texture coordinates that are to be associated with this texture. 
 
 If this is omitted, the default texture coordinates are used.
+
+
+UV Scroll Mode
+^^^^^^^^^^^^^^^^
+.. code-block:: console
+
+  <Scalar> scroll_u { speed }
+  <Scalar> scroll_v { speed }
+  <Scalar> scroll_w { speed }
+  <Scalar> scroll_r { speed }
+
+
+This declares a scroll speed on the texture image.
+
+``speed`` can be a floating point value.
+
 
 UV Wrap Mode
 ^^^^^^^^^^^^^^^

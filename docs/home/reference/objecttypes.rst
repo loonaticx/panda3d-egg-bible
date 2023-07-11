@@ -3,6 +3,8 @@
 Object Type Reference
 =====================
 
+.. code-block:: console
+    
  <ObjectType> { type }
 
 This is a short form to indicate one of several pre-canned sets of
