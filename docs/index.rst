@@ -11,6 +11,8 @@ Contents
 --------
 
 .. toctree::
+   :maxdepth: 2
+   
    home/about/index
    home/syntax/index
    home/reference/index
