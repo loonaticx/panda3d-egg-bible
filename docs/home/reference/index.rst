@@ -9,4 +9,5 @@ Reference
     ./collide
     ./objecttypes
     ./glossary
+    tools/index
 
