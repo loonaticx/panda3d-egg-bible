@@ -3,6 +3,8 @@
 Undocumented Entries
 ========================
 
+These are Miscellaneous Egg entries found within the source code. Their intent or usage may not be known.
+
 <BillboardCenter> 
 ---------------------
 
