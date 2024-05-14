@@ -22,7 +22,7 @@ It is suggested that textures always be painted at high resolution and
 reduced using egg-palettize, since this allows the show designer the
 greatest flexibility; if a decision is later made to increase the
 resolution of a texture, this may be done by changing an option with
-egg-palettize, and does not require intervention of the artist.
+egg-palettize, and does not require the intervention of the artist.
 
 
 The behavior of egg-palettize is largely controlled through a source
@@ -62,7 +62,7 @@ rule (see ppremake-models.txt).
 
 
 Finally, it is possible to relate the different groups to each other
-hierachically.  Doing this allows egg-palettize to assign textures to
+hierarchically.  Doing this allows egg-palettize to assign textures to
 the minimal common subset between egg files that share the textures.
 For instance, if group beta and group gamma both depend on group
 alpha, a texture that is assigned to both groups beta and gamma can
@@ -94,7 +94,7 @@ use wildcards to group several at once, e.g.:
 Assigning an egg file to a group assigns all of the textures used by
 that egg file to that same group.  If no other egg files reference the
 same textures, those textures will be placed in one or more palette
-images named after the group.  If another egg file in a different
+images named after the group.  If another egg file within a different
 group also references the textures, they will be assigned to the
 lowest group that both groups have in common (see relating the groups
 hierarchically, above), or copied into both palette images if the two
@@ -124,7 +124,7 @@ specifies that the indicated texture should be scaled to 50% in each
 dimension (for a total reduction to 0.5 * 0.5 = 25% of the original
 area).
 
-As above, you may group together multiple textures on the same line
+As above, you may group multiple textures on the same line
 using wildcards, e.g.:
 
 .. code-block:: console
