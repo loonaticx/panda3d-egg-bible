@@ -8,8 +8,8 @@ Collide Reference
   <Collide> name { type [flags] }
 
 This entry indicates that geometry defined at this group level is
-actually an invisible collision surface, and is not true geometry.
-The geometry is used to define the extents of the collision
+an invisible collision surface, and is not true geometry.
+The geometry is used to define the extent of the collision
 surface.  If there is no geometry defined at this level, then a
 child is searched for with the same collision type specified, and
 its geometry is used to define the extent of the collision
@@ -45,7 +45,7 @@ Sphere
 
 Box
 
-    The geometry represents a box.  The smalles axis-alligned box
+    The geometry represents a box.  The smallest axis-aligned box
     that will fit around the vertices is used.
 
 InvSphere
@@ -53,14 +53,14 @@ InvSphere
     The geometry represents an inverse sphere.  This is the same as
     Sphere, with the normal inverted, so that the solid part of an
     inverse sphere is the entire world outside of it.  Note that an
-    inverse sphere is in infinitely large solid with a finite hole
+    inverse sphere is an infinitely large solid with a finite hole
     cut into it.
 
 Tube
 
     The geometry represents a tube.  This is a cylinder-like shape
-    with hemispherical endcaps; it is sometimes called a capsule or
-    a lozenge in other packages.  The smallest tube shape that will
+    with hemispherical endcaps, sometimes called a capsule or
+    lozenge in other packages.  The smallest tube shape that will
     fit around the vertices is used.
 
 
@@ -78,7 +78,7 @@ intangible
     Rather than being a solid collision surface, the defined surface
     represents a boundary.  The name of the surface will be thrown
     as an event when an avatar crosses into the interior, and
-    name-out will be thrown when an avater exits.
+    name-out will be thrown when an avatar exits.
 
 descend
 
