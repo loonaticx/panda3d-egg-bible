@@ -953,12 +953,27 @@ Group Scalars
 
   `<Scalar> occluder { boolean-value }`_
 
+
 .. _<Scalar> fps { frame-rate }: scalar_syn.html#fps
 .. _<Scalar> bin { bin-name }: scalar_syn.html#bin-order
 .. _<Scalar> draw-order { number }: scalar_syn.html#draw-order
 .. _<Scalar> depth-offset { number }: scalar_syn.html#depth-offset
 .. _<Scalar> depth-write { mode }: scalar_syn.html#depth-write
 .. _<Scalar> depth-test { mode }: scalar_syn.html#depth-test
+.. _<Scalar> visibility { hidden | normal }: scalar_syn.html#visibility
+.. _<Scalar> decal { boolean-value }: scalar_syn.html#decal-properties
+.. _<Scalar> decalbase { boolean-value }: scalar_syn.html#decal-properties
+.. _<Scalar> collide-mask { value }: scalar_syn.html#collide-scalars
+.. _<Scalar> from-collide-mask { value }: scalar_syn.html#collide-scalars
+.. _<Scalar> into-collide-mask { value }: scalar_syn.html#collide-scalars
+.. _<Scalar> blend { mode }: scalar_syn.html#blend-mode-group
+.. _<Scalar> blendop-a { mode }: scalar_syn.html#blend-mode-group
+.. _<Scalar> blendop-b { mode }: scalar_syn.html#blend-mode-group
+.. _<Scalar> blendr { red-value }: scalar_syn.html#blend-mode-group
+.. _<Scalar> blendg { green-value }: scalar_syn.html#blend-mode-group
+.. _<Scalar> blendb { blue-value }: scalar_syn.html#blend-mode-group
+.. _<Scalar> blenda { alpha-value }: scalar_syn.html#blend-mode-group
+.. _<Scalar> occluder { boolean-value }: scalar_syn.html#occluder
 
 
 Other Group Attributes
