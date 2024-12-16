@@ -639,7 +639,11 @@ Portal
 
   <Scalar> portal { boolean-value }
 
-Create a portal instead of a regular polyset.
+Used on a rectangular polygon to set it as a `PortalNode <https://docs.panda3d.org/1.11/python/reference/panda3d.core.PortalNode>`_.
+This portal is used by the camera to "see through" to the other cells.
+Meaning, when the camera is looking through the portal, the cell on the other side of the portal window is made visible.
+
+Note: Nodes tagged a ``PortalNode`` will not be inherently visible in the scene graph, but will still report a bounding volume.
 
 
 Polylight
@@ -650,6 +654,8 @@ Polylight
   <Scalar> polylight { boolean-value }
 
 Create a polylight instead of a regular polyset.
+
+Note: Nodes tagged with ``polylight`` will be flagged as a ``PolylightNode`` in the scene graph with a ``Radius`` attribute. These nodes are not inherently visible in the scene graph and will not report a bounding volume.
 
 Occluder
 `````````````````````
