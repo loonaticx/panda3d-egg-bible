@@ -12,9 +12,9 @@ In general, the syntax of each entry is:
 
 .. code-block:: ruby
     
-    <Entry-type> name { contents }
+    <EntryType> name { contents }
 
-Where the ``name`` is optional (and in many cases, ignored anyway) and the syntax of the ``contents`` is determined by the ``<Entry-type>``.
+Where the ``name`` is optional (and in many cases, ignored anyway) and the syntax of the ``contents`` is determined by the ``<EntryType>``.
 
 The ``name`` (and strings in general) may be either quoted with double quotes or unquoted.
 
