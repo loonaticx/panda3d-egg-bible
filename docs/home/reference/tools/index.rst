@@ -8,3 +8,4 @@ Egg Tools
 
     ./egg_palettize
     ./txa_attribs
+    ./egg_optchar
