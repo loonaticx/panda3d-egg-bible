@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Texture Attributes Keywords &#8212; Panda3D egg bible  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home/reference/tools/txa_attribs';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Using egg-optchar" href="egg_optchar.html" />
+    <link rel="prev" title="Using egg-palettize" href="egg_palettize.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Panda3D egg bible  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../syntax/index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../syntax/index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../collide.html">Collide Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objecttypes.html">Object Type Reference</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Egg Tools</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="egg_palettize.html">Using egg-palettize</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Texture Attributes Keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="egg_optchar.html">Using egg-optchar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Egg Tools</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Texture Attributes Keywords</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="texture-attributes-keywords">
+<span id="pal-texattrs"></span><h1>Texture Attributes Keywords<a class="headerlink" href="#texture-attributes-keywords" title="Link to this heading">#</a></h1>
+<p><em>As denoted from</em> <code class="docutils literal notranslate"><span class="pre">egg-palettize</span></code></p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<p>Our attributes file (commonly referred to as <code class="docutils literal notranslate"><span class="pre">textures.txa</span></code>) consists mostly of lines describing desired sizes of texture maps.</p>
+<p>In general, each line consists of one or more filenames (and can contain shell globbing characters like <code class="docutils literal notranslate"><span class="pre">*</span></code> or <code class="docutils literal notranslate"><span class="pre">?</span></code>), and a colon followed by a size request.</p>
+<p>For each texture appearing in an egg file, the input list is scanned from the beginning and the first line that matches the filename defines the size of the texture, as well as other properties associated with the texture.</p>
+<section id="syntax">
+<h3>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<p>We define our configuration attributes with a <code class="docutils literal notranslate"><span class="pre">:</span></code> prefix. Generic filenames are not required to start with a <code class="docutils literal notranslate"><span class="pre">:</span></code> prefix, but use such to define specific attributes for a group or a texture.</p>
+<p>Comments are denoted from a <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix. It’s best to use comments when defining different texture sectors.</p>
+<p>Example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:imagetype png</span>
+<span class="go">textureName.png : 16 16</span>
+</pre></div>
+</div>
+<p>Defines the overall palette to use a PNG file format, while additionally defining the resolution for the known input texture.</p>
+</section>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<section id="special-keywords">
+<h3>Special Keywords<a class="headerlink" href="#special-keywords" title="Link to this heading">#</a></h3>
+<section id="palette-size">
+<h4>Palette Size<a class="headerlink" href="#palette-size" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:palette xsize ysize</span>
+</pre></div>
+</div>
+<p>This specifies the size of the palette images to be created. <em>The default is 512 by 512.</em></p>
+</section>
+<section id="margin-size">
+<h4>Margin Size<a class="headerlink" href="#margin-size" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:margin msize</span>
+</pre></div>
+</div>
+<p>This specifies the amount of default <strong>margin</strong> to apply to all textures that are placed within a palette image.</p>
+<p>The <strong>margin</strong> is a number of additional pixels that are written around the texture image to help prevent color bleeding between neighboring images within the same palette. <em>The default is 2.</em></p>
+</section>
+<section id="background-color">
+<h4>Background Color<a class="headerlink" href="#background-color" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:background r g b a</span>
+</pre></div>
+</div>
+<p>Specifies the background color of the generated palette images.</p>
+<p>Normally, this is black, and it doesn’t matter much since the background color is, by definition, the color of the palette images where nothing is used.</p>
+</section>
+<section id="texture-coverage">
+<h4>Texture Coverage<a class="headerlink" href="#texture-coverage" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:coverage area</span>
+</pre></div>
+</div>
+<p>The <strong>coverage</strong> of a texture refers to the fraction of the area in the texture image that is actually used, according to the UV’s that appear in the various egg files.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>If a texture’s coverage is <em>less</em> than 1, only some of the texture image is used (and only this part will be written to the palette).</dt><dd><ul>
+<li><p>If the coverage is <em>greater</em> than 1, the texture repeats that number of times.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>A repeating texture may still be palettized by writing the required number of copies into the palette image, according to the coverage area.</p></li>
+</ul>
+<p>This command specifies the maximum coverage to allow for any texture before rejecting it from the palette.</p>
+<p>It may be any floating-point number greater than zero. Set this to <code class="docutils literal notranslate"><span class="pre">1</span></code> to avoid palettizing repeating textures altogether.</p>
+<p>This may also be overridden for a particular texture using the <code class="docutils literal notranslate"><span class="pre">coverage</span></code> keyword on the texture line.</p>
+</section>
+<section id="power-two-resolution">
+<h4>Power Two Resolution<a class="headerlink" href="#power-two-resolution" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:powertwo flag</span>
+</pre></div>
+</div>
+<p>Specifies whether textures should be forced to a power of two size when they are not placed within a palette.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">1</span></code> for true, to force textures to a power of two; or <code class="docutils literal notranslate"><span class="pre">0</span></code> to leave them exactly the size they are specified.  <em>The default is true.</em></p>
+</section>
+<section id="rounding-textures">
+<h4>Rounding Textures<a class="headerlink" href="#rounding-textures" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:round fraction fuzz</span>
+</pre></div>
+</div>
+<p>When the coverage area is computed, it may optionally be rounded up to the next sizeable unit before placing the texture within the palette.</p>
+<ul class="simple">
+<li><p>This helps reduce constant repalettization caused by slight differences in coverage between egg files.</p></li>
+</ul>
+<p>For instance, say file <code class="docutils literal notranslate"><span class="pre">a.egg</span></code> references a texture with a coverage of 0.91, and then later file <code class="docutils literal notranslate"><span class="pre">b.egg</span></code> is discovered to reference the same texture with a coverage of 0.92.
+If the texture was already palettized with the original coverage of 0.91, it must now be moved in the palette.</p>
+<ul class="simple">
+<li><p>Rounding the coverage area up to some fixed unit reduces this problem.</p></li>
+</ul>
+<p>For instance, if you specified a value 0.5 for fraction in the above command, it would round both of these values up to the next half-unit, or 1.0.</p>
+<p>The second number is a <strong>fuzz factor</strong>, and should be a small number; if the coverage area is just slightly larger than the last unit (within the fuzz factor), it is rounded down instead of up.
+This is intended to prevent UV coordinates that are just slightly out of the range [0, 1] (which happens fairly often) from forcing the palettization area all the way up to the next stop.</p>
+<p>The default if this is unspecified is <code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">0.01</span></code>. That is, round up to the next tenth, unless within a hundredth of the last tenth.</p>
+<p>To disable rounding, specify <code class="docutils literal notranslate"><span class="pre">:round</span> <span class="pre">no</span></code>. Rounding is implicitly disabled when you run with the <code class="docutils literal notranslate"><span class="pre">-opt</span></code> command line option.</p>
+</section>
+<section id="remapping-textures">
+<h4>Remapping Textures<a class="headerlink" href="#remapping-textures" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:remap (never | group | poly)</span>
+</pre></div>
+</div>
+<p>Sometimes two different parts of an egg file may reference different regions of a repeating texture.</p>
+<p>For instance, group A may reference UV coordinate values ranging from (0,5) to (1,6), for a coverage of 1.0, while group B references values ranging from (0,2) to (1,4), for a coverage of 2.0. The maximum coverage used is only 2.0, and thus the texture only needs to appear in the palette twice, but the total range of UV’s is from (0,2) to (1,6), causing an apparent coverage of 4.0.</p>
+<p>It’s possible for <code class="docutils literal notranslate"><span class="pre">egg-palettize</span></code> to reduce this kind of mistake by remapping both groups of UV’s so that they overlap.</p>
+<p>This parameter specifies how this operation should be done:</p>
+<ul class="simple">
+<li><p>If the option is <strong>never</strong>, remapping will not be performed;</p></li>
+<li><p>if <strong>group</strong>, entire groups will be remapped as a unit,</p></li>
+<li><p>if <strong>poly</strong>, individual polygons within a group may be remapped.</p></li>
+</ul>
+<p>This last option provides the greatest minimization of UV coverage, but <strong>possibly at the expense of triangle strips in the resulting model</strong> (since some vertices can no longer be shared).</p>
+<p>Sometimes, it may be necessary to be more restrictive on character geometry than on non-character geometry, because the cost of adding additional vertices on characters is greater.
+You can specify a different kind of remapping for characters only, by using the keyword <code class="docutils literal notranslate"><span class="pre">char</span></code> on the same line, e.g. <code class="docutils literal notranslate"><span class="pre">:remap</span> <span class="pre">group</span> <span class="pre">char</span> <span class="pre">never</span></code>.</p>
+<p>The default remap mode for all geometry, character or otherwise, if no remap mode is specified is <strong>poly</strong>.</p>
+</section>
+<section id="image-types">
+<h4>Image Types<a class="headerlink" href="#image-types" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:imagetype type[,alpha_type]</span>
+</pre></div>
+</div>
+<p>This specifies the default type of image file that should be generated for each palette image and for each unplaced texture copied into the install directory.</p>
+<p>This may be overridden for a particular texture by specifying the image type on the texture line.</p>
+<p>If two image type names separate by a comma are given, it means to generate a second file of the second type for the alpha channel, for images that require an alpha channel.</p>
+<ul class="simple">
+<li><p>This allows support for image file formats that do not support alpha (for instance, JPEG).</p></li>
+</ul>
+</section>
+<section id="shadow-types">
+<h4>Shadow Types<a class="headerlink" href="#shadow-types" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:shadowtype type[,alpha_type]</span>
+</pre></div>
+</div>
+<p>When generating palette images, egg-palettize sometimes has to read and write the same palette image repeatedly.</p>
+<ul class="simple">
+<li><p>If the palette image is stored in a lossy file format (like JPEG, see <code class="docutils literal notranslate"><span class="pre">:imagetype</span></code>), this can eventually lead to degradation of the palette images.</p></li>
+<li><p>As a workaround, egg-palettize can store its working copies of the palette images in lossless shadow images.</p></li>
+</ul>
+<p>Specify this to enable this feature; give it the name of a lossless image file format.
+The shadow images will be written to the directory specified by <code class="docutils literal notranslate"><span class="pre">-ds</span></code> on the command line.</p>
+</section>
+<section id="defining-palette-groups">
+<h4>Defining Palette Groups<a class="headerlink" href="#defining-palette-groups" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:group groupname [dir dirname] [on group1 group2 ...] [includes group1 group2 ...]</span>
+</pre></div>
+</div>
+<p>This defines a <em>palette group</em>: a logical division of textures. Each texture is assigned to one or more <em>palette groups</em> before being placed in any palette image; the palette images are tied to the groups.</p>
+<p>The optional parameter <code class="docutils literal notranslate"><span class="pre">dir</span></code> specifies a directory name to associate with this group.</p>
+<p>This name is substituted in for the string <code class="docutils literal notranslate"><span class="pre">%g</span></code> when it appears in the map directory name specified on the command line with <code class="docutils literal notranslate"><span class="pre">-dm</span></code>; this may be used to install textures and palettes into different directories based on the groups they are assigned to.</p>
+<ul class="simple">
+<li><p>Palette groups can also be hierarchically related.</p></li>
+</ul>
+<p>The keyword <code class="docutils literal notranslate"><span class="pre">on</span></code> specifies any number of groups that this palette group depends on; if a texture has already been assigned to one of this group’s dependent groups, it will not need to be assigned to this group.</p>
+<ul class="simple">
+<li><p>This also implicitly specifies a dir if one has not already been specified.</p></li>
+</ul>
+<p>The keyword <code class="docutils literal notranslate"><span class="pre">includes</span></code> names one or more groups that depend on this group.</p>
+</section>
+<section id="texture-swapping">
+<h4>Texture Swapping<a class="headerlink" href="#texture-swapping" title="Link to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:textureswap groupname texturename0 texturename1 [texturename2 ...]</span>
+</pre></div>
+</div>
+<p>This option builds a set of matching, interchangeable palette images. All palette images in the set share the same internal texture layout.
+The intention is to be able to swap palette images out at runtime, to replace entire sets of textures on a model in one operation.</p>
+<p>The textures named by this option indicate the texture images which are similar to each other, and which all should be assigned to the same placement on the different palette images:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">texturename0</span></code> will be assigned to palette image 0,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">texturename1</span></code> to the same position on palette image 1,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">texturename2</span></code> to the same position on palette image 2, and so on.</p></li>
+</ul>
+<p>To define a complete palette image, you must repeat this option several times to associate all of the similar texture images.</p>
+</section>
+</section>
+<section id="texture-keywords">
+<h3>Texture Keywords<a class="headerlink" href="#texture-keywords" title="Link to this heading">#</a></h3>
+<p>There are several valid keywords that may be specified on the same line with the texture.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">omit</span>
+</pre></div>
+</div>
+<p>This indicates that the texture should not be placed on any palette image.
+It may still be resized, and it will in any case be copied into the install directory.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">margin i</span>
+</pre></div>
+</div>
+<p>This specifies the number of pixels that should be written around the border of the texture when it is placed in a palette image; <em>i</em> is the integer number of pixels. The use of a margin helps cut down on color bleed from neighboring images.</p>
+<ul class="simple">
+<li><p>If the texture does not end up placed in a palette image, the margin is not used.</p></li>
+<li><p>If not specified, the default margin is used, which is specified by the <code class="docutils literal notranslate"><span class="pre">:margin</span></code> command (see below).</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">coverage f</span>
+</pre></div>
+</div>
+<p>This parameter specifies the maximum coverage to allow for this particular texture before rejecting it from the palette.
+If not specified, the default is specified by the <code class="docutils literal notranslate"><span class="pre">:coverage</span></code> command (see below).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nearest, linear, mipmap</span>
+</pre></div>
+</div>
+<p>One of these options may be used to force the texture to use a particular minfilter/magfilter sampling mode.
+If this is not specified, the sampling mode specified in the egg file is used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Textures that use different sampling modes cannot be placed together on the same palette images.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rgba</span>
+</pre></div>
+</div>
+<p>This specifies format <code class="docutils literal notranslate"><span class="pre">rgba</span></code> should be in effect for this particular texture.
+Any valid egg texture format, such as <code class="docutils literal notranslate"><span class="pre">rgba</span></code>, <code class="docutils literal notranslate"><span class="pre">rgba12</span></code>, <code class="docutils literal notranslate"><span class="pre">rgba8</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb5</span></code>, <code class="docutils literal notranslate"><span class="pre">luminance</span></code>, etc. may be specified.
+If nothing is specified, the format specified in the egg file is used.
+The format will automatically be downgraded to match the number of channels in the texture image; e.g. <code class="docutils literal notranslate"><span class="pre">rgba</span></code> will automatically be converted to <code class="docutils literal notranslate"><span class="pre">rgb</span></code> for a three-channel image.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with the filter modes above, textures that use different formats cannot be placed together on the same palette images.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">force-rgba</span>
+</pre></div>
+</div>
+<p>This specifies a particular format, as above, that should be in effect for this texture, but it will not be downgraded to match the number of channels.
+As above, any valid egg texture format may be used, e.g. <code class="docutils literal notranslate"><span class="pre">force-rgba12</span></code>, <code class="docutils literal notranslate"><span class="pre">force-rgb5</span></code>, etc.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">keep-format</span>
+</pre></div>
+</div>
+<p>This specifies that the image format requested by an egg file should be exactly preserved, without attempting to optimize it by, for instance, automatically downgrading.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">generic</span>
+</pre></div>
+</div>
+<p>Specifies that any image format requested by an egg file that requests a particular bit depth should be replaced by its generic equivalent, e.g. <code class="docutils literal notranslate"><span class="pre">rgba8</span></code> should become <code class="docutils literal notranslate"><span class="pre">rgba</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(alpha mode)</span>
+</pre></div>
+</div>
+<p>A particular alpha mode may be applied to a texture by naming the alpha mode.
+This may be any valid egg alpha mode, e.g. <code class="docutils literal notranslate"><span class="pre">blend</span></code>, <code class="docutils literal notranslate"><span class="pre">binary</span></code>, <code class="docutils literal notranslate"><span class="pre">ms</span></code>, or <code class="docutils literal notranslate"><span class="pre">dual</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">repeat_u, repeat_v, clamp_u, clamp_v</span>
+</pre></div>
+</div>
+<p>Explicitly specify whether the source texture should repeat or clamp in each direction.
+Although palette images are always clamped, this will affect the pixels that are painted into the palette image.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(image type)</span>
+</pre></div>
+</div>
+<p>A texture may be converted to a particular image type, for instance jpg or rgb, by naming the type.</p>
+<p>If present, this overrides the <code class="docutils literal notranslate"><span class="pre">:imagetype</span></code> command, described below.
+As with <code class="docutils literal notranslate"><span class="pre">:imagetype</span></code>, you may also specify two type names separated by a comma, to indicate that a different file should be written for the color and alpha components.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(group name)</span>
+</pre></div>
+</div>
+<p>A texture may also be assigned to a specific group by naming the group.
+The groups are defined using the <code class="docutils literal notranslate"><span class="pre">:group</span></code> command (see below).</p>
+<p>Normally, textures are not assigned directly to groups; instead, it is more useful to assign the egg files they are referenced in to groups; see below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cont</span>
+</pre></div>
+</div>
+<p>Normally, a texture file (or egg file) scans the lines in the attributes file from the top, and stops on the first line that matches its name.</p>
+<p>If the keyword <code class="docutils literal notranslate"><span class="pre">cont</span></code> is included on the line, however, the texture will apply the properties given on the line, and then continue scanning.</p>
+<p>This trick may be used to specify general parameters for all files while still allowing the texture to match a more specific line below.</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="http://www.etc.cmu.edu/projects/panda3d/PandaDox/Panda/html/classEggTexture.html#EggTextures40">http://www.etc.cmu.edu/projects/panda3d/PandaDox/Panda/html/classEggTexture.html#EggTextures40</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="egg_palettize.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using egg-palettize</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="egg_optchar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using egg-optchar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-keywords">Special Keywords</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palette-size">Palette Size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#margin-size">Margin Size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#background-color">Background Color</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#texture-coverage">Texture Coverage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#power-two-resolution">Power Two Resolution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rounding-textures">Rounding Textures</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remapping-textures">Remapping Textures</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-types">Image Types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shadow-types">Shadow Types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-palette-groups">Defining Palette Groups</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#texture-swapping">Texture Swapping</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#texture-keywords">Texture Keywords</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/home/reference/tools/txa_attribs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, Loonatic.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

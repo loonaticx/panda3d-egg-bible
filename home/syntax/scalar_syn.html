@@ -1,0 +1,1249 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scalar Definitions &#8212; Panda3D egg bible  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home/syntax/scalar_syn';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Undocumented Entries" href="undocumented.html" />
+    <link rel="prev" title="General Egg Syntax" href="general.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Panda3D egg bible  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="general.html">General Egg Syntax</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scalar Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undocumented.html">Undocumented Entries</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Egg Syntax</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Scalar Definitions</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="scalar-definitions">
+<span id="syntax-scalar-entry"></span><h1>Scalar Definitions<a class="headerlink" href="#scalar-definitions" title="Link to this heading">#</a></h1>
+<section id="definition-usage">
+<h2>Definition &amp; Usage<a class="headerlink" href="#definition-usage" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scalar</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Scalars</strong> can appear in various contexts. They are always optional, and specify some attribute value relevant to the current context.</p>
+<p>The <strong>scalar name</strong> is the name of the attribute; different attribute names are meaningful in different contexts.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">value</span></code> is either a numeric or a (quoted or unquoted) string value; the interpretation as a number or as a string depends on the nature of the named attribute.</p>
+</section>
+<section id="alpha-scalars">
+<h2>Alpha Scalars<a class="headerlink" href="#alpha-scalars" title="Link to this heading">#</a></h2>
+<section id="image-alpha-file">
+<h3>Image Alpha File<a class="headerlink" href="#image-alpha-file" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">alpha</span><span class="o">-</span><span class="n">file</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alpha</span><span class="o">-</span><span class="n">filename</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If this scalar is present, the texture file’s alpha channel is
+read in from the named image file (which should contain a
+grayscale image), and the two images are combined into a single
+two- or four-channel image internally.  This is useful for loading
+alpha channels along with image file formats like JPEG that don’t</p>
+</section>
+<section id="image-alpha-file-channel">
+<h3>Image Alpha File Channel<a class="headerlink" href="#image-alpha-file-channel" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">alpha</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">channel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">channel</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines the channel that should be extracted from the file
+named by alpha-file to determine the alpha channel for the
+resulting channel.</p>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">0</span></code>, which means the grayscale combination of r, g, b.
+Otherwise, this should be the 1-based channel number, for instance <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, or <code class="docutils literal notranslate"><span class="pre">3</span></code> for r, g, or b, respectively, or <code class="docutils literal notranslate"><span class="pre">4</span></code> for the alpha channel of a four-component image.</p>
+</section>
+<section id="alpha-blending">
+<h3>Alpha Blending<a class="headerlink" href="#alpha-blending" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alpha</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies whether and what type of transparency will be
+performed.  Alpha-type may be one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">OFF</span>
+<span class="go">ON</span>
+<span class="go">BLEND</span>
+<span class="go">BLEND_NO_OCCLUDE</span>
+<span class="go">MS</span>
+<span class="go">MS_MASK</span>
+<span class="go">BINARY</span>
+<span class="go">DUAL</span>
+</pre></div>
+</div>
+<p>If alpha-type is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, it means not to enable transparency, even if
+the image contains an alpha channel or the format is <code class="docutils literal notranslate"><span class="pre">RGBA</span></code>.  If
+alpha-type is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, it means to enable the default transparency,
+even if the image filename does not contain an alpha channel.  If
+alpha-type is any of the other options, it specifies the type of
+transparency to be enabled.</p>
+</section>
+<section id="blend-mode-group">
+<h3>Blend Mode (Group)<a class="headerlink" href="#blend-mode-group" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blend</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Specifies that a special blend mode should be applied geometry at
+this level and below.  The available options are <code class="docutils literal notranslate"><span class="pre">none</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>,
+<code class="docutils literal notranslate"><span class="pre">subtract</span></code>, <code class="docutils literal notranslate"><span class="pre">inv-subtract</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, and <code class="docutils literal notranslate"><span class="pre">max</span></code>.  See <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.ColorBlendAttrib">ColorBlendAttrib</a>.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blendop</span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blendop</span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If blend mode, above, is not none, this specifies the A and B
+operands to the blend equation.  Common options are <code class="docutils literal notranslate"><span class="pre">zero</span></code>, <code class="docutils literal notranslate"><span class="pre">one</span></code>,
+<code class="docutils literal notranslate"><span class="pre">incoming-color</span></code>, <code class="docutils literal notranslate"><span class="pre">one-minus-incoming-color</span></code>.  See <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.ColorBlendAttrib">ColorBlendAttrib</a>
+for the complete list of available options.  The default is “one”.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blendr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">red</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blendg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">green</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blendb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">blue</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blenda</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alpha</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If blend mode, above, is not none, and one of the blend operands
+is <code class="docutils literal notranslate"><span class="pre">constant-color</span></code> or a related option, this defines the constant
+color that will be used.</p>
+</section>
+</section>
+<section id="image-scalars">
+<h2>Image Scalars<a class="headerlink" href="#image-scalars" title="Link to this heading">#</a></h2>
+<section id="image-compression">
+<h3>Image Compression<a class="headerlink" href="#image-compression" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">compression</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">compression</span><span class="o">-</span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Defines an explicit control over the real-time compression mode
+applied to the texture.  The various options are:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">DEFAULT</span>
+<span class="go">OFF</span>
+<span class="go">ON</span>
+<span class="go">FXT1</span>
+<span class="go">DXT1</span>
+<span class="go">DXT2</span>
+<span class="go">DXT3</span>
+<span class="go">DXT4</span>
+<span class="go">DXT5</span>
+</pre></div>
+</div>
+<p>This controls the compression of the texture when it is loaded
+into graphics memory, and has nothing to do with on-disk
+compression such as JPEG.</p>
+<p>If this option is omitted or <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>, then the texture compression is controlled by the compressed-textures config variable.</p>
+<p>If it is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, texture compression is explicitly off for this texture regardless of the setting of the config variable; if it is “<code class="docutils literal notranslate"><span class="pre">ON</span></code>”, texture compression is explicitly on, and a default compression algorithm supported by the driver is selected.</p>
+<p>If any of the other options, it names the specific compression algorithm to be used.</p>
+</section>
+<section id="image-format">
+<h3>Image Format<a class="headerlink" href="#image-format" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">format</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">format</span><span class="o">-</span><span class="n">definition</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines the load format of the image file.</p>
+<p>The format-definition is one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">RGBA</span>
+<span class="go">RGBM</span>
+<span class="go">RGBA12</span>
+<span class="go">RGBA8</span>
+<span class="go">RGBA4</span>
+<span class="go">RGB</span>
+<span class="go">RGB12</span>
+<span class="go">RGB8</span>
+<span class="go">RGB5</span>
+<span class="go">RGB332</span>
+<span class="go">LUMINANCE_ALPHA</span>
+<span class="go">RED</span>
+<span class="go">GREEN</span>
+<span class="go">BLUE</span>
+<span class="go">ALPHA</span>
+<span class="go">LUMINANCE</span>
+</pre></div>
+</div>
+<p>The formats whose names end in digits specifically request a
+particular texel width.  <code class="docutils literal notranslate"><span class="pre">RGB12</span></code> and <code class="docutils literal notranslate"><span class="pre">RGBA12</span></code> specify 48-bit texels
+with or without alpha; <code class="docutils literal notranslate"><span class="pre">RGB8</span></code> and <code class="docutils literal notranslate"><span class="pre">RGBA8</span></code> specify 32-bit texels, and
+<code class="docutils literal notranslate"><span class="pre">RGB5</span></code> and <code class="docutils literal notranslate"><span class="pre">RGBA4</span></code> specify 16-bit texels.  <code class="docutils literal notranslate"><span class="pre">RGB332</span></code> specifies 8-bit
+texels.</p>
+<p>The remaining formats are generic and specify only the semantic
+meaning of the channels.  The size of the texels is determined by
+the width of the components in the image file.  <code class="docutils literal notranslate"><span class="pre">RGBA</span></code> is the most
+general; <code class="docutils literal notranslate"><span class="pre">RGB</span></code> is the same, but without any alpha channel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">RGBM</span></code> is like <code class="docutils literal notranslate"><span class="pre">RGBA</span></code>, except that it requests only one bit of alpha, if the
+graphics card can provide that, to leave more room for the RGB
+components, which is especially important for older 16-bit
+graphics cards (the “<code class="docutils literal notranslate"><span class="pre">M</span></code>” stands for “mask”, as in a cutout).</p>
+<p>The number of components of the image file should match the format
+specified; if it does not, the egg loader will attempt to provide
+the closest match that does.</p>
+</section>
+<section id="environment-type">
+<h3>Environment Type<a class="headerlink" href="#environment-type" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">envtype</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">environment</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the type of texture environment to create; i.e. it
+controls the way in which textures apply to models.
+Environment-type may be one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">MODULATE</span>
+<span class="go">DECAL</span>
+<span class="go">BLEND</span>
+<span class="go">REPLACE</span>
+<span class="go">ADD</span>
+<span class="go">BLEND_COLOR_SCALE</span>
+<span class="go">MODULATE_GLOW</span>
+<span class="go">MODULATE_GLOSS</span>
+<span class="go">*NORMAL</span>
+<span class="go">*NORMAL_HEIGHT</span>
+<span class="go">*GLOW</span>
+<span class="go">*GLOSS</span>
+<span class="go">*HEIGHT</span>
+<span class="go">*SELECTOR</span>
+</pre></div>
+</div>
+<p>The default environment type is <code class="docutils literal notranslate"><span class="pre">MODULATE</span></code>, which means the texture
+color is multiplied with the base polygon (or vertex) color.  This
+is the most common texture environment by far.  Other environment
+types are more esoteric and are especially useful in the presence
+of multitexture.  In particular, the types prefixed by an asterisk
+(<code class="docutils literal notranslate"><span class="pre">*</span></code>) require enabling Panda’s automatic <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.ShaderGenerator">ShaderGenerator</a>.</p>
+</section>
+<section id="image-combine-modes">
+<h3>Image Combine Modes<a class="headerlink" href="#image-combine-modes" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">source0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">source</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">operand0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">operand</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">source1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">source</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">operand1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">operand</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">source2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">source</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">operand2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">operand</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">source0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">source</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">operand0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">operand</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">source1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">source</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">operand1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">operand</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">source2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">source</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">operand2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">operand</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>These options replace the <code class="docutils literal notranslate"><span class="pre">envtype</span></code> and specify the texture combiner
+mode, which is usually used for multitexturing.  This specifies
+how the texture combines with the base color and/or the other
+textures applied previously.  You must specify both an rgb and an
+alpha combine mode.  Some combine-modes use one source/operand
+pair, and some use all three; most use just two.</p>
+<p><code class="docutils literal notranslate"><span class="pre">combine-mode</span></code> may be one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">REPLACE</span>
+<span class="go">MODULATE</span>
+<span class="go">ADD</span>
+<span class="go">ADD-SIGNED</span>
+<span class="go">INTERPOLATE</span>
+<span class="go">SUBTRACT</span>
+<span class="go">DOT3-RGB</span>
+<span class="go">DOT3-RGBA</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">combine-source</span></code> may be one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">TEXTURE</span>
+<span class="go">CONSTANT</span>
+<span class="go">PRIMARY-COLOR</span>
+<span class="go">PREVIOUS</span>
+<span class="go">CONSTANT_COLOR_SCALE</span>
+<span class="go">LAST_SAVED_RESULT</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">combine-operand</span></code> may be one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">SRC-COLOR</span>
+<span class="go">ONE-MINUS-SRC-COLOR</span>
+<span class="go">SRC-ALPHA</span>
+<span class="go">ONE-MINUS-SRC-ALPHA</span>
+</pre></div>
+</div>
+<p>The default values if any of these are omitted are:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">modulate</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">modulate</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">source0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">operand0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">color</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">source1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">operand1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">color</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">source2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">constant</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">rgb</span><span class="o">-</span><span class="n">operand2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">alpha</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">source0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">operand0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">alpha</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">source1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">operand1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">alpha</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">source2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">constant</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="n">operand2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">alpha</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="image-min-mag-filtering">
+<h3>Image Min/Mag Filtering<a class="headerlink" href="#image-min-mag-filtering" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">minfilter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">filter</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">magfilter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">filter</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">magfilteralpha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">filter</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">magfiltercolor</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">filter</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the type of filter applied when minimizing or
+maximizing.</p>
+<p>Filter-type may be one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">NEAREST</span>
+<span class="go">LINEAR</span>
+<span class="go">NEAREST_MIPMAP_NEAREST</span>
+<span class="go">LINEAR_MIPMAP_NEAREST</span>
+<span class="go">NEAREST_MIPMAP_LINEAR</span>
+<span class="go">LINEAR_MIPMAP_LINEAR</span>
+</pre></div>
+</div>
+<p>There are also some additional filter types that are supported for
+historical reasons, but each of those additional types maps to one
+of the above.  New egg files should use only the above filter
+types.</p>
+</section>
+<section id="image-mipmaps">
+<h3>Image Mipmaps<a class="headerlink" href="#image-mipmaps" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">read</span><span class="o">-</span><span class="n">mipmaps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If this flag is nonzero, then pre-generated mipmap levels will be
+loaded along with the texture.  In this case, the filename should
+contain a sequence of one or more hash mark (<code class="docutils literal notranslate"><span class="pre">#</span></code>) characters,
+which will be filled in with the mipmap level number; the texture
+filename thus determines a series of images, one for each mipmap
+level.  The base texture image is mipmap level 0.</p>
+<p>If this flag is specified in conjunction with a 3D or cube map
+texture (as specified above), then the filename should contain two
+hash mark sequences, separated by a character such as an
+underscore, hyphen, or dot.  The first sequence will be filled in
+with the mipmap level index, and the second sequence will be
+filled in with the 3D sequence or cube map face.</p>
+</section>
+<section id="image-anisotropic-degree">
+<h3>Image Anisotropic Degree<a class="headerlink" href="#image-anisotropic-degree" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">anisotropic</span><span class="o">-</span><span class="n">degree</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">degree</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Enables anisotropic filtering for the texture, and specifies the
+degree of filtering.  If the degree is <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>, anisotropic
+filtering is disabled.  The default is disabled.</p>
+</section>
+<section id="image-border-color">
+<h3>Image Border Color<a class="headerlink" href="#image-border-color" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">borderr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">red</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">borderg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">green</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">borderb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">blue</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">bordera</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alpha</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>These define the “border color” of the texture, which is
+particularly important when one of the UV wrap modes is
+<code class="docutils literal notranslate"><span class="pre">BORDER_COLOR</span></code>.</p>
+</section>
+<section id="image-type">
+<h3>Image Type<a class="headerlink" href="#image-type" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">texture</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This may be one of the following attributes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">1D</span>
+<span class="go">2D</span>
+<span class="go">3D</span>
+<span class="go">CUBE_MAP</span>
+</pre></div>
+</div>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">2D</span></code>, which specifies a normal, 2-d texture.  If
+any of the other types is specified instead, a texture image of
+the corresponding type is loaded.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">3D</span></code> or <code class="docutils literal notranslate"><span class="pre">CUBE_MAP</span></code> is specified, then a series of texture images
+must be loaded to make up the complete texture; in this case, the
+texture filename is expected to include a sequence of one or more
+hash mark (<code class="docutils literal notranslate"><span class="pre">#</span></code>) characters, which will be filled in with the
+sequence number.  The first image in the sequence must be numbered
+0, and there must be no gaps in the sequence.  In this case, a
+separate alpha-file designation is ignored; the alpha channel, if
+present, must be included in the same image with the color
+channel(s).</p>
+</section>
+<section id="multiview-textures">
+<h3>Multiview Textures<a class="headerlink" href="#multiview-textures" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">multiview</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If this flag is nonzero, the texture is loaded as a multiview
+texture.  In this case, the filename must contain a hash mark
+(<code class="docutils literal notranslate"><span class="pre">#</span></code>) as in the <code class="docutils literal notranslate"><span class="pre">3D</span></code> or <code class="docutils literal notranslate"><span class="pre">CUBE_MAP</span></code> case, above, and the different
+images are loaded into the different views of the multiview
+textures.  If the texture is already a cube map texture, the
+same hash sequence is used for both purposes: the first six images
+define the first view, the next six images define the second view,
+and so on.  If the texture is a 3-D texture, you must also specify
+<code class="docutils literal notranslate"><span class="pre">num-views</span></code>, below, to tell the loader how many images are loaded
+for views, and how many are loaded for levels.</p>
+<p>A multiview texture is most often used to load stereo textures,
+where a different image is presented to each eye viewing the
+texture, but other uses are possible, such as for texture
+animation.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">num</span><span class="o">-</span><span class="n">views</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is used only when loading a 3-D multiview texture.  It
+specifies how many different views the texture holds; the z height
+of the texture is then implicitly determined as <code class="docutils literal notranslate"><span class="pre">(number</span> <span class="pre">of</span> <span class="pre">images)</span>
+<span class="pre">/</span> <span class="pre">(number</span> <span class="pre">of</span> <span class="pre">views)</span></code>.</p>
+</section>
+<section id="texture-generation-mode">
+<h3>Texture Generation Mode<a class="headerlink" href="#texture-generation-mode" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tex</span><span class="o">-</span><span class="n">gen</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies that texture coordinates for the primitives that
+reference this texture should be dynamically computed at runtime,
+for instance to apply a reflection map or some other effect.  The
+valid values for mode are:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">EYE_SPHERE_MAP (or SPHERE_MAP)</span>
+<span class="go">WORLD_CUBE_MAP</span>
+<span class="go">EYE_CUBE_MAP (or CUBE_MAP)</span>
+<span class="go">WORLD_NORMAL</span>
+<span class="go">EYE_NORMAL</span>
+<span class="go">WORLD_POSITION</span>
+<span class="go">EYE_POSITION</span>
+<span class="go">POINT_SPRITE</span>
+</pre></div>
+</div>
+</section>
+<section id="texture-priority">
+<h3>Texture Priority<a class="headerlink" href="#texture-priority" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">priority</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Specifies an integer sort value to rank this texture in priority
+among other textures that are applied to the same geometry.  This
+is only used to eliminate low-priority textures in case more
+textures are requested for a particular piece of geometry than the
+graphics hardware can render.</p>
+</section>
+<section id="texture-quality-level">
+<h3>Texture Quality level<a class="headerlink" href="#texture-quality-level" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">quality</span><span class="o">-</span><span class="n">level</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">quality</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Sets a hint to the renderer about the desired performance /
+quality tradeoff for this particular texture.  This is most useful
+for the tinydisplay software renderer; for normal,
+hardware-accelerated renderers, this may have little or no effect.</p>
+<p>This may be one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">DEFAULT</span>
+<span class="go">FASTEST</span>
+<span class="go">NORMAL</span>
+<span class="go">BEST</span>
+</pre></div>
+</div>
+<p>“Default” means to use whatever quality level is specified by the
+global <code class="docutils literal notranslate"><span class="pre">texture-quality-level</span></code> config variable.</p>
+</section>
+</section>
+<section id="texture-stage-scalars">
+<h2>Texture Stage Scalars<a class="headerlink" href="#texture-stage-scalars" title="Link to this heading">#</a></h2>
+<section id="stage-name">
+<h3>Stage Name<a class="headerlink" href="#stage-name" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stage</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Specifies the name of the <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.TextureStage">TextureStage</a> object that is created to
+render this texture.  If this is omitted, a custom <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.TextureStage">TextureStage</a> is
+created for this texture if it is required (e.g. because some
+other multitexturing parameter has been specified), or the system
+default <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.TextureStage">TextureStage</a> is used if multitexturing is not required.</p>
+</section>
+<section id="saved-result">
+<h3>Saved Result<a class="headerlink" href="#saved-result" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">saved</span><span class="o">-</span><span class="n">result</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">flag</span></code> is nonzero, then it indicates that this particular texture
+stage will be supplied as the “<em>last_saved_result</em>” source for any
+future texture stages.</p>
+</section>
+</section>
+<section id="material-scalars">
+<h2>Material Scalars<a class="headerlink" href="#material-scalars" title="Link to this heading">#</a></h2>
+<section id="material-components">
+<h3>Material Components<a class="headerlink" href="#material-components" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">diffr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">diffg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">diffb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">diffa</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ambr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ambg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ambb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">amba</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">emitr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">emitg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">emitb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">emita</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">specr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">specg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">specb</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">speca</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The four color groups, <code class="docutils literal notranslate"><span class="pre">diff*</span></code>, <code class="docutils literal notranslate"><span class="pre">amb*</span></code>, <code class="docutils literal notranslate"><span class="pre">emit*</span></code>, and <code class="docutils literal notranslate"><span class="pre">spec*</span></code> specify the
+diffuse, ambient, emission, and specular components of the lighting
+equation, respectively.  Any of them may be omitted; the omitted
+component(s) take their color from the native color of the
+primitive, otherwise the primitive color is replaced with the
+material color.</p>
+<p>These properties collectively define a “material” that controls the
+lighting effects that are applied to a surface; a material is only
+in effect in the presence of lighting.</p>
+</section>
+<section id="material-shininess">
+<h3>Material Shininess<a class="headerlink" href="#material-shininess" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shininess</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">shininess</span></code> property controls the size of the specular highlight, and the value ranges from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">128</span></code>.</p>
+<p>A larger value creates a smaller highlight (creating the appearance of a shinier surface).</p>
+</section>
+</section>
+<section id="render-order-scalars">
+<h2>Render Order Scalars<a class="headerlink" href="#render-order-scalars" title="Link to this heading">#</a></h2>
+<section id="bin-order">
+<h3>Bin Order<a class="headerlink" href="#bin-order" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">bin</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For <em>textures</em>, this specifies the bin name order of all polygons with this
+texture applied, in the absence of a bin name specified on the polygon itself.</p>
+<p>For <em>polygons</em>, this specifies the bin name for all polygons at or below this node that do not explicitly set their own bin.</p>
+</section>
+<section id="draw-order">
+<h3>Draw Order<a class="headerlink" href="#draw-order" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">draw</span><span class="o">-</span><span class="n">order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the fixed drawing order of all polygons with this
+texture applied, in the absence of a drawing order specified on
+the polygon itself.</p>
+<p>For Groups: This specifies the drawing order for all polygons at or below this node that do not explicitly set their own drawing order.  See the description of draw-order for geometry attributes, above.</p>
+</section>
+<section id="visibility">
+<h3>Visibility<a class="headerlink" href="#visibility" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visibility</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If the visibility of a group is set to <code class="docutils literal notranslate"><span class="pre">hidden</span></code>, the primitives
+nested within that group are not generated as a normally visible
+primitive.</p>
+<p>If the Config.prc variable <code class="docutils literal notranslate"><span class="pre">egg-suppress-hidden</span></code> is set to true, the primitives are not converted at all; otherwise, they are converted as a “stashed” node.</p>
+</section>
+<section id="render-node-types">
+<h3>Render Node Types<a class="headerlink" href="#render-node-types" title="Link to this heading">#</a></h3>
+<section id="portal">
+<h4>Portal<a class="headerlink" href="#portal" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Used on a rectangular polygon to set it as a <a class="reference external" href="https://docs.panda3d.org/1.11/python/reference/panda3d.core.PortalNode">PortalNode</a>.
+This portal is used by the camera to “see through” to the other cells.
+Meaning, when the camera is looking through the portal, the cell on the other side of the portal window is made visible.</p>
+<p>Note: Nodes tagged a <a class="reference external" href="https://docs.panda3d.org/1.11/python/reference/panda3d.core.PortalNode">PortalNode</a> will not be inherently visible in the scene graph, but will still report a bounding volume.</p>
+</section>
+<section id="polylight">
+<h4>Polylight<a class="headerlink" href="#polylight" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">polylight</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Create a polylight instead of a regular polyset.</p>
+<p>Note: Nodes tagged with <code class="docutils literal notranslate"><span class="pre">polylight</span></code> will be flagged as a <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.PolylightNode">PolylightNode</a> in the scene graph with a <code class="docutils literal notranslate"><span class="pre">Radius</span></code> attribute.
+These nodes are not inherently visible in the scene graph and will not report a bounding volume.</p>
+</section>
+<section id="occluder">
+<h4>Occluder<a class="headerlink" href="#occluder" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">occluder</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This makes the first (or only) polygon within this group node into
+an <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.OccluderNode">OccluderNode</a>.  The polygon must have exactly four vertices.  An
+occluder polygon is invisible.  When the occluder is activated
+with <code class="docutils literal notranslate"><span class="pre">model.set_occluder(occluder)</span></code>, objects that are behind the
+occluder will not be drawn.  This can be a useful rendering
+optimization for complex scenes, but should not be overused or
+performance can suffer.</p>
+<p>See <a class="reference external" href="https://docs.panda3d.org/1.10/python/programming/render-attributes/occlusion-culling/polygon-occluder-culling">“Polygon Occluder Culling”</a> for more usage information.</p>
+</section>
+</section>
+</section>
+<section id="depth-buffer-scalars">
+<h2>Depth Buffer Scalars<a class="headerlink" href="#depth-buffer-scalars" title="Link to this heading">#</a></h2>
+<p>For textures: Specifies special depth buffer properties of all polygons with this
+texture applied.</p>
+<section id="depth-offset">
+<h3>Depth Offset<a class="headerlink" href="#depth-offset" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="o">-</span><span class="n">offset</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="depth-write">
+<h3>Depth Write<a class="headerlink" href="#depth-write" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="o">-</span><span class="n">write</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="depth-test">
+<h3>Depth Test<a class="headerlink" href="#depth-test" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="o">-</span><span class="nb">test</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For Groups: Specifies special depth buffer properties of all polygons at or below this node that do not override this.</p>
+</section>
+</section>
+<section id="decal-properties">
+<h2>Decal Properties<a class="headerlink" href="#decal-properties" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">decal</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If this is present and boolean-value is non-zero, it indicates
+that the geometry <em>below</em> this level is coplanar with the geometry
+<em>at</em> this level, and the geometry below is to be drawn as a decal
+onto the geometry at this level.  This means the geometry below
+this level will be rendered “on top of” this geometry, but without
+the Z-fighting artifacts one might expect without the use of the
+decal flag.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">decalbase</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This can optionally be used with the <code class="docutils literal notranslate"><span class="pre">decal</span></code> scalar, above.
+If present, it should be applied to a sibling of one or more nodes
+with the <code class="docutils literal notranslate"><span class="pre">decal</span></code> scalar on.  It indicates which of the sibling
+nodes should be treated as the base of the decal.  In the absence
+of this scalar, the parent of all decal nodes is used as the decal
+base.  This scalar is useful when the modeling package is unable
+to parent geometry nodes to other geometry nodes.</p>
+</section>
+<section id="uv-scalars">
+<h2>UV Scalars<a class="headerlink" href="#uv-scalars" title="Link to this heading">#</a></h2>
+<section id="uv-name">
+<h3>UV Name<a class="headerlink" href="#uv-name" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">uv</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Specifies the name of the texture coordinates that are to be associated with this texture.</p>
+<p>If this is omitted, the default texture coordinates are used.</p>
+</section>
+<section id="uv-scroll-mode">
+<h3>UV Scroll Mode<a class="headerlink" href="#uv-scroll-mode" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scroll_u</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scroll_v</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scroll_w</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scroll_r</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This declares a scroll speed on the texture image.</p>
+<p><code class="docutils literal notranslate"><span class="pre">speed</span></code> can be a floating point value.</p>
+</section>
+<section id="uv-wrap-mode">
+<h3>UV Wrap Mode<a class="headerlink" href="#uv-wrap-mode" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrap</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repeat</span><span class="o">-</span><span class="n">definition</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrapu</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repeat</span><span class="o">-</span><span class="n">definition</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrapv</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repeat</span><span class="o">-</span><span class="n">definition</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrapw</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repeat</span><span class="o">-</span><span class="n">definition</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines the behavior of the texture image outside of the
+normal (u,v) range 0.0 - 1.0.</p>
+<p>It is <code class="docutils literal notranslate"><span class="pre">REPEAT</span></code> to repeat the texture to infinity, <code class="docutils literal notranslate"><span class="pre">CLAMP</span></code> not to.</p>
+<p>The wrapping behavior may be specified independently for each axis via <code class="docutils literal notranslate"><span class="pre">wrapu</span></code> and <code class="docutils literal notranslate"><span class="pre">wrapv</span></code>, or it may be specified for both simultaneously via <code class="docutils literal notranslate"><span class="pre">wrap</span></code>.</p>
+<p>Although less often used, for 3-d textures <code class="docutils literal notranslate"><span class="pre">wrapw</span></code> may also be specified, and it behaves similarly to <code class="docutils literal notranslate"><span class="pre">wrapu</span></code> and <code class="docutils literal notranslate"><span class="pre">wrapv</span></code>.</p>
+<p>There are other legal values in additional to <code class="docutils literal notranslate"><span class="pre">REPEAT</span></code> and <code class="docutils literal notranslate"><span class="pre">CLAMP</span></code>.
+The full list is:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">CLAMP</span>
+<span class="go">REPEAT</span>
+<span class="go">MIRROR</span>
+<span class="go">MIRROR_ONCE</span>
+<span class="go">BORDER_COLOR</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="animation-scalars">
+<h2>Animation Scalars<a class="headerlink" href="#animation-scalars" title="Link to this heading">#</a></h2>
+<section id="fps">
+<h3>FPS<a class="headerlink" href="#fps" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">frame</span><span class="o">-</span><span class="n">rate</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the rate of animation for a <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.SequenceNode">SequenceNode</a> (created
+when the <code class="docutils literal notranslate"><span class="pre">Switch</span></code> flag is specified).  A value of zero
+indicates a <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.SwitchNode">SwitchNode</a> should be created instead.</p>
+</section>
+</section>
+<section id="nurbs-scalars">
+<h2>NURBS Scalars<a class="headerlink" href="#nurbs-scalars" title="Link to this heading">#</a></h2>
+<section id="nurbs-type">
+<h3>NURBS Type<a class="headerlink" href="#nurbs-type" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">curve</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines the semantic meaning of this curve, either <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, <code class="docutils literal notranslate"><span class="pre">HPR</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">T</span></code>.  If the type is <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, the curve will automatically be
+transformed between Y-up and Z-up if necessary; otherwise, it will
+be left alone.</p>
+</section>
+<section id="nurbs-subdivision">
+<h3>NURBS Subdivision<a class="headerlink" href="#nurbs-subdivision" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subdiv</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">num</span><span class="o">-</span><span class="n">segments</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If this scalar is given and nonzero, Panda will create a visible
+representation of the curve when the scene is loaded.  The number
+represents the number of line segments to draw to approximate the
+curve.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">U</span><span class="o">-</span><span class="n">subdiv</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="o">-</span><span class="n">num</span><span class="o">-</span><span class="n">segments</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">V</span><span class="o">-</span><span class="n">subdiv</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">v</span><span class="o">-</span><span class="n">num</span><span class="o">-</span><span class="n">segments</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>These define the number of subdivisions to make in the U and V
+directions to represent the surface.  A uniform subdivision is
+always made, and trim curves are not respected (though they will
+be drawn in if the trim curves themselves also have a <code class="docutils literal notranslate"><span class="pre">subdiv</span></code>
+parameter).  This is only intended as a cheesy visualization.</p>
+</section>
+</section>
+<section id="pointlight-scalars">
+<h2>PointLight Scalars<a class="headerlink" href="#pointlight-scalars" title="Link to this heading">#</a></h2>
+<section id="thickness">
+<h3>Thickness<a class="headerlink" href="#thickness" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">thick</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the size of the <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.PointLight">PointLight</a> (or the width of a
+line), in pixels, when it is rendered.  This may be a
+floating-point number, but the fractional part is meaningful only
+when anti-aliasing is in effect.  The default is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+</section>
+<section id="perspective">
+<h3>Perspective<a class="headerlink" href="#perspective" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">perspective</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If this is specified, then the thickness, above, is to interpreted
+as a size in 3-d spatial units, rather than a size in pixels, and
+the point should be scaled according to its distance from the
+viewer normally.</p>
+</section>
+</section>
+<section id="collide-scalars">
+<h2>Collide Scalars<a class="headerlink" href="#collide-scalars" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">collide</span><span class="o">-</span><span class="n">mask</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">from</span><span class="o">-</span><span class="n">collide</span><span class="o">-</span><span class="n">mask</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">into</span><span class="o">-</span><span class="n">collide</span><span class="o">-</span><span class="n">mask</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Sets the <code class="docutils literal notranslate"><span class="pre">CollideMasks</span></code> on the collision nodes and geometry nodes
+created at or below this group to the indicated values.  These
+are bits that indicate which objects can collide with which
+other objects.  Setting <code class="docutils literal notranslate"><span class="pre">collide-mask</span></code> is equivalent to setting
+both <code class="docutils literal notranslate"><span class="pre">from-collide-mask</span></code> and <code class="docutils literal notranslate"><span class="pre">into-collide-mask</span></code> to the same
+value.</p>
+<p>The value may be an ordinary decimal integer, or a hex number in
+the form <code class="docutils literal notranslate"><span class="pre">0x000</span></code>, or a binary number in the form <code class="docutils literal notranslate"><span class="pre">0b000</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="general.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">General Egg Syntax</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="undocumented.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Undocumented Entries</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-usage">Definition &amp; Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-scalars">Alpha Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-alpha-file">Image Alpha File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-alpha-file-channel">Image Alpha File Channel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-blending">Alpha Blending</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blend-mode-group">Blend Mode (Group)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-scalars">Image Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-compression">Image Compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-format">Image Format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-type">Environment Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-combine-modes">Image Combine Modes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-min-mag-filtering">Image Min/Mag Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-mipmaps">Image Mipmaps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-anisotropic-degree">Image Anisotropic Degree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-border-color">Image Border Color</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-type">Image Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiview-textures">Multiview Textures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#texture-generation-mode">Texture Generation Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#texture-priority">Texture Priority</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#texture-quality-level">Texture Quality level</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#texture-stage-scalars">Texture Stage Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-name">Stage Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saved-result">Saved Result</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#material-scalars">Material Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-components">Material Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-shininess">Material Shininess</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#render-order-scalars">Render Order Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bin-order">Bin Order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-order">Draw Order</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visibility">Visibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#render-node-types">Render Node Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portal">Portal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#polylight">Polylight</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#occluder">Occluder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-buffer-scalars">Depth Buffer Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-offset">Depth Offset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-write">Depth Write</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-test">Depth Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decal-properties">Decal Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-scalars">UV Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-name">UV Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-scroll-mode">UV Scroll Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-wrap-mode">UV Wrap Mode</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animation-scalars">Animation Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fps">FPS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nurbs-scalars">NURBS Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nurbs-type">NURBS Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nurbs-subdivision">NURBS Subdivision</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointlight-scalars">PointLight Scalars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thickness">Thickness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perspective">Perspective</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collide-scalars">Collide Scalars</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/home/syntax/scalar_syn.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, Loonatic.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

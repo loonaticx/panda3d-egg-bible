@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using egg-palettize &#8212; Panda3D egg bible  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home/reference/tools/egg_palettize';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Texture Attributes Keywords" href="txa_attribs.html" />
+    <link rel="prev" title="Egg Tools" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Panda3D egg bible  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../syntax/index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../syntax/index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../collide.html">Collide Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objecttypes.html">Object Type Reference</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Egg Tools</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Using egg-palettize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="txa_attribs.html">Texture Attributes Keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="egg_optchar.html">Using egg-optchar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Egg Tools</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Using egg-palettize</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="using-egg-palettize">
+<span id="reference-tool-pal-usage"></span><h1>Using egg-palettize<a class="headerlink" href="#using-egg-palettize" title="Link to this heading">#</a></h1>
+<p><strong>egg-palettize</strong> is used when building models to optimize texture usage on all models before loading them into the show.
+It is capable of collecting together several different small texture images
+from different models and assembling them together onto the same image
+file, potentially reducing the total number of different texture
+images that must be loaded and displayed at runtime from several
+thousand to several hundred or fewer.</p>
+<p>It also can be used to group together related textures that will be
+rendered at the same time (for instance, textures related to one
+area), and if nothing else, it can resize textures at build
+time so that they may be painted at any arbitrary resolution according
+to the artist’s convenience, and then reduced to a suitable size for
+texture memory management (and to meet hardware requirements of having
+dimensions that are always a power of two).</p>
+<p>It is suggested that textures always be painted at high resolution and
+reduced using egg-palettize, since this allows the show designer the
+greatest flexibility; if a decision is later made to increase the
+resolution of a texture, this may be done by changing an option with
+egg-palettize, and does not require the intervention of the artist.</p>
+<p>The behavior of egg-palettize is largely controlled through a source
+file called <code class="docutils literal notranslate"><span class="pre">textures.txa</span></code>, which is usually found in the <code class="docutils literal notranslate"><span class="pre">src/maps</span></code>
+directory within the model tree.  For a complete description of the
+syntax of the <code class="docutils literal notranslate"><span class="pre">textures.txa</span></code> file, invoke the command <code class="docutils literal notranslate"><span class="pre">egg-palettize</span> <span class="pre">-H</span></code>.</p>
+<section id="grouping-egg-files">
+<h2>Grouping Egg Files<a class="headerlink" href="#grouping-egg-files" title="Link to this heading">#</a></h2>
+<p>Much of the contents of <code class="docutils literal notranslate"><span class="pre">textures.txa</span></code> involves assigning egg files to
+various groups; assigning two egg files to the same group indicates
+that they are associated in some way, and their texture images may be
+copied together into the same palettes.</p>
+<p>The groups are arbitrary and should be defined at the beginning of the
+egg file with the syntax:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:group groupname</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">groupname</span></code> is the name of the group.  It is also possible to
+assign a directory name to a group.  This is optional, but if done, it
+indicates that all of the textures for this group should be installed
+within the named subdirectory.  The syntax is:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:group groupname dir dirname</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">dirname</span></code> is the name of the subdirectory.  If you are
+generating a phased download, the dirname should be one of phase_1,
+phase_2, etc., corresponding to the <code class="docutils literal notranslate"><span class="pre">PHASE</span></code> variable in the <code class="docutils literal notranslate"><span class="pre">install_egg</span></code>
+rule (see <a class="reference external" href="https://github.com/toontownretro/ppremake/wiki/Documentation">ppremake documentation</a> for more information).</p>
+<p>Finally, it is possible to relate the different groups to each other
+hierarchically.  Doing this allows egg-palettize to assign textures to
+the minimal common subset between egg files that share the textures.
+For instance, if group beta and group gamma both depend on group
+alpha, a texture that is assigned to both groups beta and gamma can
+actually be placed on group alpha, to maximize sharing and minimize
+duplication of palette space.</p>
+<p>You relate two groups with the syntax:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">:group groupname with basegroupname</span>
+</pre></div>
+</div>
+<p>Once all the groups are defined, you can assign egg files to the
+various groups with a syntax like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">model.egg : groupname</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">model.egg</span></code> is the name of some egg model file built within the
+tree.  You can explicitly group each egg file in this way, or you can
+use wildcards to group several at once, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">dog*.egg : dogs</span>
+</pre></div>
+</div>
+<p>Assigning an egg file to a group assigns all of the textures used by
+that egg file to that same group.  If no other egg files reference the
+same textures, those textures will be placed in one or more palette
+images named after the group.  If another egg file within a different
+group also references the textures, they will be assigned to the
+lowest group that both groups have in common (see relating the groups
+hierarchically, above), or copied into both palette images if the two
+groups having nothing in common.</p>
+</section>
+<section id="controlling-texture-parameters">
+<h2>Controlling Texture Parameters<a class="headerlink" href="#controlling-texture-parameters" title="Link to this heading">#</a></h2>
+<p>Most of the contents of the <code class="docutils literal notranslate"><span class="pre">textures.txa</span></code> is usually devoted to scaling
+the texture images appropriately.  This is usually done with a line
+something like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">texture.rgb : 64 64</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">texture.rgb</span></code> is the name of some texture image, and 64 64 is the
+size in pixels it should be scaled to.  It is also possible to specify
+the target size as a factor of the source size, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">bigtexture.rgb : 50%</span>
+</pre></div>
+</div>
+<p>specifies that the indicated texture should be scaled to 50% in each
+dimension (for a total reduction to 0.5 * 0.5 = 25% of the original
+area).</p>
+<p>As above, you may group multiple textures on the same line
+using wildcards, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wall*.rgb : 25%</span>
+</pre></div>
+</div>
+<p>Finally, you may include one or more optional keywords on the end of
+the texture scaling line that indicate additional properties to apply
+to the named textures.  See <code class="docutils literal notranslate"><span class="pre">egg-palettize</span> <span class="pre">-H</span></code> for a complete list.
+Some of the more common keywords are:</p>
+<blockquote>
+<div><p>mipmap - Enables mipmaps for the texture.</p>
+<p>linear - Disables mipmaps for the texture.</p>
+<dl class="simple">
+<dt>omit - Omits the texture from any palettes.</dt><dd><p>The texture will still be scaled and installed, but it will not be combined with other
+textures.  Normally you need to do this only when the texture will
+be applied to some geometry at runtime.  (Since palettizing a
+texture requires adjusting the UV’s of all the geometry that
+references it, a texture that is applied to geometry at runtime
+cannot be palettized.)</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="running-egg-palettize">
+<h2>Running egg-palettize<a class="headerlink" href="#running-egg-palettize" title="Link to this heading">#</a></h2>
+<section id="using-makefiles">
+<h3>Using Makefiles<a class="headerlink" href="#using-makefiles" title="Link to this heading">#</a></h3>
+<p>Normally, egg-palettize is run automatically just by typing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make install</span>
+</pre></div>
+</div>
+<p>in the model tree.  It automatically reads the textures.txa file and
+generates and installs the appropriate palette image files, as part of
+the whole build process, and requires no further intervention from the
+user.  See the <a class="reference external" href="https://github.com/toontownretro/ppremake/wiki/Documentation">ppremake documentation</a> for more information on setting up the
+model tree.</p>
+<p>When egg-palettize runs in the normal mode, it generates suboptimal
+palettes.  Sometimes, for instance, a palette image is created with
+only one small texture in the corner, and the rest of it unused.  This
+happens because egg-palettize is reserving space for future textures,
+and is ideal for development; but it is not suitable for shipping a
+finished product.  When you are ready to repack all of the palettes as
+optimally as possible, run the command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make opt-pal</span>
+</pre></div>
+</div>
+<p>This causes egg-palettize to reorganize all of the palette images to
+make the best usage of texture memory.  It will force a regeneration
+of most of the egg files in the model tree, so it can be a fairly
+involved operation.</p>
+<p>It is sometimes useful to analyze the results of egg-palettize.  You
+can type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make pi &gt;pi.txt</span>
+</pre></div>
+</div>
+<p>to write a detailed report of every egg file, texture image, and
+generated palette image to the file pi.txt.</p>
+<p>Finally, the command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make pal-stats &gt;stats.txt</span>
+</pre></div>
+</div>
+<p>will write a report to stats.txt of the estimated texture memory usage
+for all textures, broken down by group.</p>
+</section>
+</section>
+<section id="when-things-go-wrong">
+<h2>When Things Go Wrong<a class="headerlink" href="#when-things-go-wrong" title="Link to this heading">#</a></h2>
+<p>The whole palettizing process is fairly complex; it’s necessary for
+egg-palettize to keep a record of the complete state of all egg files
+and all textures ever built in a particular model tree.  It generally
+does a good job of figuring out when things change and correctly
+regenerating the necessary egg files and textures when needed, but
+sometimes it gets confused.</p>
+<p>This is particularly likely to happen when you have reassigned some
+egg files from one group to another, or redefined the relationship
+between different groups.  Sometimes egg-palettize appears to run
+correctly, but does not generate correct palettes.</p>
+<section id="assertion-errors-and-segfaults">
+<h3>Assertion Errors and Segfaults<a class="headerlink" href="#assertion-errors-and-segfaults" title="Link to this heading">#</a></h3>
+<p>While rare, is possible for the tool with an assertion failure, or even a segment
+fault (general protection fault) when running egg-palettize, due to
+this kind of confusion.  This behavior should not happen, but it does
+happen every once and a while.</p>
+<section id="makefile-based-solution">
+<h4>Makefile-based Solution<a class="headerlink" href="#makefile-based-solution" title="Link to this heading">#</a></h4>
+<p>When this sort of thing happens, often the best thing to do is to
+invoke the command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make undo-pal</span>
+</pre></div>
+</div>
+<p>followed by:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make install</span>
+</pre></div>
+</div>
+<p>This removes all of the old palettization information, including the
+state information cached from previous runs, and rebuilds a new set of
+palettes from scratch.  It is a fairly heavy hammer, and may take some
+time to complete, depending on the size of your model tree, but it
+almost always clears up any problems related to egg-palettize.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Egg Tools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="txa_attribs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Texture Attributes Keywords</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-egg-files">Grouping Egg Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-texture-parameters">Controlling Texture Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-egg-palettize">Running egg-palettize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-makefiles">Using Makefiles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-things-go-wrong">When Things Go Wrong</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assertion-errors-and-segfaults">Assertion Errors and Segfaults</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#makefile-based-solution">Makefile-based Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/home/reference/tools/egg_palettize.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, Loonatic.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

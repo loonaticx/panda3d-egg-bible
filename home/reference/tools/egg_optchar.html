@@ -1,0 +1,765 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using egg-optchar &#8212; Panda3D egg bible  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home/reference/tools/egg_optchar';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Glossary" href="../glossary.html" />
+    <link rel="prev" title="Texture Attributes Keywords" href="txa_attribs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Panda3D egg bible  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../syntax/index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../syntax/index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../collide.html">Collide Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objecttypes.html">Object Type Reference</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Egg Tools</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="egg_palettize.html">Using egg-palettize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="txa_attribs.html">Texture Attributes Keywords</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Using egg-optchar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Egg Tools</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Using egg-optchar</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="using-egg-optchar">
+<span id="reference-tool-optchar-usage"></span><h1>Using egg-optchar<a class="headerlink" href="#using-egg-optchar" title="Link to this heading">#</a></h1>
+<p><strong>egg-optchar</strong> performs basic optimizations of a character model and its
+associated animations, primarily by analyzing the animation tables and
+removing unneeded joints and/or morphs.  It can also perform basic
+restructuring operations on the character hierarchy.</p>
+<section id="program-arguments">
+<h2>Program Arguments<a class="headerlink" href="#program-arguments" title="Link to this heading">#</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-noabs</span>
+</pre></div>
+</div>
+<p>Don’t allow any of the named egg files to have absolute
+pathnames.  If any do, abort with an error.  This option
+is designed to help detect errors when populating or
+building a standalone model tree, which should be
+self-contained and include only relative pathnames.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-ls</span>
+</pre></div>
+</div>
+<p>List the joint hierarchy instead of performing any operations.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-lsv</span>
+</pre></div>
+</div>
+<p>List the joint hierarchy along with an indication of the properties each joint.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-lsp</span>
+</pre></div>
+</div>
+<p>List the existing joint hierarchy as a series of <code class="docutils literal notranslate"><span class="pre">-p</span></code>
+joint,parent commands, suitable for pasting into an
+egg-optchar command line.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-keep joint[,joint...]</span>
+</pre></div>
+</div>
+<p>Keep the named joints (or sliders) in the character, even
+if they do not appear to be needed by the animation.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-drop joint[,joint...]</span>
+</pre></div>
+</div>
+<p>Removes the named joints or sliders, even if they appear to be needed.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-expose joint[,joint...]</span>
+</pre></div>
+</div>
+<p>Expose the named joints by flagging them with a DCS
+attribute, so each one can be found in the scene graph
+when the character is loaded, and objects can be parented
+to it.  This implies <code class="docutils literal notranslate"><span class="pre">-keep</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-suppress joint[,joint...]</span>
+</pre></div>
+</div>
+<p>The opposite of suppress, this prevents the named joints
+from being created with an implicit DCS attribute, even
+if they contain rigid geometry.  The default is to create
+an implicit node for any joint that contains rigid
+geometry, to take advantage of display list and/or vertex
+buffer caching.  This does <em>not</em> imply <code class="docutils literal notranslate"><span class="pre">-keep</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-flag node[,node...][=name]</span>
+</pre></div>
+</div>
+<p>Assign the indicated name to the geometry within the
+given nodes.  This will make the geometry visible as a
+node in the resulting character model when it is loaded
+in the scene graph (normally, the node hierarchy is
+suppressed when loading characters).  This is different
+from -expose in that it reveals geometry rather than
+joints; the revealed node can be hidden or its attributes
+changed at runtime, but it will be animated by its
+vertices, not the node, so objects parented to this node
+will not inherit its animation.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-defpose anim.egg,frame</span>
+</pre></div>
+</div>
+<p>Specify the model’s default pose.  The pose is taken from
+the indicated frame of the named animation file (which
+must also be named separately on the command line).  The
+pose will be held by the model in the absence of any
+animation, and need not be the same pose in which the
+model was originally skinned.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-preload</span>
+</pre></div>
+</div>
+<p>Add an <a class="reference external" href="../../syntax/general.html#AnimPreload">&lt;AnimPreload&gt;</a> entry for each animation to the
+model file(s).  This can be used at runtime to support
+asynchronous loading and binding of animation channels.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-zero joint[,hprxyzijkabc]</span>
+</pre></div>
+</div>
+<p>Zeroes out the animation channels for the named joint.
+If a subset of the component letters <code class="docutils literal notranslate"><span class="pre">hprxyzijkabc</span></code> is
+included, the operation is restricted to just those
+components; otherwise the entire transform is cleared.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-keepall</span>
+</pre></div>
+</div>
+<p>Keep all joints and sliders in the character, except
+those named explicitly by <code class="docutils literal notranslate"><span class="pre">-drop</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-p joint,parent</span>
+</pre></div>
+</div>
+<p>Moves the named joint under the named parent joint.  Use
+<code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">joint,</span></code> to reparent a joint to the root.  The joint
+transform is recomputed appropriately under its new
+parent so that the animation is not affected (the effect
+is similar to <code class="docutils literal notranslate"><span class="pre">NodePath::wrt_reparent_to</span></code>).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-new joint,source</span>
+</pre></div>
+</div>
+<p>Creates a new joint under the named parent joint.  The
+new joint will inherit the same net transform as its
+parent.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-rename joint,newjoint</span>
+</pre></div>
+</div>
+<p>Renames the indicated joint, if present, to the given
+name.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-q quantum</span>
+</pre></div>
+</div>
+<p>Quantize joint membership values to the given unit.  This
+is the smallest significant change in joint membership.
+There can be a significant performance (and memory
+utilization) runtime benefit for eliminating small
+differences in joint memberships between neighboring
+vertices.  The default is 0.01; specifying 0 means to
+preserve the original values.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-qa quantum[,hprxyzijkabc]</span>
+</pre></div>
+</div>
+<p>Quantizes animation channels to the given unit.  This
+rounds each of the named components of all joints to the
+nearest multiple of unit.  There is no performance
+benefit, and little compression benefit, for doing this;
+and this may introduce visible artifacts to the
+animation.  However, sometimes it is a useful tool for
+animation analysis and comparison.  This option may be
+repeated several times to quantize different channels by
+a different amount.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-dart [default, sync, nosync, or structured]</span>
+</pre></div>
+</div>
+<p>change the dart value in the given eggs</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-fixrest</span>
+</pre></div>
+</div>
+<p>Specify this to force all the initial rest frames of the
+various model files to the same value as the first model
+specified.  This is a fairly drastic way to repair models
+whose initial rest frame values are completely bogus, but
+should not be performed when the input models are
+correct.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-pr path_replace</span>
+</pre></div>
+</div>
+<p>Sometimes references to other files (textures, external
+references) are stored with a full path that is
+appropriate for some other system, but does not exist
+here.  This option may be used to specify how those
+invalid paths map to correct paths.  Generally, this is
+of the form <code class="docutils literal notranslate"><span class="pre">'orig_prefix=replacement_prefix'</span></code>, which
+indicates a particular initial sequence of characters
+that should be replaced with a new sequence; e.g.
+<code class="docutils literal notranslate"><span class="pre">'/c/home/models=/beta/fish'</span></code>.  If the replacement prefix
+does not begin with a slash, the file will then be
+searched for along the search path specified by <code class="docutils literal notranslate"><span class="pre">-pp</span></code>.  You
+may use standard filename matching characters (<code class="docutils literal notranslate"><span class="pre">'*'</span></code>, <code class="docutils literal notranslate"><span class="pre">'?'</span></code>,
+etc.) in the original prefix, and <code class="docutils literal notranslate"><span class="pre">'**'</span></code> as a component by
+itself stands for any number of components.</p>
+<p>This option may be repeated as necessary; each file will
+be tried against each specified method, in the order in
+which they appear in the command line, until the file is
+found.  If the file is not found, the last matching
+prefix is used anyway.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-pp dirname</span>
+</pre></div>
+</div>
+<p>Adds the indicated directory name to the list of
+directories to search for filenames referenced by the
+source file.  This is used only for relative paths, or
+for paths that are made relative by a <code class="docutils literal notranslate"><span class="pre">-pr</span></code> replacement
+string that doesn’t begin with a leading slash.  The
+model-path is always implicitly searched anyway.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-ps path_store</span>
+</pre></div>
+</div>
+<p>Specifies the way an externally referenced file is to be
+represented in the resulting output file.  This assumes
+the named filename actually exists; see <code class="docutils literal notranslate"><span class="pre">-pr</span></code> to indicate
+how to deal with external references that have bad
+pathnames.  This option will not help you to find a
+missing file, but simply controls how filenames are
+represented in the output.</p>
+<p>The option may be one of: <code class="docutils literal notranslate"><span class="pre">rel</span></code>, <code class="docutils literal notranslate"><span class="pre">abs</span></code>, <code class="docutils literal notranslate"><span class="pre">rel_abs</span></code>, <code class="docutils literal notranslate"><span class="pre">strip</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">keep</span></code>.  If either <code class="docutils literal notranslate"><span class="pre">rel</span></code> or <code class="docutils literal notranslate"><span class="pre">rel_abs</span></code> is specified, the files
+are made relative to the directory specified by <code class="docutils literal notranslate"><span class="pre">-pd</span></code>.  The
+default is <code class="docutils literal notranslate"><span class="pre">rel</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-pd path_directory</span>
+</pre></div>
+</div>
+<p>Specifies the name of a directory to make paths relative
+to, if <code class="docutils literal notranslate"><span class="pre">-ps</span> <span class="pre">rel</span></code> or <code class="docutils literal notranslate"><span class="pre">-ps</span> <span class="pre">rel_abs</span></code> is specified.  If this
+is omitted, the directory name is taken from the name of
+the output file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-pc target_directory</span>
+</pre></div>
+</div>
+<p>Copies textures and other dependent files into the
+indicated directory.  If a relative pathname is
+specified, it is relative to the directory specified with
+<code class="docutils literal notranslate"><span class="pre">-pd</span></code>, above.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-no</span>
+</pre></div>
+</div>
+<p>Strip all normals.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-np</span>
+</pre></div>
+</div>
+<p>Strip existing normals and redefine polygon normals.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-nv threshold</span>
+</pre></div>
+</div>
+<p>Strip existing normals and redefine vertex normals.
+Consider an edge between adjacent polygons to be smooth
+if the angle between them is less than threshold degrees.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-nn</span>
+</pre></div>
+</div>
+<p>Preserve normals exactly as they are.  This is the
+default.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-tbn name</span>
+</pre></div>
+</div>
+<p>Compute tangent and binormal for the named texture
+coordinate set(s).  The name may include wildcard
+characters such as <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">?</span></code>.  The normal must already
+exist or have been computed via one of the above options.
+The tangent and binormal are used to implement bump
+mapping and related texture-based lighting effects.  This
+option may be repeated as necessary to name multiple
+texture coordinate sets.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-tbnall</span>
+</pre></div>
+</div>
+<p>Compute tangent and binormal for all texture coordinate
+sets.  This is equivalent to <code class="docutils literal notranslate"><span class="pre">-tbn</span> <span class="pre">&quot;*&quot;</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-tbnauto</span>
+</pre></div>
+</div>
+<p>Compute tangent and binormal for all normal maps.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-TS sx[,sy,sz]</span>
+</pre></div>
+</div>
+<p>Scale the model uniformly by the given factor (if only
+one number is given) or in each axis by <code class="docutils literal notranslate"><span class="pre">sx</span></code>, <code class="docutils literal notranslate"><span class="pre">sy</span></code>, <code class="docutils literal notranslate"><span class="pre">sz</span></code> (if
+three numbers are given).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-TR x,y,z</span>
+</pre></div>
+</div>
+<p>Rotate the model <code class="docutils literal notranslate"><span class="pre">x</span></code> degrees about the x axis, then <code class="docutils literal notranslate"><span class="pre">y</span></code>
+degrees about the y axis, and then z degrees about the <code class="docutils literal notranslate"><span class="pre">z</span></code>
+axis.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-TA angle,x,y,z</span>
+</pre></div>
+</div>
+<p>Rotate the model angle degrees counterclockwise about the
+given axis.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-TT x,y,z</span>
+</pre></div>
+</div>
+<p>Translate the model by the indicated amount.</p>
+<p>All transformation options (<code class="docutils literal notranslate"><span class="pre">-TS</span></code>, <code class="docutils literal notranslate"><span class="pre">-TR</span></code>, <code class="docutils literal notranslate"><span class="pre">-TA</span></code>, <code class="docutils literal notranslate"><span class="pre">-TT</span></code>) are
+cumulative and are applied in the order they are
+encountered on the command line.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-o filename</span>
+</pre></div>
+</div>
+<p>Specify the filename to which the resulting egg file will
+be written.  This is only valid when there is only one
+input egg file on the command line.  If you want to
+process multiple files simultaneously, you must use
+either <code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">-inplace</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-d dirname</span>
+</pre></div>
+</div>
+<p>Specify the name of the directory in which to write the
+resulting egg files.  If you are processing only one egg
+file, this may be omitted in lieu of the <code class="docutils literal notranslate"><span class="pre">-o</span></code> option.  If
+you are processing multiple egg files, this may be
+omitted only if you specify <code class="docutils literal notranslate"><span class="pre">-inplace</span></code> instead.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-inplace</span>
+</pre></div>
+</div>
+<p>If this option is given, the input egg files will be
+rewritten in place with the results.  This obviates the
+need to specify <code class="docutils literal notranslate"><span class="pre">-d</span></code> for an output directory; however, it’s
+risky because the original input egg files are lost.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-cs coordinate-system</span>
+</pre></div>
+</div>
+<p>Specify the coordinate system to operate in.  This may be
+one of <code class="docutils literal notranslate"><span class="pre">y-up</span></code>, <code class="docutils literal notranslate"><span class="pre">z-up</span></code>, <code class="docutils literal notranslate"><span class="pre">y-up-left</span></code>, or <code class="docutils literal notranslate"><span class="pre">z-up-left</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-f</span>
+</pre></div>
+</div>
+<p>Force complete loading: load up the egg file along with
+all of its external references.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-inf filename</span>
+</pre></div>
+</div>
+<p>Reads input args from a text file instead of the command
+line.  Useful for really, really large lists of args that
+break the OS-imposed limits on the length of command
+lines.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="txa_attribs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Texture Attributes Keywords</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../glossary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Glossary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-arguments">Program Arguments</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/home/reference/tools/egg_optchar.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, Loonatic.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

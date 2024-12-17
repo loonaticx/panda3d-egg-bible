@@ -1,0 +1,1646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>General Egg Syntax &#8212; Panda3D egg bible  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home/syntax/general';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Scalar Definitions" href="scalar_syn.html" />
+    <link rel="prev" title="Egg Syntax" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Panda3D egg bible  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Egg Syntax
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">General Egg Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scalar_syn.html">Scalar Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undocumented.html">Undocumented Entries</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Egg Syntax</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">General Egg Syntax</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="general-egg-syntax">
+<span id="syntax-general"></span><h1>General Egg Syntax<a class="headerlink" href="#general-egg-syntax" title="Link to this heading">#</a></h1>
+<section id="syntax-notation">
+<h2>Syntax Notation<a class="headerlink" href="#syntax-notation" title="Link to this heading">#</a></h2>
+<p>Egg files consist of a series of sequential and hierarchically-nested entries.</p>
+<p>In general, the syntax of each entry is:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">EntryType</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Where the <code class="docutils literal notranslate"><span class="pre">name</span></code> is optional (and in many cases, ignored anyway) and the syntax of the <code class="docutils literal notranslate"><span class="pre">contents</span></code> is determined by the <code class="docutils literal notranslate"><span class="pre">&lt;EntryType&gt;</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> (and strings in general) may be either quoted with double quotes or unquoted.</p>
+<p>Newlines are treated like any other whitespace, and case is not significant.</p>
+<p>The angle brackets are literally a part of the entry keyword.
+(Square brackets and ellipses in this document are used to indicate optional pieces, and are not literally part of the syntax.)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> field is always syntactically allowed between an <code class="docutils literal notranslate"><span class="pre">entry</span></code> keyword and its opening brace, even if it will be ignored.</p>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<p>Entries are typically written on separate lines, like this:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Model</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">ObjectType</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="no">Barrier</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>While not ideal for clarity, this is technically also valid:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">MODEL</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="o">&lt;</span><span class="n">objecttype</span><span class="o">&gt;</span><span class="p">{</span><span class="n">barrier</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<p>Comments may be delimited using either the C++-style <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">...</span></code> or the C-style <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">...</span> <span class="pre">*/</span></code>.  C comments do not nest.</p>
+<p>There is also a <code class="docutils literal notranslate"><span class="pre">&lt;Comment&gt;</span></code> entry type, of the form:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Comment</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;Comment&gt;</span></code> entries are slightly different, in that tools which read and write egg files will preserve the text within <code class="docutils literal notranslate"><span class="pre">&lt;Comment&gt;</span></code> entries, but they may not preserve comments delimited by <code class="docutils literal notranslate"><span class="pre">//</span></code> or <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">*/</span></code>.</p>
+<p>Special characters and keywords within a <code class="docutils literal notranslate"><span class="pre">&lt;Comment&gt;</span></code> entry should be quoted; it’s safest to quote the entire comment.</p>
+</section>
+<section id="local-information-entries">
+<h2>Local Information Entries<a class="headerlink" href="#local-information-entries" title="Link to this heading">#</a></h2>
+<p>These nodes contain information relevant to the current level of nesting only.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Char</span><span class="o">*&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Because of a syntactic accident with the way the egg
+syntax evolved, <code class="docutils literal notranslate"><span class="pre">&lt;Scalar&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;Char*&gt;</span></code> are lexically the same and both
+can represent either a string or a number.  <code class="docutils literal notranslate"><span class="pre">&lt;Char*&gt;</span></code> is being phased
+out; it is suggested that new egg files use only <code class="docutils literal notranslate"><span class="pre">&lt;Scalar&gt;</span></code>.</p>
+</section>
+<section id="global-information-entries">
+<h2>Global Information Entries<a class="headerlink" href="#global-information-entries" title="Link to this heading">#</a></h2>
+<p>These nodes contain information relevant to the file as a whole.  They
+can be nested along with geometry nodes, but this nesting is
+irrelevant and the only significant placement rule is that they should
+appear before they are referenced.</p>
+</section>
+<section id="textures">
+<h2>Textures<a class="headerlink" href="#textures" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Texture</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">[</span><span class="n">scalars</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This describes a texture file that can be referenced later with <code class="docutils literal notranslate"><span class="pre">&lt;TRef&gt;</span> <span class="pre">{</span> <span class="pre">name</span> <span class="pre">}</span></code>.</p>
+<p>It is not necessary to make a <code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code> entry for each texture to be used; a texture may also be referenced directly
+by the geometry via an abbreviated inline <code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code> entry, but a separate <code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code> entry is the only way
+to specify anything other than the default texture attributes.</p>
+<p>If the filename is a relative path, the current egg file’s directory is searched first, and then the defined config values for <code class="docutils literal notranslate"><span class="pre">texture-path</span></code> and <code class="docutils literal notranslate"><span class="pre">model-path</span></code> are searched.</p>
+<p>The following attributes are presently implemented for textures:</p>
+<blockquote>
+<div><p><a class="reference external" href="scalar_syn.html#image-alpha-file">&lt;Scalar&gt; alpha-file { alpha-filename }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-alpha-file-channel">&lt;Scalar&gt; alpha-file-channel { channel }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-format">&lt;Scalar&gt; format { format-definition }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-compression">&lt;Scalar&gt; compression { compression-mode }</a></p>
+<p><a class="reference external" href="scalar_syn.html#uv-wrap-mode">&lt;Scalar&gt; wrap { repeat-definition }</a></p>
+<p><a class="reference external" href="scalar_syn.html#uv-wrap-mode">&lt;Scalar&gt; wrapu { repeat-definition }</a></p>
+<p><a class="reference external" href="scalar_syn.html#uv-wrap-mode">&lt;Scalar&gt; wrapv { repeat-definition }</a></p>
+<p><a class="reference external" href="scalar_syn.html#uv-wrap-mode">&lt;Scalar&gt; wrapw { repeat-definition }</a></p>
+<p><a class="reference external" href="scalar_syn.html#uv-name">&lt;Scalar&gt; uv-name { name }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-border-color">&lt;Scalar&gt; borderr { red-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-border-color">&lt;Scalar&gt; borderg { green-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-border-color">&lt;Scalar&gt; borderb { blue-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-border-color">&lt;Scalar&gt; bordera { alpha-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-type">&lt;Scalar&gt; type { texture-type }</a></p>
+<p><a class="reference external" href="scalar_syn.html#multiview-textures">&lt;Scalar&gt; multiview { flag }</a></p>
+<p><a class="reference external" href="scalar_syn.html#multiview-textures">&lt;Scalar&gt; num-views { count }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-mipmaps">&lt;Scalar&gt; read-mipmaps { flag }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-min-mag-filtering">&lt;Scalar&gt; minfilter { filter-type }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-min-mag-filtering">&lt;Scalar&gt; magfilter { filter-type }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-min-mag-filtering">&lt;Scalar&gt; magfilteralpha { filter-type }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-min-mag-filtering">&lt;Scalar&gt; magfiltercolor { filter-type }</a></p>
+<p><a class="reference external" href="scalar_syn.html#image-anisotropic-degree">&lt;Scalar&gt; anisotropic-degree { degree }</a></p>
+<p><a class="reference external" href="scalar_syn.html#environment-type">&lt;Scalar&gt; envtype { environment-type }</a></p>
+</div></blockquote>
+</section>
+<section id="geometry">
+<h2>Geometry<a class="headerlink" href="#geometry" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Vertex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">[</span><span class="n">y</span><span class="w"> </span><span class="o">[</span><span class="n">z</span><span class="w"> </span><span class="o">[</span><span class="n">w</span><span class="o">]]]</span><span class="w"> </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">&lt;Vertex&gt;</span></code> entry is only valid within a vertex pool definition.
+The number is the index by which this vertex will be referenced.
+It is optional; if it is omitted, the vertices are implicitly
+numbered consecutively beginning at one.  If the number is
+supplied, the vertices need not be consecutive.</p>
+<p>Normally, vertices are three-dimensional (with coordinates <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">z</span></code>); however, in certain cases vertices may have fewer or more
+dimensions, up to four.  This is particularly true of vertices
+used as control vertices of NURBS curves and surfaces.  If more
+coordinates are supplied than needed, the extra coordinates are
+ignored; if fewer are supplied than needed, the missing
+coordinates are assumed to be 0.</p>
+<p>The vertex’s coordinates are always given in world space,
+regardless of any transforms before the vertex pool or before the
+referencing geometry.  If the vertex is referenced by geometry
+under a transform, the egg loader will do an inverse transform to
+move the vertex into the proper coordinate space without changing
+its position in world space.  One exception is geometry under an
+<code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node; in this case the vertex coordinates are given in
+the space of the <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node.  (Another exception is a
+<code class="docutils literal notranslate"><span class="pre">&lt;DynamicVertexPool&gt;</span></code>; see below.)</p>
+<p>While each vertex must at least have a position, it may also have
+a color, normal, pair of UV coordinates, and/or a set of morph
+offsets.  Furthermore, the color, normal, and UV coordinates may
+themselves have morph offsets.  Thus, the <code class="docutils literal notranslate"><span class="pre">[attributes]</span></code> in the
+syntax line above may be replaced with zero or more of the
+following entries:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Dxyz</span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the offset of this vertex for the named morph
+target. See the <a class="reference external" href="general.html#morphs">Morphs</a> section below.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Normal</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">[</span><span class="n">morph</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the surface normal of the vertex.  If omitted, the
+vertex will have no normal.  Normals may also be morphed;
+<code class="docutils literal notranslate"><span class="pre">morph-list</span></code> here is thus an optional list of <code class="docutils literal notranslate"><span class="pre">&lt;DNormal&gt;</span></code> entries,
+similar to the above.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">RGBA</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">[</span><span class="n">morph</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies the four-valued color of the vertex.  Each
+component is in the range <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.  A vertex color, if
+specified for all vertices of the polygon, overrides the polygon’s
+color.  If neither color is given, the default is white
+(<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">1</span></code>).  The <code class="docutils literal notranslate"><span class="pre">morph-list</span></code> is an optional list of <code class="docutils literal notranslate"><span class="pre">&lt;DRGBA&gt;</span></code> entries.</p>
+<section id="vertex-pools">
+<h3>Vertex Pools<a class="headerlink" href="#vertex-pools" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">VertexPool</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">vertices</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>vertex pool</strong> is a set of vertices.  All geometry is created by
+referring to vertices by number in a particular vertex pool.  There
+may be one or several vertex pools in an egg file, but all vertices
+that make up a single polygon must come from the same vertex pool.
+The body of a <code class="docutils literal notranslate"><span class="pre">&lt;VertexPool&gt;</span></code> entry is simply a list of one or more
+<code class="docutils literal notranslate"><span class="pre">&lt;Vertex&gt;</span></code> entries.</p>
+<p>In neither case does it make a difference whether the vertex pool
+is itself declared under a transform or an <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node.  The
+only deciding factor is whether the geometry that <em>uses</em> the
+vertex pool appears under an <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node.  It is possible for
+a single vertex to be interpreted in different coordinate spaces
+by different polygons.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">DynamicVertexPool</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">vertices</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>dynamic vertex pool</strong> is similar to a vertex pool in most respects,
+except that each vertex might be animated by substituting in values
+from a <code class="docutils literal notranslate"><span class="pre">&lt;VertexAnim&gt;</span></code> table.  Also, the vertices defined within a
+dynamic vertex pool are always given in <em>local</em> coordinates, instead
+of world coordinates.</p>
+<p>The presence of a dynamic vertex pool makes sense only within a
+character model, and a single dynamic vertex pool may not span
+multiple characters.  Each dynamic vertex pool creates a DynVerts
+object within the character by the same name; this name is used
+later when matching up the corresponding <code class="docutils literal notranslate"><span class="pre">&lt;VertexAnim&gt;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the present time, the DynamicVertexPool is not implemented in Panda3D.</p>
+</div>
+</section>
+<section id="uvs-vertexes">
+<h3>UVs (Vertexes)<a class="headerlink" href="#uvs-vertexes" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">UV</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="nb">name</span><span class="o">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">[</span><span class="n">w</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">tangent</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">binormal</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">morph</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This gives the texture coordinates of a vertex.  This must be
+specified if a texture is to be mapped onto this geometry.</p>
+<p>The texture coordinates are usually two-dimensional, with two
+component values (<code class="docutils literal notranslate"><span class="pre">u</span></code> <code class="docutils literal notranslate"><span class="pre">v</span></code>), but they may also be three-dimensional,
+with three component values (<code class="docutils literal notranslate"><span class="pre">u</span></code> <code class="docutils literal notranslate"><span class="pre">v</span></code> <code class="docutils literal notranslate"><span class="pre">w</span></code>).  (Arguably, it should be
+called <code class="docutils literal notranslate"><span class="pre">&lt;UVW&gt;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">&lt;UV&gt;</span></code> in the three-dimensional case, but
+it’s not.)</p>
+<p>As before, <code class="docutils literal notranslate"><span class="pre">morph-list</span></code> is an optional list of <code class="docutils literal notranslate"><span class="pre">&lt;DUV&gt;</span></code> entries.</p>
+<p>Unlike the other kinds of attributes, there may be multiple sets
+of UV’s on each vertex, each with a unique name; this provides
+support for multitexturing.  The name may be omitted to specify
+the default UV’s.</p>
+<p>The UV’s also support an optional tangent and binormal.  These
+values are based on the vertex normal and the UV coordinates of
+connected vertices, and are used to render normal maps and similar
+lighting effects.  They are defined within the <code class="docutils literal notranslate"><span class="pre">&lt;UV&gt;</span></code> entry because
+there may be a different set of tangents and binormals for each
+different UV coordinate set.  If present, they have the expected
+syntax:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">UV</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="nb">name</span><span class="o">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">[</span><span class="n">w</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Tangent</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Binormal</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">AUX</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies some named per-vertex auxiliary data which is
+imported from the egg file without further interpretation by
+Panda.  The auxiliary data is copied to the vertex data under a
+column with the specified name.  Presumably the data will have
+meaning to custom code or a custom shader.  Like named UV’s, there
+may be multiple Aux entries for a given vertex, each with a
+different name.</p>
+<section id="polygons">
+<h4>Polygons<a class="headerlink" href="#polygons" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Polygon</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">indices</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>polygon</strong> consists of a sequence of vertices from a single vertex
+pool.  Vertices are identified by pool-name and index number within
+the pool; indices is a list of vertex numbers within the given
+vertex pool.  Vertices are listed in counterclockwise order.
+Although the vertices must all come from the same vertex pool, they
+may have been assigned to arbitrarily many different joints
+regardless of joint connectivity (there is no “straddle-polygon”
+limitation).  See Joints, below.</p>
+<p>The polygon syntax is quite verbose, and there isn’t any way to
+specify a set of attributes that applies to a group of polygons–the
+attributes list must be repeated for each polygon.  This is why egg
+files tend to be very large.</p>
+<p>The following attributes may be specified for polygons:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">TRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">texture</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This refers to a named <code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code> entry given earlier.  It applies
+the given texture to the polygon.  This requires that all the
+polygon’s vertices have been assigned texture coordinates.</p>
+<p>This attribute may be repeated multiple times to specify
+multitexture.  In this case, each named texture is applied to the
+polygon, in the order specified.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Texture</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is another way to apply a texture to a polygon.  The
+<code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code> entry is defined “inline” to the polygon, instead of
+referring to a <code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code> entry given earlier.  There is no way to
+specify texture attributes given this form.</p>
+<p>There’s no advantage to this syntax for texture mapping.  It’s
+supported only because it’s required by some older egg files.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">MRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">material</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This applies the material properties defined in the earlier
+<code class="docutils literal notranslate"><span class="pre">&lt;Material&gt;</span></code> entry to the polygon.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Normal</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">[</span><span class="n">morph</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines a polygon surface normal.  The polygon normal will be
+used unless all vertices also have a normal.  If no normal is
+defined, none will be supplied.  The polygon normal, like the
+vertex normal, may be morphed by specifying a series of <code class="docutils literal notranslate"><span class="pre">&lt;DNormal&gt;</span></code>
+entries.</p>
+<p>The polygon normal is used only for lighting and environment
+mapping calculations, and is not related to the implicit normal
+calculated for <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.CollisionPolygon">CollisionPolygons</a>.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">RGBA</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">[</span><span class="n">morph</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines the polygon’s color, which will be used unless all
+vertices also have a color.  If no color is defined, the default
+is white (<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">1</span></code>).  The color may be morphed with a series of
+<code class="docutils literal notranslate"><span class="pre">&lt;DRGBA&gt;</span></code> entries.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">BFace</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines whether the polygon will be rendered double-sided
+(i.e. its back face will be visible).  By default, this option is
+disabled, and polygons are one-sided; specifying a nonzero value
+disables backface culling for this particular polygon and allows
+it to be viewed from either side.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">bin</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">draw</span><span class="o">-</span><span class="n">order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="o">-</span><span class="n">offset</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="o">-</span><span class="n">write</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="o">-</span><span class="nb">test</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visibility</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="patches">
+<h4>Patches<a class="headerlink" href="#patches" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Patch</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">indices</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>patch</strong> is similar to a polygon, but it is a special primitive that
+can only be rendered with the use of a tessellation shader.  Each
+patch consists of an arbitrary number of vertices; all patches with
+the same number of vertices are collected together into the same
+<a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.GeomPatches">GeomPatches</a> object to be delivered to the shader in a single batch.
+It is then up to the shader to create the correct set of triangles
+from the patch data.</p>
+<p>All of the attributes that are valid for Polygon, above, may also be
+specified for Patch.</p>
+</section>
+<section id="pointlight">
+<h4>PointLight<a class="headerlink" href="#pointlight" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">PointLight</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">indices</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>PointLight</strong> is a set of single points.  One point is drawn for each
+vertex listed in the <code class="docutils literal notranslate"><span class="pre">&lt;VertexRef&gt;</span></code>.  Normals, textures, and colors may
+be specified for <code class="docutils literal notranslate"><span class="pre">PointLights</span></code>, as well as draw-order, plus one
+additional attribute valid only for <code class="docutils literal notranslate"><span class="pre">PointLights</span></code> and <code class="docutils literal notranslate"><span class="pre">Lines</span></code>:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">thick</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">perspective</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="lines">
+<h4>Lines<a class="headerlink" href="#lines" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Line</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">indices</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">[</span><span class="n">component</span><span class="w"> </span><span class="n">attributes</span><span class="o">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>Line</strong> is a connected set of line segments.  The listed N vertices
+define a series of N-1 line segments, drawn between vertex 0 and
+vertex 1, vertex 1 and vertex 2, etc.  The line is not implicitly
+closed; if you wish to represent a loop, you must repeat vertex 0 at
+the end.  As with a <code class="docutils literal notranslate"><span class="pre">PointLight</span></code>, normals, textures, colors,
+draw-order, and the <code class="docutils literal notranslate"><span class="pre">thick</span></code> attribute are all valid (but not
+<code class="docutils literal notranslate"><span class="pre">perspective</span></code>).  Also, since a <code class="docutils literal notranslate"><span class="pre">Line</span></code> (with more than two vertices) is
+made up of multiple line segments, it may contain a number of
+<code class="docutils literal notranslate"><span class="pre">&lt;Component&gt;</span></code> entries, to set a different color and/or normal for each
+line segment, as in <code class="docutils literal notranslate"><span class="pre">TriangleStrip</span></code>, below.</p>
+</section>
+<section id="triangle-strips">
+<h4>Triangle Strips<a class="headerlink" href="#triangle-strips" title="Link to this heading">#</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">TriangleStrip</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">indices</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">[</span><span class="n">component</span><span class="w"> </span><span class="n">attributes</span><span class="o">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>triangle strip</strong> is defined as a series of connected triangles.
+After the first three vertices, which define the first triangle,
+each new vertex defines one additional triangle, by alternating up
+and down.</p>
+<p>Triangle strips are rarely encountered in an egg file; it is
+normally generated automatically only during load time, when
+connected triangles are automatically meshed for loading, and even
+then it exists only momentarily.  Since a triangle strip is a
+rendering optimization only and adds no useful scene information
+over a loose collection of triangles, its usage is contrary to the
+general egg philosophy of representing a scene in the abstract.
+Nevertheless, the syntax exists, primarily to allow inspection of
+the meshing results when needed.  You can also add custom
+TriangleStrip entries to force a particular mesh arrangement.</p>
+<p>It is possible for the individual triangles of a triangle strip to
+have a separate normal and/or color.  If so, a <code class="docutils literal notranslate"><span class="pre">&lt;Component&gt;</span></code> entry
+should be given for each so-modified triangle:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Component</span><span class="o">&gt;</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="no">RGBA</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">[</span><span class="n">morph</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="no">Normal</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">[</span><span class="n">morph</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where index ranges from 0 to the number of components defined by the
+triangle strip (less 1).  Note that the component attribute list
+must always follow the vertex list.</p>
+</section>
+</section>
+</section>
+<section id="parametric-curves-surfaces">
+<h2>Parametric Curves &amp; Surfaces<a class="headerlink" href="#parametric-curves-surfaces" title="Link to this heading">#</a></h2>
+<p>The following entries define parametric curves and surfaces.
+Generally, Panda supports these only in the abstract; they’re not
+geometry in the true sense but do exist in the scene graph and may
+have specific meaning to the application.  However, Panda can create
+visible representations of these parametrics to aid visualization.</p>
+<p>These entries might also have meaning to external tools outside of an
+interactive Panda session, such as <code class="docutils literal notranslate"><span class="pre">egg-qtess</span></code>, which can be used to
+convert NURBS surfaces to polygons at different levels of resolution.</p>
+<p>In general, dynamic attributes such as morphs and joint assignment are
+legal for the control vertices of the following parametrics, but Panda
+itself doesn’t support them and will always create static curves and
+surfaces.  External tools like <code class="docutils literal notranslate"><span class="pre">egg-qtess</span></code>, however, may respect them.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">NURBSCurve</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span>
+
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Knots</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">knot</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indices</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>NURBS curve</strong> is a general parametric curve.  It is often used to
+represent a motion path, e.g. for a camera or an object.</p>
+<p>The order is equal to the degree of the polynomial basis plus 1.  It
+must be an integer in the range <code class="docutils literal notranslate"><span class="pre">[1,4]</span></code>.</p>
+<p>The number of vertices must be equal to the number of knots minus the
+order.</p>
+<p>Each control vertex of a NURBS is defined in homogeneous space with
+four coordinates <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">y</span> <span class="pre">z</span> <span class="pre">w</span></code> (to convert to 3-space, divide x, y, and z
+by w).  The last coordinate is always the homogeneous coordinate; if
+only three coordinates are given, it specifies a curve in two
+dimensions plus a homogeneous coordinate (x y w).</p>
+<p>The following attributes may be defined:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">&lt;Scalar&gt;</span> <span class="pre">type</span> <span class="pre">{</span> <span class="pre">curve-type</span> <span class="pre">}</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;Scalar&gt;</span> <span class="pre">subdiv</span> <span class="pre">{</span> <span class="pre">num-segments</span> <span class="pre">}</span></code></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&lt;RGBA&gt;</span> <span class="pre">{</span> <span class="pre">r</span> <span class="pre">g</span> <span class="pre">b</span> <span class="pre">a</span> <span class="pre">[morph-list]</span> <span class="pre">}</span></code></dt><dd><p>^ This specifies the color of the overall curve.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>NURBS control vertices may also be given color and/or morph
+attributes, but <code class="docutils literal notranslate"><span class="pre">&lt;Normal&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;UV&gt;</span></code> entries do not apply to NURBS
+vertices.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">NURBSSurface</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">[</span><span class="n">attributes</span><span class="o">]</span>
+
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="o">-</span><span class="n">order</span><span class="w"> </span><span class="n">v</span><span class="o">-</span><span class="n">order</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">U</span><span class="o">-</span><span class="n">knots</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="o">-</span><span class="n">knot</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">V</span><span class="o">-</span><span class="n">knots</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">v</span><span class="o">-</span><span class="n">knot</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">indices</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>NURBS surface</strong> is an extension of a NURBS curve into two parametric
+dimensions, u and v.  NURBS surfaces may be given the same set of
+attributes assigned to polygons, except for normals: <code class="docutils literal notranslate"><span class="pre">&lt;TRef&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;MRef&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;RGBA&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">draw-order</span></code> are all valid attributes
+for NURBS.  NURBS vertices, similarly, may be colored or morphed,
+but <code class="docutils literal notranslate"><span class="pre">&lt;Normal&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;UV&gt;</span></code> entries do not apply to NURBS vertices.  The
+attributes may also include <code class="docutils literal notranslate"><span class="pre">&lt;NURBSCurve&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;Trim&gt;</span></code> entries; see
+below.</p>
+<p>To have Panda create a visualization of a NURBS surface, the
+following two attributes should be defined as well:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">U</span><span class="o">-</span><span class="n">subdiv</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="o">-</span><span class="n">num</span><span class="o">-</span><span class="n">segments</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">V</span><span class="o">-</span><span class="n">subdiv</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">v</span><span class="o">-</span><span class="n">num</span><span class="o">-</span><span class="n">segments</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The same sort of restrictions on order and knots applies to NURBS
+surfaces as do to NURBS curves.  The order and knot description may
+be different in each dimension.</p>
+<p>The surface must have <code class="docutils literal notranslate"><span class="pre">u-num</span> <span class="pre">*</span> <span class="pre">v-num</span></code> vertices, where u-num is the
+number of u-knots minus the u-order, and v-num is the number of
+v-knots minus the v-order.  All vertices must come from the same
+vertex pool.  The nth (zero-based) index number defines control
+vertex (u, v) of the surface, where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">(v</span> <span class="pre">*</span> <span class="pre">u-num)</span> <span class="pre">+</span> <span class="pre">u</span></code>.  Thus, it
+is the u coordinate which changes faster.</p>
+<p>As with the NURBS curve, each control vertex is defined in
+homogeneous space with four coordinates <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">y</span> <span class="pre">z</span> <span class="pre">w</span></code>.</p>
+<p>A NURBS may also contain curves on its surface.  These are one or
+more nested <code class="docutils literal notranslate"><span class="pre">&lt;NURBSCurve&gt;</span></code> entries included with the attributes; these
+curves are defined in the two-dimensional parametric space of the
+surface.  Thus, these curve vertices should have only two dimensions
+plus the homogeneous coordinate: <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">v</span> <span class="pre">w</span></code>.  A curve-on-surface has no
+intrinsic meaning to the surface, unless it is defined within a
+<code class="docutils literal notranslate"><span class="pre">&lt;Trim&gt;</span></code> entry, below.</p>
+<p>Finally, a NURBS may be trimmed by one or more <strong>trim curves</strong>.  These
+are special curves on the surface which exclude certain areas from
+the NURBS surface definition.  The inside is specified using two
+rules: an odd winding rule that states that the inside consists of
+all regions for which an infinite ray from any point in the region
+will intersect the trim curve an odd number of times, and a curve
+orientation rule that states that the inside consists of the regions
+to the left as the curve is traced.</p>
+<p>Each trim curve contains one or more loops, and each loop contains
+one or more NURBS curves.  The curves of a loop connect in a
+head-to-tail fashion and must be explicitly closed.</p>
+<p>The trim curve syntax is as follows:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Trim</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="no">Loop</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">NURBSCurve</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="no">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="no">Knots</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">knot</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">      </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indices</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">[</span><span class="w"> </span><span class="o">&lt;</span><span class="no">NURBSCurve</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="o">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="o">[</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Loop</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="o">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Although the egg syntax supports trim curves, there are at present
+no egg processing tools that respect them.  For instance, <code class="docutils literal notranslate"><span class="pre">egg-qtess</span></code>
+ignores trim curves and always tessellates the entire NURBS surface.</p>
+</section>
+<section id="transformations">
+<h2>Transformations<a class="headerlink" href="#transformations" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Transform</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">transform</span><span class="o">-</span><span class="n">definition</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This specifies a matrix transform at this group level.  This
+defines a local coordinate space for this group and its
+descendants.  Vertices are still specified in world coordinates
+(in a vertex pool), but any geometry assigned to this group will
+be inverse transformed to move its vertices to the local space.</p>
+<p>The transform definition may be any sequence of zero or more of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Transformations</strong> are post multiplied in the order they are encountered to produce a net transformation matrix.</p></li>
+<li><p><strong>Rotations</strong> are defined as a counterclockwise angle in degrees about a particular axis, either implicit (about the x, y, or z axis), or arbitrary.</p></li>
+<li><p><strong>Matrices</strong>, when specified explicitly, are <em>row-major</em>.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Translate</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">RotX</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">degrees</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">RotY</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">degrees</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">RotZ</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">degrees</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Rotate</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">degrees</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scale</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Scale</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="no">Matrix4</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="mo">00</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="mo">03</span>
+<span class="w">  </span><span class="mi">10</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">13</span>
+<span class="w">  </span><span class="mi">20</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">23</span>
+<span class="w">  </span><span class="mi">30</span><span class="w"> </span><span class="mi">31</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="mi">33</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">&lt;Transform&gt;</span></code> block should always define a 3-d
+transform when it appears within the body of a <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code>, while it
+may define either a 2-d or a 3-d transform when it appears within
+the body of a <code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code>.  See <code class="docutils literal notranslate"><span class="pre">&lt;Texture&gt;</span></code>, above.</p>
+</section>
+<section id="morphs">
+<h2>Morphs<a class="headerlink" href="#morphs" title="Link to this heading">#</a></h2>
+<p><strong>Morphs</strong> are linear interpolations of attribute values at run time,
+according to values read from an animation table.  In general, vertex
+positions, surface normals, texture coordinates, and colors may be
+morphed.</p>
+<p>A <strong>morph target</strong> is defined by giving a net morph offset for a series of
+vertex or polygon attributes; this offset is the value that will be
+added to the attribute when the morph target has the value 1.0.  At
+run time, the morph target’s value may be animated to any scalar value
+(but generally between 0.0 and 1.0); the corresponding fraction of the
+offset is added to the attribute each frame.</p>
+<p>There is no explicit morph target definition; a morph target exists
+solely as the set of all offsets that share the same target name.  The
+target name may be any arbitrary string; like any name in an egg file,
+it should be quoted if it contains special characters.</p>
+<p>The following types of morph offsets may be defined, within their
+corresponding attribute entries:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Dxyz</span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>position delta</strong>, valid within a <code class="docutils literal notranslate"><span class="pre">&lt;Vertex&gt;</span></code> entry or a <code class="docutils literal notranslate"><span class="pre">&lt;CV&gt;</span></code> entry.
+The given offset vector, scaled by the morph target’s value, is
+added to the vertex or CV position each frame.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">DNormal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>normal delta</strong>, similar to the position delta, valid within a
+<code class="docutils literal notranslate"><span class="pre">&lt;Normal&gt;</span></code> entry (for vertex or polygon normals).  The given offset
+vector, scaled by the morph target’s value, is added to the normal
+vector each frame.  The resulting vector may not be automatically
+normalized to unit length.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">DUV</span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">[</span><span class="n">w</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>texture-coordinate delta</strong>, valid within a <code class="docutils literal notranslate"><span class="pre">&lt;UV&gt;</span></code> entry (within a
+<code class="docutils literal notranslate"><span class="pre">&lt;Vertex&gt;</span></code> entry).  The offset vector should be 2-valued if the
+enclosing UV is 2-valued, or 3-valued if the enclosing UV is
+3-valued.  The given offset vector, scaled by the morph target’s
+value, is added to the vertex’s texture coordinates each frame.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">DRGBA</span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>color delta</strong>, valid within an <code class="docutils literal notranslate"><span class="pre">&lt;RGBA&gt;</span></code> entry (for vertex or polygon
+colors).  The given 4-valued offset vector, scaled by the morph
+target’s value, is added to the color value each frame.</p>
+</section>
+<section id="groups">
+<h2>Groups<a class="headerlink" href="#groups" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Group</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">group</span><span class="o">-</span><span class="n">body</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> node is the primary means of providing structure to the
+egg file.  Groups can contain vertex pools and polygons, as well as
+other groups.  The egg loader translates <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> nodes directly into
+PandaNodes in the scene graph (although the egg loader reserves the
+right to arbitrarily remove nodes that it deems unimportant–see the
+<code class="docutils literal notranslate"><span class="pre">&lt;Model&gt;</span></code> flag, below to avoid this).  In addition, the following
+entries can be given specifically within a <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> node to specify
+attributes of the group:</p>
+<p>These attributes may be either on or off; they are off by default.
+They are turned on by specifying a non-zero “boolean-value”.</p>
+<section id="dcs-attributes">
+<h3>DCS Attributes<a class="headerlink" href="#dcs-attributes" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">DCS</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>DCS stands for <strong>Dynamic Coordinate System</strong>.  This indicates that
+show code will expect to be able to read the transform set on this
+node at run time, and may need to modify the transform further.
+This is a special case of <code class="docutils literal notranslate"><span class="pre">&lt;Model&gt;</span></code>, below.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">DCS</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dcs</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is another syntax for the <code class="docutils literal notranslate"><span class="pre">&lt;DCS&gt;</span></code> flag.  The <code class="docutils literal notranslate"><span class="pre">dcs-type</span></code> string
+should be one of either <code class="docutils literal notranslate"><span class="pre">local</span></code> or <code class="docutils literal notranslate"><span class="pre">net</span></code>, which specifies the kind
+of <code class="docutils literal notranslate"><span class="pre">preserve_transform</span></code> flag that will be set on the corresponding
+<a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.ModelNode">ModelNode</a>.</p>
+<ul class="simple">
+<li><p>If the string is <code class="docutils literal notranslate"><span class="pre">local</span></code>, it indicates that the local
+transform on this node (as well as the net transform) will not be
+affected by any flattening operation and will be preserved through
+the entire model loading process.</p></li>
+<li><p>If the string is <code class="docutils literal notranslate"><span class="pre">net</span></code>, then
+only the net transform will be preserved; the local transform may
+be adjusted in the event of a flatten operation.</p></li>
+</ul>
+</section>
+<section id="model-attribute">
+<h3>Model Attribute<a class="headerlink" href="#model-attribute" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Model</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This indicates that the show code might need a pointer to this
+particular group.  This creates a <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.ModelNode">ModelNode</a> at the corresponding
+level, which is guaranteed not to be removed by any flatten
+operation.  However, its transform might still be changed, but see
+also the <code class="docutils literal notranslate"><span class="pre">&lt;DCS&gt;</span></code> flag, above.</p>
+</section>
+<section id="dart-attributes">
+<h3>Dart Attributes<a class="headerlink" href="#dart-attributes" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Dart</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This indicates that this group begins an animated character.  A
+Character node, which is the fundamental animatable object of
+the high-level <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/direct.actor.Actor">Actor</a> class, will be created for this group.</p>
+<p>This flag should always be present within the <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> entry at the
+top of any hierarchy of <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code>’s and/or geometry with morphed
+vertices; joints and morphs appearing outside of a hierarchy
+identified with a <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> flag are undefined.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Dart</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is an optional alternative for the <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> flag.</p>
+<p>By default, Panda will collapse all of the geometry in a group (with the <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span> <span class="pre">{</span> <span class="pre">1</span> <span class="pre">}</span></code> flag)
+a single node. While this is optimal for conditions such as characters moving around
+a scene, it may be suboptimal for larger or more complex characters.</p>
+<p>This entry is typically generated by the <code class="docutils literal notranslate"><span class="pre">egg-optchar</span></code> program with the <code class="docutils literal notranslate"><span class="pre">-dart</span> <span class="pre">structured</span></code> flag.
+<code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span> <span class="pre">{</span> <span class="pre">structured</span> <span class="pre">}</span></code> implies <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span> <span class="pre">{</span> <span class="pre">1</span> <span class="pre">}</span></code>.</p>
+</section>
+<section id="switch-attribute">
+<h3>Switch Attribute<a class="headerlink" href="#switch-attribute" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Switch</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">boolean</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This attribute indicates that the child nodes of this group
+represent a series of animation frames that should be
+consecutively displayed.</p>
+<p>In the absence of an <code class="docutils literal notranslate"><span class="pre">fps</span></code> scalar for the group (see below), the egg loader creates a <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.SwitchNode">SwitchNode</a>, and it
+the responsibility of the show code to perform the switching.  If
+an fps scalar is defined and is nonzero, the egg loader creates a
+<a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.SequenceNode">SequenceNode</a> instead, which automatically cycles through its
+children.</p>
+<section id="group-scalars">
+<h4>Group Scalars<a class="headerlink" href="#group-scalars" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p><a class="reference external" href="scalar_syn.html#fps">&lt;Scalar&gt; fps { frame-rate }</a></p>
+<p><a class="reference external" href="scalar_syn.html#bin-order">&lt;Scalar&gt; bin { bin-name }</a></p>
+<p><a class="reference external" href="scalar_syn.html#draw-order">&lt;Scalar&gt; draw-order { number }</a></p>
+<p><a class="reference external" href="scalar_syn.html#depth-offset">&lt;Scalar&gt; depth-offset { number }</a></p>
+<p><a class="reference external" href="scalar_syn.html#depth-write">&lt;Scalar&gt; depth-write { mode }</a></p>
+<p><a class="reference external" href="scalar_syn.html#depth-test">&lt;Scalar&gt; depth-test { mode }</a></p>
+<p><a class="reference external" href="scalar_syn.html#visibility">&lt;Scalar&gt; visibility { hidden | normal }</a></p>
+<p><a class="reference external" href="scalar_syn.html#decal-properties">&lt;Scalar&gt; decal { boolean-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#decal-properties">&lt;Scalar&gt; decalbase { boolean-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#collide-scalars">&lt;Scalar&gt; collide-mask { value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#collide-scalars">&lt;Scalar&gt; from-collide-mask { value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#collide-scalars">&lt;Scalar&gt; into-collide-mask { value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#blend-mode-group">&lt;Scalar&gt; blend { mode }</a></p>
+<p><a class="reference external" href="scalar_syn.html#blend-mode-group">&lt;Scalar&gt; blendop-a { mode }</a></p>
+<p><a class="reference external" href="scalar_syn.html#blend-mode-group">&lt;Scalar&gt; blendop-b { mode }</a></p>
+<p><a class="reference external" href="scalar_syn.html#blend-mode-group">&lt;Scalar&gt; blendr { red-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#blend-mode-group">&lt;Scalar&gt; blendg { green-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#blend-mode-group">&lt;Scalar&gt; blendb { blue-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#blend-mode-group">&lt;Scalar&gt; blenda { alpha-value }</a></p>
+<p><a class="reference external" href="scalar_syn.html#occluder">&lt;Scalar&gt; occluder { boolean-value }</a></p>
+</div></blockquote>
+</section>
+<section id="other-group-attributes">
+<h4>Other Group Attributes<a class="headerlink" href="#other-group-attributes" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="billboards">
+<h3>Billboards<a class="headerlink" href="#billboards" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Billboard</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This entry indicates that all geometry defined at or below this
+group level is part of a billboard that will rotate to face the
+camera.  Type is either <code class="docutils literal notranslate"><span class="pre">axis</span></code> or <code class="docutils literal notranslate"><span class="pre">point</span></code>, describing the type of
+rotation.</p>
+<p>Billboards rotate about their local axis.  In the case of a Y-up
+file, the billboards rotate about the Y axis; in a Z-up file, they
+rotate about the Z axis.  Point-rotation billboards rotate about
+the origin.</p>
+<p>There is an implicit <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> around billboard geometry.  This
+means that the geometry within a billboard is not specified in
+world coordinates, but in the local billboard space.  Thus, a
+vertex drawn at point 0,0,0 will appear to be at the pivot point
+of the billboard, not at the origin of the scene.</p>
+</section>
+<section id="level-of-detail-lod">
+<h3>Level of Detail (LOD)<a class="headerlink" href="#level-of-detail-lod" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">SwitchCondition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="o">&lt;</span><span class="no">Distance</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">in</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">[</span><span class="n">fade</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Vertex</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The subtree beginning at this node and below represents a single
+level of detail for a particular model.  Sibling nodes represent
+the additional levels of detail.  The geometry at this node will
+be visible when the point (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>) is closer than <code class="docutils literal notranslate"><span class="pre">in</span></code> units, but
+further than <code class="docutils literal notranslate"><span class="pre">out</span></code> units, from the camera.  <code class="docutils literal notranslate"><span class="pre">fade</span></code> is presently
+ignored.</p>
+</section>
+<section id="vertex-references">
+<h3>Vertex References<a class="headerlink" href="#vertex-references" title="Link to this heading">#</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indices</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This moves geometry created from the named vertices into the
+current group, regardless of the group in which the geometry is
+actually defined.</p>
+</section>
+</section>
+<section id="instances">
+<h2>Instances<a class="headerlink" href="#instances" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Instance</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">group</span><span class="o">-</span><span class="n">body</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>An <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node is exactly like a <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> node, except that
+vertices referenced by geometry created under the <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node
+are not assumed to be given in world coordinates, but are instead
+given in the local space of the <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node itself (including
+any transforms given to the node).</p>
+<p>In other words, geometry under an <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node is defined in
+local coordinates.  In principle, similar geometry can be created
+under several different <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> nodes, and thus can be positioned
+in a different place in the scene each instance.  This doesn’t
+necessarily imply the use of shared geometry in the Panda3D scene
+graph, but see the <code class="docutils literal notranslate"><span class="pre">&lt;Ref&gt;</span></code> syntax, below.</p>
+<p>This is particularly useful in conjunction with a <code class="docutils literal notranslate"><span class="pre">&lt;File&gt;</span></code> entry, to
+load external file references at places other than the origin.</p>
+<p>A special syntax of <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> entries does actually create shared
+geometry in the scene graph.  The syntax is:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Instance</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">group</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">[</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">group</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="o">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this case, the referenced group name will appear as a <em>duplicate</em>
+instance in this part of the tree.  Local transforms can be applied
+and are relative to the referencing group’s transform.  The
+referenced group must appear preceding this point in the egg file,
+and it will also be a part of the scene in the point at which it
+first appears.  The referenced group may be either a <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> or an
+<code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> of its own; usually, it is a <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> nested within an
+earlier <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> entry.</p>
+</section>
+<section id="joints">
+<h2>Joints<a class="headerlink" href="#joints" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Joint</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">[</span><span class="n">transform</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">ref</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">joint</span><span class="o">-</span><span class="n">list</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>joint</strong> is a highly specialized kind of grouping node.  A tree of
+joints is used to specify the skeletal structure of an animated
+character.</p>
+<p>A joint may only contain one of three things.  It may contain a
+<code class="docutils literal notranslate"><span class="pre">&lt;Transform&gt;</span></code> entry, as above, which defines the joint’s unanimated
+(rest) position; it may contain lists of assigned vertices or CV’s;
+and it may contain other joints.</p>
+<p>A tree of <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code> nodes only makes sense within a character
+definition, which is created by applying the <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> flag to a group.
+See <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code>, above.</p>
+<p>The vertex assignment is crucial.  This is how the geometry of a
+character is made to move with the joints.  The character’s geometry
+is actually defined outside the joint tree, and each vertex must be
+assigned to one or more joints within the tree.</p>
+<p>This is done with zero or more <code class="docutils literal notranslate"><span class="pre">&lt;VertexRef&gt;</span></code> entries per joint, as the
+following:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indices</span><span class="w"> </span><span class="o">[&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">membership</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="p">}</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Ref</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pool</span><span class="o">-</span><span class="nb">name</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is syntactically similar to the way vertices are assigned to
+polygons.  Each <code class="docutils literal notranslate"><span class="pre">&lt;VertexRef&gt;</span></code> entry can assign vertices from only one
+vertex pool (but there may be many <code class="docutils literal notranslate"><span class="pre">&lt;VertexRef&gt;</span></code> entries per joint).
+<em>Indices</em> is a list of vertex numbers from the specified vertex pool, in
+an arbitrary order.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">membership</span></code> scalar is optional.  If specified, it is a value
+between 0.0 and 1.0 that indicates the fraction of dominance this
+joint has over the vertices.  This is used to implement
+soft-skinning, so that each vertex may have partial ownership in
+several joints.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;VertexRef&gt;</span></code> entry may also be given to ordinary <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> nodes.
+In this case, it treats the geometry as if it was parented under the
+group in the first place.  Non-total membership assignments are
+meaningless.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Bundle</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">table</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Table</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">table</span><span class="o">-</span><span class="n">body</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A <strong>table</strong> is a set of animated values for joints.  A tree of tables
+with the same structure as the corresponding tree of joints must be
+defined for each character to be animated.  Such a tree is placed
+under a <code class="docutils literal notranslate"><span class="pre">&lt;Bundle&gt;</span></code> node, which provides a handle within Panda to the
+tree as a whole.</p>
+<p>Bundles may only contain tables; tables may contain more tables,
+bundles, or any one of the following (<code class="docutils literal notranslate"><span class="pre">&lt;Scalar&gt;</span></code> entries are optional,
+and default as shown):</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is a table of scalar values, one per frame.  This may be
+applied to a morph slider, for instance.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Xfm</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">srpht</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ijkabcrphxyz</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is a table of matrix transforms, one per frame, such as may
+be applied to a joint.  The <code class="docutils literal notranslate"><span class="pre">contents</span></code> string consists of a subset
+of the letters <code class="docutils literal notranslate"><span class="pre">ijkabcrphxyz</span></code>, where each letter corresponds to a
+column of the table; <code class="docutils literal notranslate"><span class="pre">&lt;V&gt;</span></code> is a list of numbers of <code class="docutils literal notranslate"><span class="pre">length(contents)</span>
+<span class="pre">*</span> <span class="pre">num_frames</span></code>.  Each letter of the contents string corresponds to a
+type of transformation:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">scale</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="nx">directions</span><span class="p">,</span><span class="w"> </span><span class="nx">respectively</span>
+<span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">shear</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">xy</span><span class="p">,</span><span class="w"> </span><span class="nx">xz</span><span class="p">,</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="nx">yz</span><span class="w"> </span><span class="nx">planes</span><span class="p">,</span><span class="w"> </span><span class="nx">respectively</span>
+<span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">rotate</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">roll</span><span class="p">,</span><span class="w"> </span><span class="nx">pitch</span><span class="p">,</span><span class="w"> </span><span class="nx">heading</span>
+<span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">translate</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="nx">directions</span>
+</pre></div>
+</div>
+<p>The <em>net</em> transformation matrix specified by each row of the table
+is defined as the net effect of each of the individual columns’
+transform, according to the corresponding letter in the contents
+string.  The order the transforms are applied is defined by the
+order string:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">s</span><span class="w">       </span><span class="o">-</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="nx">scale</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="nx">shear</span><span class="w"> </span><span class="nx">transforms</span>
+<span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">individual</span><span class="w"> </span><span class="nx">rotate</span><span class="w"> </span><span class="nx">transforms</span>
+<span class="nx">t</span><span class="w">       </span><span class="o">-</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="nx">translation</span><span class="w"> </span><span class="nx">transforms</span>
+</pre></div>
+</div>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Xfm</span><span class="vg">$Anim_S$&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">srpht</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is a variant on the <code class="docutils literal notranslate"><span class="pre">&lt;Xfm$Anim&gt;</span></code> entry, where each column of
+the table is entered as a separate <code class="docutils literal notranslate"><span class="pre">&lt;S$Anim&gt;</span></code> table.  This syntax
+reflects an attempt to simplify the description by not requiring
+repetition of values for columns that did not change value during
+an animation sequence.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">VertexAnim</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">table</span><span class="o">-</span><span class="n">width</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is a table of vertex positions, normals, texture coordinates,
+or colors.  These values will be substituted at runtime for the
+corresponding values in a <code class="docutils literal notranslate"><span class="pre">&lt;DynamicVertexPool&gt;</span></code>.  The name of the
+table should be <code class="docutils literal notranslate"><span class="pre">coords</span></code>, <code class="docutils literal notranslate"><span class="pre">norms</span></code>, <code class="docutils literal notranslate"><span class="pre">texCoords</span></code>, or <code class="docutils literal notranslate"><span class="pre">colors</span></code>,
+according to the type of values defined.  The value of <code class="docutils literal notranslate"><span class="pre">table-width</span></code>
+is the number of floats in each row of the table.  In the case of
+a coords or norms table, this must be 3 times the number of
+vertices in the corresponding dynamic vertex pool.  (For <code class="docutils literal notranslate"><span class="pre">texCoords</span></code>
+and <code class="docutils literal notranslate"><span class="pre">colors</span></code>, this number must be 2 times and 4 times, respectively.)</p>
+</section>
+<section id="animation-structure">
+<h2>Animation Structure<a class="headerlink" href="#animation-structure" title="Link to this heading">#</a></h2>
+<p>Unanimated models may be defined in egg files without much regard to
+any particular structure, so long as named entries like <code class="docutils literal notranslate"><span class="pre">VertexPools</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Textures</span></code> appear before they are referenced.</p>
+<p>However, a certain rigid structural convention must be followed in
+order to properly define an animated skeleton-morph model and its
+associated animation data.</p>
+<p>The structure for an animated model should resemble the following:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Group</span><span class="o">&gt;</span><span class="w"> </span><span class="no">CHARACTER_NAME</span><span class="w"> </span><span class="p">{</span>
+<span class="o">&lt;</span><span class="no">Dart</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+<span class="o">&lt;</span><span class="no">Joint</span><span class="o">&gt;</span><span class="w"> </span><span class="no">JOINT_A</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Transform</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Group</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Polygon</span><span class="o">&gt;</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Joint</span><span class="o">&gt;</span><span class="w"> </span><span class="no">JOINT_B</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Transform</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Group</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Polygon</span><span class="o">&gt;</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Joint</span><span class="o">&gt;</span><span class="w"> </span><span class="no">JOINT_C</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Transform</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">VertexRef</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Group</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&lt;</span><span class="no">Polygon</span><span class="o">&gt;</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> flag is necessary to indicate that this group begins an
+animated model description.</p>
+<p>Without the <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> flag, joints will be treated as ordinary groups, and morphs will be ignored.</p>
+<p>It is important to note that utilizing <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span> <span class="pre">{</span> <span class="pre">1</span> <span class="pre">}</span></code> will collapse all of the
+model’s geometry into a single node. To omit this, use <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span> <span class="pre">{</span> <span class="pre">structured</span> <span class="pre">}</span></code> instead.
+(See <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> above.)</p>
+<p>In the above, <em>UPPERCASE NAMES</em> represent an arbitrary name that you
+may choose.  The name of the enclosing group, <em>CHARACTER_NAME</em>, is
+taken as the name of the animated model.  It should generally match
+the bundle name in the associated animation tables.</p>
+<p>Within the <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> group, you may define an arbitrary hierarchy of
+<code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code> entries.  There may be as many <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code> entries as you like,
+and they may have any nesting complexity you like.  There may be
+either one root <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code>, or multiple roots.  However, you must
+always include at least one <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code>, even if your animation consists
+entirely of morphs.</p>
+<p>Polygons may be directly attached to joints by enclosing them within
+the <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code> group, perhaps with additional nesting <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> entries,
+as illustrated above.  This will result in the polygon’s vertices
+being hard-assigned to the joint it appears within.  Alternatively,
+you declare the polygons elsewhere in the egg file, and use
+<code class="docutils literal notranslate"><span class="pre">&lt;VertexRef&gt;</span></code> entries within the <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code> group to associate the
+vertices with the joints.  This is the more common approach, since
+it allows for soft-assignment of vertices to multiple joints.</p>
+<p>It is not necessary for every joint to have vertices at all.  Every
+joint should include a transform entry, however, which defines the
+initial, resting transform of the joint (but see also <code class="docutils literal notranslate"><span class="pre">&lt;DefaultPose&gt;</span></code>,
+below).  If a transform is omitted, the identity transform is
+assumed.</p>
+<p>Some of the vertex definitions may include morph entries, as
+described in  the <a class="reference external" href="general.html#morphs">Morphs</a> section above.  These are meaningful
+only for vertices that are assigned, either implicitly or
+explicitly, to at least one joint.</p>
+<p>You may have multiple versions of a particular animated model–for
+instance, multiple different LOD’s, or multiple different clothing
+options.  Normally each different version is stored in a different
+egg file, but it is also possible to include multiple versions
+within the same egg file.  If the different versions are intended to
+play the same animations, they should all have the same
+<em>CHARACTER_NAME</em>, and their joint hierarchies should exactly match in
+structure and names.</p>
+<p>The structure for an animation table should resemble the following:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Table</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="o">&lt;</span><span class="no">Bundle</span><span class="o">&gt;</span><span class="w"> </span><span class="no">CHARACTER_NAME</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Table</span><span class="o">&gt;</span><span class="w"> </span><span class="s2">&quot;&lt;skeleton&gt;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Table</span><span class="o">&gt;</span><span class="w"> </span><span class="no">JOINT_A</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Xfm</span><span class="vg">$Anim_S$&gt;</span><span class="w"> </span><span class="n">xform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Char</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sphrt</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Table</span><span class="o">&gt;</span><span class="w"> </span><span class="no">JOINT_B</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Xfm</span><span class="vg">$Anim_S$&gt;</span><span class="w"> </span><span class="n">xform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="no">Char</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sphrt</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Table</span><span class="o">&gt;</span><span class="w"> </span><span class="no">JOINT_C</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Xfm</span><span class="vg">$Anim_S$&gt;</span><span class="w"> </span><span class="n">xform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="no">Char</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sphrt</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="no">Table</span><span class="o">&gt;</span><span class="w"> </span><span class="n">morph</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="no">MORPH_A</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="no">MORPH_B</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">S</span><span class="vg">$Anim</span><span class="o">&gt;</span><span class="w"> </span><span class="no">MORPH_C</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;Bundle&gt;</span></code> entry begins an <em>animation table description</em>.  This
+entry must have at least one child: a <code class="docutils literal notranslate"><span class="pre">&lt;Table&gt;</span></code> named <code class="docutils literal notranslate"><span class="pre">&lt;skeleton&gt;</span></code>
+(this name is a literal keyword and must be present).  The children
+of this <code class="docutils literal notranslate"><span class="pre">&lt;Table&gt;</span></code> entry should be a hierarchy of additional <code class="docutils literal notranslate"><span class="pre">&lt;Table&gt;</span></code>
+entries, one for each joint in the model.  The joint structure and
+names defined by the <code class="docutils literal notranslate"><span class="pre">&lt;Table&gt;</span></code> hierarchy should exactly match the
+joint structure and names defined by the <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code> hierarchy in the
+corresponding model.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">&lt;Table&gt;</span></code> that corresponds to a joint should have one child, an
+<code class="docutils literal notranslate"><span class="pre">&lt;Xfm$Anim_S$&gt;</span></code> entry named <code class="docutils literal notranslate"><span class="pre">xform</span></code> (this name is a literal keyword
+and must be present).  Within this entry, there is a series of up to
+twelve <code class="docutils literal notranslate"><span class="pre">&lt;S$Anim&gt;</span></code> entries, each with a one-letter name like “x”, “y”,
+or “z”, which define the per-frame x, y, z position of the
+corresponding joint.  There is one numeric entry for each frame, and
+all frames represent the same length of time.  You can also define
+rotation, scale, and shear.  See the full description of
+<code class="docutils literal notranslate"><span class="pre">&lt;Xfm$Anim_S$&gt;</span></code>, above.</p>
+<p>Within a particular animation bundle, all of the various components
+throughout the various <code class="docutils literal notranslate"><span class="pre">&lt;Tables&gt;</span></code> should define the same number of
+frames, with the exception that if any of them define exactly one
+frame value, that value is understood to be replicated the
+appropriate number of times to match the number of frames defined by
+other components.</p>
+<p>(Note that you may alternatively define an animation table with an
+<code class="docutils literal notranslate"><span class="pre">&lt;Xfm$Anim&gt;</span></code> entry, which defines all of the individual components in
+one big matrix instead of individually.  See the full description
+above.)</p>
+<p>Each joint defines its frame rate independently, with an <code class="docutils literal notranslate"><span class="pre">fps</span></code>
+scalar.  This determines the number of frames per second for the
+frame data within this table.  Typically, all joints have the same
+frame rate, but it is possible for different joints to animate at
+different speeds.</p>
+<p>Each joint also defines the order in which its components should be
+composed to determine the complete transform matrix, with an <code class="docutils literal notranslate"><span class="pre">order</span></code>
+scalar.  This is described in more detail above.</p>
+<p>If any of the vertices in the model have morphs, the top-level
+<code class="docutils literal notranslate"><span class="pre">&lt;Table&gt;</span></code> should also include a <code class="docutils literal notranslate"><span class="pre">&lt;Table&gt;</span></code> named <code class="docutils literal notranslate"><span class="pre">morph</span></code> (this name is
+also a literal keyword).  This table in turn contains a list of
+<code class="docutils literal notranslate"><span class="pre">&lt;S$Anim&gt;</span></code> entries, one for each named morph.  Each table
+contains a list of numeric values, one per frame; as with the joint
+data, there should be the same number of numeric values in all
+tables, with the exception that just one value is understood to mean
+hold that value through the entire animation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">morph</span></code> table may be omitted if there are no morphs defined in
+the model.</p>
+<p>There should be a separate <code class="docutils literal notranslate"><span class="pre">&lt;Bundle&gt;</span></code> definition for each different
+animation.  The <code class="docutils literal notranslate"><span class="pre">&lt;Bundle&gt;</span></code> name should match the <em>CHARACTER_NAME</em> used
+for the model, above.  Typically each bundle is stored in a separate
+egg file, but it is also possible to store multiple different
+animation bundles within the same egg file.  If you do this, you may
+violate the <em>CHARACTER_NAME</em> rule, and give each bundle a different
+name; this will become the name of the animation in the Actor
+interface.</p>
+<p>Although animations and models are typically stored in separate egg
+files, it is possible to store them together in one large egg file.
+The Actor interface will then make available all of the animations
+it finds within the egg file, by bundle name.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">DefaultPose</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">transform</span><span class="o">-</span><span class="n">definition</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines an optional default pose transform, which might be a
+different transform from that defined by the <code class="docutils literal notranslate"><span class="pre">&lt;Transform&gt;</span></code> entry,
+above.  This makes sense only for a <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code>.  See the <code class="docutils literal notranslate"><span class="pre">&lt;Joint&gt;</span></code>
+description, below.</p>
+<p>The default pose transform defines the transform the joint will
+maintain in the absence of any animation being applied.  This is
+different from the <code class="docutils literal notranslate"><span class="pre">&lt;Transform&gt;</span></code> entry, which defines the coordinate
+space the joint must have in order to keep its vertices in their
+(global space) position as given in the egg file.  If this is
+different from the <code class="docutils literal notranslate"><span class="pre">&lt;Transform&gt;</span></code> entry, the joint’s vertices will
+<em>not</em> be in their egg file position at initial load.  If there is
+no <code class="docutils literal notranslate"><span class="pre">&lt;DefaultPose&gt;</span></code> entry for a particular joint, the implicit
+default-pose transform is the same as the <code class="docutils literal notranslate"><span class="pre">&lt;Transform&gt;</span></code> entry.</p>
+<p>Normally, the <code class="docutils literal notranslate"><span class="pre">&lt;DefaultPose&gt;</span></code> entry, if any, is created by the
+<code class="docutils literal notranslate"><span class="pre">egg-optchar</span> <span class="pre">-defpose</span></code> option.  Most other software has little
+reason to specify an explicit <code class="docutils literal notranslate"><span class="pre">&lt;DefaultPose&gt;</span></code>.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">AnimPreload</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fps</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">float</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="no">Scalar</span><span class="o">&gt;</span><span class="w"> </span><span class="n">num</span><span class="o">-</span><span class="n">frames</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">integer</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>One or more <code class="docutils literal notranslate"><span class="pre">AnimPreload</span></code> entries may appear within the <code class="docutils literal notranslate"><span class="pre">&lt;Group&gt;</span></code> that
+contains a <code class="docutils literal notranslate"><span class="pre">&lt;Dart&gt;</span></code> entry, indicating an animated character (see
+above).  These AnimPreload entries record the minimal preloaded
+animation data required in order to support asynchronous animation
+binding.  These entries are typically generated by the <code class="docutils literal notranslate"><span class="pre">egg-optchar</span></code>
+program with the <code class="docutils literal notranslate"><span class="pre">-preload</span></code> option, and are used by the Actor code
+when <code class="docutils literal notranslate"><span class="pre">allow-async-bind</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default).</p>
+</section>
+<section id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading">#</a></h2>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">File</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This includes a copy of the referenced egg file at the current
+point.  This is usually placed under an <code class="docutils literal notranslate"><span class="pre">&lt;Instance&gt;</span></code> node, so that the
+current transform will apply to the geometry in the external file.
+The extension <code class="docutils literal notranslate"><span class="pre">.egg</span></code> is implied if it is omitted.</p>
+<p>As with texture filenames, the filename may be a relative path, in
+which case the current egg file’s directory is searched first, and
+then the model-path is searched.</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="no">Tag</span><span class="o">&gt;</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This attribute defines the indicated tag (as a key/value pair),
+retrievable via <a class="reference external" href="https://docs.panda3d.org/1.10/python/reference/panda3d.core.NodePath#panda3d.core.NodePath.getTag">NodePath::get_tag()</a> and related interfaces, on
+this node.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Egg Syntax</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="scalar_syn.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scalar Definitions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax-notation">Syntax Notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-information-entries">Local Information Entries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-information-entries">Global Information Entries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#textures">Textures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry">Geometry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vertex-pools">Vertex Pools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uvs-vertexes">UVs (Vertexes)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#polygons">Polygons</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#patches">Patches</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pointlight">PointLight</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lines">Lines</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#triangle-strips">Triangle Strips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-curves-surfaces">Parametric Curves &amp; Surfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformations">Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morphs">Morphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groups">Groups</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dcs-attributes">DCS Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-attribute">Model Attribute</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dart-attributes">Dart Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#switch-attribute">Switch Attribute</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#group-scalars">Group Scalars</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-group-attributes">Other Group Attributes</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#billboards">Billboards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#level-of-detail-lod">Level of Detail (LOD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vertex-references">Vertex References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instances">Instances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joints">Joints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animation-structure">Animation Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/home/syntax/general.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, Loonatic.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
