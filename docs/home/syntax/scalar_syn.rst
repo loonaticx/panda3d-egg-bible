@@ -16,7 +16,7 @@ Alpha Scalars
 Image Alpha File
 ^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> alpha-file { alpha-filename }
 
@@ -30,7 +30,7 @@ alpha channels along with image file formats like JPEG that don't
 Image Alpha File Channel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> alpha-file-channel { channel }
 
@@ -44,7 +44,7 @@ Otherwise, this should be the 1-based channel number, for instance ``1``, ``2``,
 Alpha Blending
 ^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
   
   <Scalar> alpha { alpha-type }
 
@@ -72,7 +72,7 @@ transparency to be enabled.
 Blend Mode (Group)
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> blend { mode }
 
@@ -80,7 +80,7 @@ Specifies that a special blend mode should be applied geometry at
 this level and below.  The available options are ``none``, ``add``,
 ``subtract``, ``inv-subtract``, ``min``, and ``max``.  See ColorBlendAttrib.
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> blendop-a { mode }
   <Scalar> blendop-b { mode }
@@ -90,7 +90,7 @@ operands to the blend equation.  Common options are ``zero``, ``one``,
 ``incoming-color``, ``one-minus-incoming-color``.  See ColorBlendAttrib
 for the complete list of available options.  The default is "one".
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> blendr { red-value }
   <Scalar> blendg { green-value }
@@ -108,7 +108,7 @@ Image Scalars
 Image Compression
 ^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> compression { compression-mode }
 
@@ -140,7 +140,7 @@ If any of the other options, it names the specific compression algorithm to be u
 Image Format
 ^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> format { format-definition }
 
@@ -190,7 +190,7 @@ the closest match that does.
 
 Environment Type
 ^^^^^^^^^^^^^^^^^^
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> envtype { environment-type }
 
@@ -226,7 +226,7 @@ of multitexture.  In particular, the types prefixed by an asterisk
 Image Combine Modes
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
     
   <Scalar> combine-rgb { combine-mode }
   <Scalar> combine-alpha { combine-mode }
@@ -285,7 +285,7 @@ pair, and some use all three; most use just two.
 
 The default values if any of these are omitted are:
 
-.. code-block:: console
+.. code-block:: ruby
     
   <Scalar> combine-rgb { modulate }
   <Scalar> combine-alpha { modulate }
@@ -306,7 +306,7 @@ The default values if any of these are omitted are:
 Image Min/Mag Filtering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> minfilter { filter-type }
   <Scalar> magfilter { filter-type }
@@ -335,7 +335,7 @@ types.
 Image Mipmaps
 ^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> read-mipmaps { flag }
 
@@ -356,7 +356,7 @@ filled in with the 3D sequence or cube map face.
 Image Anisotropic Degree
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> anisotropic-degree { degree }
 
@@ -367,7 +367,7 @@ filtering is disabled.  The default is disabled.
 Image Border Color
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Scalar> borderr { red-value }
     <Scalar> borderg { green-value }
@@ -382,7 +382,7 @@ particularly important when one of the UV wrap modes is
 Image Type
 ^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> type { texture-type }
 
@@ -412,7 +412,7 @@ channel(s).
 Multiview Textures
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> multiview { flag }
 
@@ -432,7 +432,7 @@ where a different image is presented to each eye viewing the
 texture, but other uses are possible, such as for texture
 animation.
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> num-views { count }
 
@@ -444,7 +444,7 @@ of the texture is then implicitly determined as (number of images)
 Texture Generation Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> tex-gen { mode }
 
@@ -467,7 +467,7 @@ valid values for mode are:
 Texture Priority
 ^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> priority { priority-value }
 
@@ -481,7 +481,7 @@ graphics hardware can render.
 Texture Quality level
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> quality-level { quality }
 
@@ -509,7 +509,7 @@ Texture Stage Scalars
 Stage Name
 ^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> stage-name { name }
 
@@ -523,7 +523,7 @@ default ``TextureStage`` is used if multitexturing is not required.
 Saved Result
 ^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> saved-result { flag }
 
@@ -538,7 +538,7 @@ Material Scalars
 Material Components
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> diffr { number }
   <Scalar> diffg { number }
@@ -576,7 +576,7 @@ in effect in the presence of lighting.
 Material Shininess
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> shininess { number }
   <Scalar> local { flag }
@@ -592,7 +592,7 @@ Render Order Scalars
 Bin Order
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> bin { bin-name }
 
@@ -605,7 +605,7 @@ For *polygons*, this specifies the bin name for all polygons at or below this no
 Draw Order
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> draw-order { number }
 
@@ -619,7 +619,7 @@ For Groups: This specifies the drawing order for all polygons at or below this n
 Visibility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> visibility { hidden | normal }
 
@@ -635,7 +635,7 @@ Render Node Types
 Portal
 `````````````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> portal { boolean-value }
 
@@ -649,7 +649,7 @@ Note: Nodes tagged a ``PortalNode`` will not be inherently visible in the scene 
 Polylight
 `````````````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> polylight { boolean-value }
 
@@ -660,7 +660,7 @@ Note: Nodes tagged with ``polylight`` will be flagged as a ``PolylightNode`` in 
 Occluder
 `````````````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> occluder { boolean-value }
 
@@ -682,7 +682,7 @@ texture applied.
 Depth Offset
 ^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> depth-offset { number }
 
@@ -690,7 +690,7 @@ Depth Offset
 Depth Write
 ^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> depth-write { mode }
 
@@ -698,7 +698,7 @@ Depth Write
 Depth Test
 ^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> depth-test { mode }
 
@@ -708,7 +708,7 @@ For Groups: Specifies special depth buffer properties of all polygons at or belo
 Decal Properties
 -----------------
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> decal { boolean-value }
 
@@ -720,7 +720,7 @@ this level will be rendered "on top of" this geometry, but without
 the Z-fighting artifacts one might expect without the use of the
 decal flag.
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> decalbase { boolean-value }
 
@@ -738,7 +738,7 @@ UV Scalars
 UV Name
 ^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> uv-name { name }
 
@@ -749,7 +749,7 @@ If this is omitted, the default texture coordinates are used.
 
 UV Scroll Mode
 ^^^^^^^^^^^^^^^^
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> scroll_u { speed }
   <Scalar> scroll_v { speed }
@@ -765,7 +765,7 @@ This declares a scroll speed on the texture image.
 UV Wrap Mode
 ^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> wrap { repeat-definition }
   <Scalar> wrapu { repeat-definition }
@@ -799,7 +799,7 @@ Animation Scalars
 FPS  
 ^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> fps { frame-rate }
 
@@ -814,7 +814,7 @@ NURBS Scalars
 NURBS Type
 ^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> type { curve-type }
 
@@ -826,7 +826,7 @@ be left alone.
 NURBS Subdivision
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
   
   <Scalar> subdiv { num-segments }
 
@@ -835,7 +835,7 @@ representation of the curve when the scene is loaded.  The number
 represents the number of line segments to draw to approximate the
 curve.
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> U-subdiv { u-num-segments }
   <Scalar> V-subdiv { v-num-segments }
@@ -853,7 +853,7 @@ PointLight Scalars
 Thickness
 ^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> thick { number }
 
@@ -866,7 +866,7 @@ when antialiasing is in effect.  The default is ``1.0``.
 Perspective
 ^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
   
   <Scalar> perspective { boolean-value }
 
@@ -880,7 +880,7 @@ viewer normally.
 Collide Scalars
 ---------------------
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Scalar> collide-mask { value }
   <Scalar> from-collide-mask { value }

@@ -7,7 +7,7 @@ Egg files consist of a series of sequential and hierarchically-nested entries.
 
 In general, the syntax of each entry is:
 
-.. code-block:: console
+.. code-block:: ruby
     
     <Entry-type> name { contents }
 
@@ -30,7 +30,7 @@ Comments may be delimited using either the C++-style ``// ...`` or the C-style `
 
 There is also a ``<Comment>`` entry type, of the form:
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Comment> { text }
 
@@ -44,7 +44,7 @@ Local Information Entries
 
 These nodes contain information relevant to the current level of nesting only.
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Scalar> name { value }
     <Char*> name { value }
@@ -65,7 +65,7 @@ appear before they are referenced.
 Textures
 -----------
 
-.. code-block:: console
+.. code-block:: ruby
     
     <Texture> name { filename [scalars] }
 
@@ -158,7 +158,7 @@ Geometry
 Vertices
 `````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Vertex> number { x [y [z [w]]] [attributes] }
 
@@ -193,14 +193,14 @@ themselves have morph offsets.  Thus, the [attributes] in the
 syntax line above may be replaced with zero or more of the
 following entries:
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Dxyz> target { x y z }
 
 This specifies the offset of this vertex for the named morph
 target.  See the "MORPH DESCRIPTION ENTRIES" header, below.
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Normal> { x y z [morph-list] }
 
@@ -209,7 +209,7 @@ vertex will have no normal.  Normals may also be morphed;
 ``morph-list`` here is thus an optional list of ``<DNormal>`` entries,
 similar to the above.
 
-.. code-block:: console
+.. code-block:: ruby
 
     <RGBA> { r g b a [morph-list] }
 
@@ -223,7 +223,7 @@ color.  If neither color is given, the default is white
 Vertex Pools
 ^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
     
     <VertexPool> name { vertices }
 
@@ -242,7 +242,7 @@ a single vertex to be interpreted in different coordinate spaces
 by different polygons.
 
 
-.. code-block:: console
+.. code-block:: ruby
 
     <DynamicVertexPool> name { vertices }
 
@@ -266,7 +266,7 @@ later when matching up the corresponding ``<VertexAnim>``.
 UVs (Vertexes)
 ^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <UV> [name] { u v [w] [tangent] [binormal] [morph-list] }
 
@@ -294,7 +294,7 @@ there may be a different set of tangents and binormals for each
 different UV coordinate set.  If present, they have the expected
 syntax:
 
-.. code-block:: console
+.. code-block:: ruby
 
     <UV> [name] { u v [w] <Tangent> { x y z } <Binormal> { x y z } }
 
@@ -312,7 +312,7 @@ different name.
 Polygons
 `````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Polygon> name {
         [attributes]
@@ -338,7 +338,7 @@ files tend to be very large.
 
 The following attributes may be specified for polygons:
 
-.. code-block:: console
+.. code-block:: ruby
 
   <TRef> { texture-name }
 
@@ -351,7 +351,7 @@ multitexture.  In this case, each named texture is applied to the
 polygon, in the order specified.
 
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Texture> { filename }
 
@@ -364,7 +364,7 @@ There's no advantage to this syntax for texture mapping.  It's
 supported only because it's required by some older egg files.
 
 
-.. code-block:: console
+.. code-block:: ruby
 
 
   <MRef> { material-name }
@@ -373,7 +373,7 @@ This applies the material properties defined in the earlier
 <Material> entry to the polygon.
 
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Normal> { x y z [morph-list] }
 
@@ -388,7 +388,7 @@ mapping calculations, and is not related to the implicit normal
 calculated for ``CollisionPolygons``.
 
 
-.. code-block:: console
+.. code-block:: ruby
 
 
   <RGBA> { r g b a [morph-list] }
@@ -399,7 +399,7 @@ is white (1 1 1 1).  The color may be morphed with a series of
 <DRGBA> entries.
 
 
-.. code-block:: console
+.. code-block:: ruby
 
 
   <BFace> { boolean-value }
@@ -410,6 +410,8 @@ disabled, and polygons are one-sided; specifying a nonzero value
 disables backface culling for this particular polygon and allows
 it to be viewed from either side.
 
+
+.. code-block:: ruby
 
     <Scalar> bin { bin-name }
     
@@ -427,7 +429,7 @@ it to be viewed from either side.
 Patches
 `````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Patch> name {
         [attributes]
@@ -452,7 +454,7 @@ specified for Patch.
 PointLight
 `````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
     <PointLight> name {
         [attributes]
@@ -467,16 +469,18 @@ vertex listed in the ``<VertexRef>``.  Normals, textures, and colors may
 be specified for ``PointLights``, as well as draw-order, plus one
 additional attribute valid only for ``PointLights`` and ``Lines``:
 
-<Scalar> thick { number }
+.. code-block:: ruby
 
-<Scalar> perspective { boolean-value }
+    <Scalar> thick { number }
+
+    <Scalar> perspective { boolean-value }
 
 
 
 Lines
 `````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Line> name {
         [attributes]
@@ -503,7 +507,7 @@ line segment, as in TriangleStrip, below.
 Triangle Strips
 ```````````````````
 
-.. code-block:: console
+.. code-block:: ruby
 
     <TriangleStrip> name {
         [attributes]
@@ -534,7 +538,7 @@ It is possible for the individual triangles of a triangle strip to
 have a separate normal and/or color.  If so, a ``<Component>`` entry
 should be given for each so-modified triangle:
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Component> index {
     <RGBA> { r g b a [morph-list] }
@@ -566,7 +570,7 @@ surfaces.  External tools like ``egg-qtess``, however, may respect them.
 NURBS Curve
 ^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
     
     <NURBSCurve> {
         [attributes]
@@ -609,7 +613,7 @@ vertices.
 NURBS Surface
 ^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <NURBSSurface> name {
         [attributes]
@@ -679,7 +683,7 @@ head-to-tail fashion and must be explicitly closed.
 
 The trim curve syntax is as follows:
 
-.. code-block:: console
+.. code-block:: ruby
     
   <Trim> {
     <Loop> {
@@ -701,7 +705,7 @@ ignores trim curves and always tessellates the entire NURBS surface.
 Transformations
 ------------------
 
-.. code-block:: console
+.. code-block:: ruby
 
   <Transform> { transform-definition }
 
@@ -718,7 +722,7 @@ Rotations are defined as a counterclockwise angle in degrees about
 a particular axis, either implicit (about the x, y, or z axis), or
 arbitrary.  Matrices, when specified explicitly, are row-major.
 
-.. code-block:: console
+.. code-block:: ruby
 
       <Translate> { x y z }
       <RotX> { degrees }
@@ -764,7 +768,7 @@ it should be quoted if it contains special characters.
 The following types of morph offsets may be defined, within their
 corresponding attribute entries:
 
-.. code-block:: console
+.. code-block:: ruby
     
     <Dxyz> target { x y z }
 
@@ -772,7 +776,7 @@ A position delta, valid within a ``<Vertex>`` entry or a ``<CV>`` entry.
 The given offset vector, scaled by the morph target's value, is
 added to the vertex or CV position each frame.
 
-.. code-block:: console
+.. code-block:: ruby
     
     <DNormal> target { x y z }
 
@@ -782,7 +786,7 @@ vector, scaled by the morph target's value, is added to the normal
 vector each frame.  The resulting vector may not be automatically
 normalized to unit length.
 
-.. code-block:: console
+.. code-block:: ruby
     
     <DUV> target { u v [w] }
 
@@ -793,7 +797,7 @@ enclosing UV is 2-valued, or 3-valued if the enclosing UV is
 value, is added to the vertex's texture coordinates each frame.
 
 
-.. code-block:: console
+.. code-block:: ruby
     
     <DRGBA> target { r g b a }
 
@@ -805,7 +809,7 @@ target's value, is added to the color value each frame.
 Groups
 ---------
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Group> name { group-body }
 
@@ -827,7 +831,7 @@ They are turned on by specifying a non-zero "boolean-value".
 DCS Attributes
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <DCS> { boolean-value }
 
@@ -836,7 +840,7 @@ show code will expect to be able to read the transform set on this
 node at run time, and may need to modify the transform further.
 This is a special case of <Model>, below.
 
-.. code-block:: console
+.. code-block:: ruby
 
     <DCS> { dcs-type }
 
@@ -853,7 +857,7 @@ be adjusted in the event of a flatten operation.
 Model Attribute
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Model> { boolean-value }
 
@@ -866,7 +870,7 @@ also the ``<DCS>`` flag, above.
 Dart Attributes
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Dart> { boolean-value }
 
@@ -879,7 +883,7 @@ top of any hierarchy of ``<Joint>``'s and/or geometry with morphed
 vertices; joints and morphs appearing outside of a hierarchy
 identified with a ``<Dart>`` flag are undefined.
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Dart> { structured }
 
@@ -895,7 +899,7 @@ This entry is typically generated by the ``egg-optchar`` program with the ``-dar
 Switch Attribute
 ^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Switch> { boolean-value }
 
@@ -982,7 +986,7 @@ Other Group Attributes
 Billboards
 ^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
     
     <Billboard> { type }
 
@@ -1005,7 +1009,7 @@ of the billboard, not at the origin of the scene.
 Level of Detail (LOD)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
     
   <SwitchCondition> {
      <Distance> {
@@ -1023,7 +1027,7 @@ ignored.
 Vertex References
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <VertexRef> { indices <Ref> { pool-name } }
 
@@ -1034,7 +1038,7 @@ actually defined.
 Instances
 ------------
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Instance> name { group-body }
 
@@ -1058,7 +1062,7 @@ load external file references at places other than the origin.
 A special syntax of ``<Instance>`` entries does actually create shared
 geometry in the scene graph.  The syntax is:
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Instance> name {
         <Ref> { group-name }
@@ -1077,7 +1081,7 @@ earlier ``<Instance>`` entry.
 Joints
 ---------
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Joint> name { [transform] [ref-list] [joint-list] }
 
@@ -1102,7 +1106,7 @@ assigned to one or more joints within the tree.
 This is done with zero or more ``<VertexRef>`` entries per joint, as the
 following:
 
-.. code-block:: console
+.. code-block:: ruby
 
   <VertexRef> { indices [<Scalar> membership { m }] <Ref> { pool-name } }
 
@@ -1126,7 +1130,7 @@ meaningless.
 Tables and Bundles
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Bundle> name { table-list }
     <Table> name { table-body }
@@ -1141,7 +1145,7 @@ Bundles may only contain tables; tables may contain more tables,
 bundles, or any one of the following (``<Scalar>`` entries are optional,
 and default as shown):
 
-.. code-block:: console
+.. code-block:: ruby
 
     <S$Anim> name {
         <Scalar> fps { 24 }
@@ -1151,7 +1155,7 @@ and default as shown):
 This is a table of scalar values, one per frame.  This may be
 applied to a morph slider, for instance.
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Xfm$Anim> name {
         <Scalar> fps { 24 }
@@ -1167,7 +1171,7 @@ column of the table; ``<V>`` is a list of numbers of length(contents)
 * num_frames.  Each letter of the contents string corresponds to a
 type of transformation:
 
-.. code-block:: console
+.. code-block:: javascript
 
       i, j, k - scale in x, y, z directions, respectively
       a, b, c - shear in xy, xz, and yz planes, respectively
@@ -1180,14 +1184,14 @@ transform, according to the corresponding letter in the contents
 string.  The order the transforms are applied is defined by the
 order string:
 
-.. code-block:: console
+.. code-block:: javascript
 
       s       - all scale and shear transforms
       r, p, h - individual rotate transforms
       t       - all translation transforms
 
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Xfm$Anim_S$> name {
         <Scalar> fps { 24 }
@@ -1203,7 +1207,7 @@ reflects an attempt to simplify the description by not requiring
 repetition of values for columns that did not change value during
 an animation sequence.
 
-.. code-block:: console
+.. code-block:: ruby
 
   <VertexAnim> name {
       <Scalar> width { table-width }
@@ -1235,7 +1239,7 @@ associated animation data.
 
 The structure for an animated model should resemble the following:
 
-.. code-block:: console
+.. code-block:: ruby
     
     <Group> CHARACTER_NAME {
     <Dart> { 1 }
@@ -1309,7 +1313,7 @@ structure and names.
 
 The structure for an animation table should resemble the following:
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Table> {
     <Bundle> CHARACTER_NAME {
@@ -1431,7 +1435,7 @@ it finds within the egg file, by bundle name.
 Default Pose
 ^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <DefaultPose> { transform-definition }
 
@@ -1457,7 +1461,7 @@ reason to specify an explicit ``<DefaultPose>``.
 AnimPreload
 ^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
   <AnimPreload> {
     <Scalar> fps { float-value }
@@ -1479,7 +1483,7 @@ Miscellaneous
 File
 ^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <File> { filename }
 
@@ -1495,7 +1499,7 @@ then the model-path is searched.
 Node Tags
 ^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: ruby
 
     <Tag> key { value }
 
