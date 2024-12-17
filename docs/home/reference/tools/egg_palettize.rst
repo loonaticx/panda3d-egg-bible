@@ -1,9 +1,9 @@
 .. _reference_tool_pal_usage:
 
 Using egg-palettize
-==================
+=====================
 
-The program egg-palettize is used when building models to optimize texture usage on all models before loading them into the show. 
+**egg-palettize** is used when building models to optimize texture usage on all models before loading them into the show. 
 It is capable of collecting together several different small texture images
 from different models and assembling them together onto the same image
 file, potentially reducing the total number of different texture
@@ -12,7 +12,7 @@ thousand to several hundred or fewer.
 
 It also can be used to group together related textures that will be
 rendered at the same time (for instance, textures related to one
-neighborhood), and if nothing else, it can resize textures at build
+area), and if nothing else, it can resize textures at build
 time so that they may be painted at any arbitrary resolution according
 to the artist's convenience, and then reduced to a suitable size for
 texture memory management (and to meet hardware requirements of having
@@ -26,15 +26,15 @@ egg-palettize, and does not require the intervention of the artist.
 
 
 The behavior of egg-palettize is largely controlled through a source
-file called ``textures.txa``, which is usually found in the src/maps
+file called ``textures.txa``, which is usually found in the ``src/maps``
 directory within the model tree.  For a complete description of the
-syntax of the textures.txa file, invoke the command ``egg-palettize -H``.
+syntax of the ``textures.txa`` file, invoke the command ``egg-palettize -H``.
 
 
 Grouping Egg Files
 ---------------------
 
-Much of the contents of textures.txa involves assigning egg files to
+Much of the contents of ``textures.txa`` involves assigning egg files to
 various groups; assigning two egg files to the same group indicates
 that they are associated in some way, and their texture images may be
 copied together into the same palettes.
@@ -57,8 +57,8 @@ within the named subdirectory.  The syntax is:
 
 Where ``dirname`` is the name of the subdirectory.  If you are
 generating a phased download, the dirname should be one of phase_1,
-phase_2, etc., corresponding to the PHASE variable in the install_egg
-rule (see ppremake-models.txt).
+phase_2, etc., corresponding to the ``PHASE`` variable in the ``install_egg``
+rule (see `ppremake documentation <https://github.com/toontownretro/ppremake/wiki/Documentation>`_ for more information).
 
 
 Finally, it is possible to relate the different groups to each other
@@ -140,15 +140,14 @@ Some of the more common keywords are:
 
   linear - Disables mipmaps for the texture.
 
-  omit - Omits the texture from any palettes.  The texture will still
-    be scaled and installed, but it will not be combined with other
+  omit - Omits the texture from any palettes.
+    The texture will still be scaled and installed, but it will not be combined with other
     textures.  Normally you need to do this only when the texture will
     be applied to some geometry at runtime.  (Since palettizing a
     texture requires adjusting the UV's of all the geometry that
     references it, a texture that is applied to geometry at runtime
     cannot be palettized.)
-
-
+    
 
 Running egg-palettize
 ------------------------
@@ -165,7 +164,7 @@ Normally, egg-palettize is run automatically just by typing:
 in the model tree.  It automatically reads the textures.txa file and
 generates and installs the appropriate palette image files, as part of
 the whole build process, and requires no further intervention from the
-user.  See ppremake-models.txt for more information on setting up the
+user.  See the `ppremake documentation <https://github.com/toontownretro/ppremake/wiki/Documentation>`_ for more information on setting up the
 model tree.
 
 When egg-palettize runs in the normal mode, it generates suboptimal
@@ -184,8 +183,6 @@ This causes egg-palettize to reorganize all of the palette images to
 make the best usage of texture memory.  It will force a regeneration
 of most of the egg files in the model tree, so it can be a fairly
 involved operation.
-
-
 
 It is sometimes useful to analyze the results of egg-palettize.  You
 can type:

@@ -3,11 +3,19 @@
 Scalar Definitions
 ====================
 
-Scalars can appear in various contexts. They are always optional, and specify some attribute value relevant to the current context.
+Definition & Usage
+----------------------
 
-The scalar name is the name of the attribute; different attribute names are meaningful in different contexts.
+.. code-block:: ruby
+    
+    <Scalar> scalar-name { value }
 
-The value is either a numeric or a (quoted or unquoted) string value; the interpretation as a number or as a string depends on the nature of the named attribute.
+
+**Scalars** can appear in various contexts. They are always optional, and specify some attribute value relevant to the current context.
+
+The **scalar name** is the name of the attribute; different attribute names are meaningful in different contexts.
+
+The ``value`` is either a numeric or a (quoted or unquoted) string value; the interpretation as a number or as a string depends on the nature of the named attribute.
 
 
 Alpha Scalars
@@ -78,7 +86,7 @@ Blend Mode (Group)
 
 Specifies that a special blend mode should be applied geometry at
 this level and below.  The available options are ``none``, ``add``,
-``subtract``, ``inv-subtract``, ``min``, and ``max``.  See ColorBlendAttrib.
+``subtract``, ``inv-subtract``, ``min``, and ``max``.  See `ColorBlendAttrib <https://docs.panda3d.org/1.10/python/reference/panda3d.core.ColorBlendAttrib>`_.
 
 .. code-block:: ruby
 
@@ -87,7 +95,7 @@ this level and below.  The available options are ``none``, ``add``,
 
 If blend mode, above, is not none, this specifies the A and B
 operands to the blend equation.  Common options are ``zero``, ``one``,
-``incoming-color``, ``one-minus-incoming-color``.  See ColorBlendAttrib
+``incoming-color``, ``one-minus-incoming-color``.  See `ColorBlendAttrib <https://docs.panda3d.org/1.10/python/reference/panda3d.core.ColorBlendAttrib>`_
 for the complete list of available options.  The default is "one".
 
 .. code-block:: ruby
@@ -220,7 +228,7 @@ color is multiplied with the base polygon (or vertex) color.  This
 is the most common texture environment by far.  Other environment
 types are more esoteric and are especially useful in the presence
 of multitexture.  In particular, the types prefixed by an asterisk
-(``*``) require enabling Panda's automatic ShaderGenerator.
+(``*``) require enabling Panda's automatic `ShaderGenerator <https://docs.panda3d.org/1.10/python/reference/panda3d.core.ShaderGenerator>`_.
 
 
 Image Combine Modes
@@ -243,7 +251,7 @@ Image Combine Modes
   <Scalar> combine-alpha-source2 { combine-source }
   <Scalar> combine-alpha-operand2 { combine-operand }
 
-These options replace the envtype and specify the texture combiner
+These options replace the ``envtype`` and specify the texture combiner
 mode, which is usually used for multitexturing.  This specifies
 how the texture combines with the base color and/or the other
 textures applied previously.  You must specify both an rgb and an
@@ -438,8 +446,8 @@ animation.
 
 This is used only when loading a 3-D multiview texture.  It
 specifies how many different views the texture holds; the z height
-of the texture is then implicitly determined as (number of images)
-/ (number of views).
+of the texture is then implicitly determined as ``(number of images)
+/ (number of views)``.
 
 Texture Generation Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -500,7 +508,7 @@ This may be one of:
   BEST
 
 "Default" means to use whatever quality level is specified by the
-global texture-quality-level config variable.
+global ``texture-quality-level`` config variable.
 
 
 Texture Stage Scalars
@@ -513,11 +521,11 @@ Stage Name
 
   <Scalar> stage-name { name }
 
-Specifies the name of the ``TextureStage`` object that is created to
-render this texture.  If this is omitted, a custom ``TextureStage`` is
+Specifies the name of the `TextureStage <https://docs.panda3d.org/1.10/python/reference/panda3d.core.TextureStage>`_ object that is created to
+render this texture.  If this is omitted, a custom `TextureStage <https://docs.panda3d.org/1.10/python/reference/panda3d.core.TextureStage>`_ is
 created for this texture if it is required (e.g. because some
 other multitexturing parameter has been specified), or the system
-default ``TextureStage`` is used if multitexturing is not required.
+default `TextureStage <https://docs.panda3d.org/1.10/python/reference/panda3d.core.TextureStage>`_ is used if multitexturing is not required.
 
 
 Saved Result
@@ -527,7 +535,7 @@ Saved Result
 
   <Scalar> saved-result { flag }
 
-If flag is nonzero, then it indicates that this particular texture
+If ``flag`` is nonzero, then it indicates that this particular texture
 stage will be supplied as the "*last_saved_result*" source for any
 future texture stages.
 
@@ -581,7 +589,7 @@ Material Shininess
   <Scalar> shininess { number }
   <Scalar> local { flag }
 
-The ``shininess`` property controls the size of the specular highlight, and the value ranges from 0 to 128. 
+The ``shininess`` property controls the size of the specular highlight, and the value ranges from ``0`` to ``128``. 
 
 A larger value creates a smaller highlight (creating the appearance of a shinier surface).
 
@@ -643,7 +651,7 @@ Used on a rectangular polygon to set it as a `PortalNode <https://docs.panda3d.o
 This portal is used by the camera to "see through" to the other cells.
 Meaning, when the camera is looking through the portal, the cell on the other side of the portal window is made visible.
 
-Note: Nodes tagged a ``PortalNode`` will not be inherently visible in the scene graph, but will still report a bounding volume.
+Note: Nodes tagged a `PortalNode <https://docs.panda3d.org/1.11/python/reference/panda3d.core.PortalNode>`_ will not be inherently visible in the scene graph, but will still report a bounding volume.
 
 
 Polylight
@@ -655,7 +663,8 @@ Polylight
 
 Create a polylight instead of a regular polyset.
 
-Note: Nodes tagged with ``polylight`` will be flagged as a ``PolylightNode`` in the scene graph with a ``Radius`` attribute. These nodes are not inherently visible in the scene graph and will not report a bounding volume.
+Note: Nodes tagged with ``polylight`` will be flagged as a `PolylightNode <https://docs.panda3d.org/1.10/python/reference/panda3d.core.PolylightNode>`_ in the scene graph with a ``Radius`` attribute.
+These nodes are not inherently visible in the scene graph and will not report a bounding volume.
 
 Occluder
 `````````````````````
@@ -665,12 +674,14 @@ Occluder
   <Scalar> occluder { boolean-value }
 
 This makes the first (or only) polygon within this group node into
-an occluder.  The polygon must have exactly four vertices.  An
+an `OccluderNode <https://docs.panda3d.org/1.10/python/reference/panda3d.core.OccluderNode>`_.  The polygon must have exactly four vertices.  An
 occluder polygon is invisible.  When the occluder is activated
 with ``model.set_occluder(occluder)``, objects that are behind the
 occluder will not be drawn.  This can be a useful rendering
 optimization for complex scenes, but should not be overused or
 performance can suffer.
+
+See `"Polygon Occluder Culling" <https://docs.panda3d.org/1.10/python/programming/render-attributes/occlusion-culling/polygon-occluder-culling>`_ for more usage information.
 
 
 Depth Buffer Scalars
@@ -777,9 +788,9 @@ normal (u,v) range 0.0 - 1.0.
 
 It is ``REPEAT`` to repeat the texture to infinity, ``CLAMP`` not to.  
 
-The wrapping behavior may be specified independently for each axis via ``wrapu`` and ``wrapv``, or it may be specified for both simultaneously via "wrap".
+The wrapping behavior may be specified independently for each axis via ``wrapu`` and ``wrapv``, or it may be specified for both simultaneously via ``wrap``.
 
-Although less often used, for 3-d textures wrapw may also be specified, and it behaves similarly to ``wrapu`` and ``wrapv``.
+Although less often used, for 3-d textures ``wrapw`` may also be specified, and it behaves similarly to ``wrapu`` and ``wrapv``.
 
 There are other legal values in additional to ``REPEAT`` and ``CLAMP``.
 The full list is:
@@ -803,9 +814,9 @@ FPS
 
   <Scalar> fps { frame-rate }
 
-This specifies the rate of animation for a ``SequenceNode`` (created
+This specifies the rate of animation for a `SequenceNode <https://docs.panda3d.org/1.10/python/reference/panda3d.core.SequenceNode>`_ (created
 when the ``Switch`` flag is specified).  A value of zero
-indicates a ``SwitchNode`` should be created instead.
+indicates a `SwitchNode <https://docs.panda3d.org/1.10/python/reference/panda3d.core.SwitchNode>`_ should be created instead.
 
 
 NURBS Scalars
@@ -843,7 +854,7 @@ curve.
 These define the number of subdivisions to make in the U and V
 directions to represent the surface.  A uniform subdivision is
 always made, and trim curves are not respected (though they will
-be drawn in if the trim curves themselves also have a subdiv
+be drawn in if the trim curves themselves also have a ``subdiv``
 parameter).  This is only intended as a cheesy visualization.
 
 
@@ -857,10 +868,10 @@ Thickness
 
   <Scalar> thick { number }
 
-This specifies the size of the ``PointLight`` (or the width of a
+This specifies the size of the `PointLight <https://docs.panda3d.org/1.10/python/reference/panda3d.core.PointLight>`_ (or the width of a
 line), in pixels, when it is rendered.  This may be a
 floating-point number, but the fractional part is meaningful only
-when antialiasing is in effect.  The default is ``1.0``.
+when anti-aliasing is in effect.  The default is ``1.0``.
 
 
 Perspective
@@ -874,7 +885,6 @@ If this is specified, then the thickness, above, is to interpreted
 as a size in 3-d spatial units, rather than a size in pixels, and
 the point should be scaled according to its distance from the
 viewer normally.
-
 
 
 Collide Scalars
@@ -894,4 +904,4 @@ both ``from-collide-mask`` and ``into-collide-mask`` to the same
 value.
 
 The value may be an ordinary decimal integer, or a hex number in
-the form 0x000, or a binary number in the form 0b000.
+the form ``0x000``, or a binary number in the form ``0b000``.

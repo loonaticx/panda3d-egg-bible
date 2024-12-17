@@ -119,7 +119,7 @@ For instance, if you specified a value 0.5 for fraction in the above command, it
 The second number is a **fuzz factor**, and should be a small number; if the coverage area is just slightly larger than the last unit (within the fuzz factor), it is rounded down instead of up.
 This is intended to prevent UV coordinates that are just slightly out of the range [0, 1] (which happens fairly often) from forcing the palettization area all the way up to the next stop.
 
-The default if this is unspecified is 0.1 0.01. That is, round up to the next tenth, unless within a hundredth of the last tenth.
+The default if this is unspecified is ``0.1 0.01``. That is, round up to the next tenth, unless within a hundredth of the last tenth.
 
 To disable rounding, specify ``:round no``. Rounding is implicitly disabled when you run with the ``-opt`` command line option.
 
@@ -290,7 +290,7 @@ This specifies that the image format requested by an egg file should be exactly 
     
     generic      
 
-Specifies that any image format requested by an egg file that requests a particular bitdepth should be replaced by its generic equivalent, e.g. ``rgba8`` should become ``rgba``.
+Specifies that any image format requested by an egg file that requests a particular bit depth should be replaced by its generic equivalent, e.g. ``rgba8`` should become ``rgba``.
 
 .. code-block:: console
 
@@ -303,7 +303,7 @@ This may be any valid egg alpha mode, e.g. ``blend``, ``binary``, ``ms``, or ``d
 
     repeat_u, repeat_v, clamp_u, clamp_v    
 
-Explcitly specify whether the source texture should repeat or clamp in each direction.
+Explicitly specify whether the source texture should repeat or clamp in each direction.
 Although palette images are always clamped, this will affect the pixels that are painted into the palette image.
 
 .. code-block:: console
